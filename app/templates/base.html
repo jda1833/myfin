@@ -1,0 +1,35 @@
+<!-- app/templates/base.html
+Base template for consistent layout.
+html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Coinbase Transaction Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Coinbase Transaction Tracker</h1>
+        {% if session.user_id %}
+            <nav>
+                <a href="{{ url_for('main.index') }}">Home</a> |
+                <a href="{{ url_for('main.api_keys') }}">API Keys</a> |
+                <a href="{{ url_for('main.transactions') }}">Transactions</a> |
+                <a href="{{ url_for('main.logout') }}">Logout</a>
+            </nav>
+        {% endif %}
+    </header>
+    <main>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class="flash-messages">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
