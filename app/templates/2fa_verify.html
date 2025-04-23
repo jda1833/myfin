@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Verify 2FA{% endblock %}
+
+{% block content %}
+    <h1>Verify Two-Factor Authentication</h1>
+    <p>Enter the code from your authenticator app.</p>
+    <form method="POST">
+        <div>
+            <label>TOTP Code:</label>
+            <input type="text" name="totp_code" required>
+        </div>
+        <div>
+            <button type="submit">Verify</button>
+        </div>
+    </form>
+{% endblock %}

@@ -1,9 +1,31 @@
-<!-- app/templates/transactions.html
-html -->
-{% extends "base.html" %}
+{% extends 'base.html' %}
+
+{% block title %}Transactions{% endblock %}
+
 {% block content %}
-<h2>Coinbase Transactions</h2>
-{% for table in tables %}
-    {{ table|safe }}
-{% endfor %}
+    <h1>Your Coinbase Transactions</h1>
+    {% if transactions %}
+        <table>
+            <tr>
+                <th>Transaction ID</th>
+                <th>Type</th>
+                <th>Amount</th>
+                <th>Currency</th>
+                <th>Timestamp</th>
+                <th>Status</th>
+            </tr>
+            {% for tx in transactions %}
+                <tr>
+                    <td>{{ tx.coinbase_tx_id }}</td>
+                    <td>{{ tx.type }}</td>
+                    <td>{{ tx.amount }}</td>
+                    <td>{{ tx.currency }}</td>
+                    <td>{{ tx.timestamp }}</td>
+                    <td>{{ tx.status }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <p>No transactions found.</p>
+    {% endif %}
 {% endblock %}

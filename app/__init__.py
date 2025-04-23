@@ -1,36 +1,32 @@
-# app/__init__.py
-# Initializes the Flask app and database.
-# python
-
+import os
 from flask import Flask
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.ext.declarative import declarative_base
+from flask_sqlalchemy import SQLAlchemy
+from database.models import db
+from app.routes.auth import auth_bp
+from app.routes.main import main_bp
+from app.routes.coinbase import coinbase_bp  # New blueprint
 
 def create_app():
     app = Flask(__name__)
-    app.config['SECRET_KEY'] = '097c67bf1ea33c85855764ab5e13b68501b382d2a90f4873'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db/user.db'
-    
-    # Initialize database
-    engine = create_engine(app.config['SQLALCHEMY_DATABASE_URI'], echo=True)
-    Base = declarative_base()
-    # Create tables for all defined models
-    with app.app_context():  # Ensure app context is active
-        Base.metadata.create_all(engine, checkfirst=True)
-    Session = sessionmaker(bind=engine)
-    app.config['DB_SESSION'] = Session()
-    
-    # Register routes
-    from .routes import bp
-    app.register_blueprint(bp)
-    
-        # Clean up session after each request
-    @app.teardown_appcontext
-    def shutdown_session(exception=None):
-        current_app.config['DB_SESSION'].remove()
+    app.config['SECRET_KEY'] = 'your_secret_key'  # Replace with a secure random key
+
+    # Define the database path and ensure the database folder exists
+    basedir = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))  # Root of flask_app/
+    db_path = os.path.join(basedir, 'database', 'users.db')
+    os.makedirs(os.path.join(basedir, 'database'), exist_ok=True)  # Create database folder if it doesn't exist
+    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_path}'
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+    # Bind SQLAlchemy to the app
+    db.init_app(app)
+
+    # Create database within app context
+    with app.app_context():
+        db.create_all()
+
+    # Register blueprints
+    app.register_blueprint(auth_bp)
+    app.register_blueprint(main_bp)
+    app.register_blueprint(coinbase_bp)  # Register new blueprint
 
     return app
-
-    
-

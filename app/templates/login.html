@@ -1,12 +1,21 @@
-<!-- app/templates/login.html
-html -->
-{% extends "base.html" %}
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
 {% block content %}
-<h2>Login</h2>
-<form method="post">
-    <p>Username: <input type="text" name="username" required></p>
-    <p>Password: <input type="password" name="password" required></p>
-    <p><input type="submit" value="Login"></p>
-</form>
-<p>Need an account? <a href="{{ url_for('main.register') }}">Register</a></p>
+    <h1>Login</h1>
+    <form method="POST">
+        <div>
+            <label>Username:</label>
+            <input type="text" name="username" required>
+        </div>
+        <div>
+            <label>Password:</label>
+            <input type="password" name="password" required>
+        </div>
+        <div>
+            <button type="submit">Login</button>
+        </div>
+    </form>
+    <p>Don't have an account? <a href="{{ url_for('auth.register') }}">Register</a></p>
 {% endblock %}

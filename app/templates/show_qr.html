@@ -1,9 +1,0 @@
-<!-- app/templates/show_qr.html
-html -->
-{% extends "base.html" %}
-{% block content %}
-<h2>Scan QR Code</h2>
-<p>Scan this QR code with your authenticator app (e.g., Google Authenticator, Authy):</p>
-<img src="data:image/png;base64,{{ qr_base64 }}" alt="QR Code">
-<p>After scanning, <a href="{{ url_for('main.login') }}">log in</a> and use the code from your authenticator app.</p>
-{% endblock %}

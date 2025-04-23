@@ -1,0 +1,70 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #f4f4f4;
+    padding: 20px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.sidebar a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.sidebar a:hover {
+    background-color: #ddd;
+}
+
+.content {
+    margin-left: 220px;
+    padding: 20px;
+    width: calc(100% - 220px);
+}
+
+.flash {
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f4;
+}

@@ -1,35 +1,32 @@
-<!-- app/templates/base.html
-Base template for consistent layout.
-html -->
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Coinbase Transaction Tracker</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>{% block title %}{% endblock %} - Flask App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-    <header>
-        <h1>Coinbase Transaction Tracker</h1>
-        {% if session.user_id %}
-            <nav>
-                <a href="{{ url_for('main.index') }}">Home</a> |
-                <a href="{{ url_for('main.api_keys') }}">API Keys</a> |
-                <a href="{{ url_for('main.transactions') }}">Transactions</a> |
-                <a href="{{ url_for('main.logout') }}">Logout</a>
-            </nav>
-        {% endif %}
-    </header>
-    <main>
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <ul class="flash-messages">
-                    {% for message in messages %}
-                        <li>{{ message }}</li>
-                    {% endfor %}
-                </ul>
+    <div class="container">
+        <div class="sidebar">
+            <h3>Navigation</h3>
+            {% if session.username %}
+                <a href="{{ url_for('main.home') }}">Home</a>
+                <a href="{{ url_for('coinbase.transactions') }}">Transactions</a>
+                <a href="{{ url_for('auth.logout') }}">Logout</a>
+            {% else %}
+                <a href="{{ url_for('auth.login') }}">Login</a>
+                <a href="{{ url_for('auth.register') }}">Register</a>
             {% endif %}
-        {% endwith %}
-        {% block content %}{% endblock %}
-    </main>
+        </div>
+        <div class="content">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="flash {{ category }}">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            {% block content %}{% endblock %}
+        </div>
+    </div>
 </body>
 </html>
