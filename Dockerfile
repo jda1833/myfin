@@ -10,7 +10,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 ENV FLASK_APP=run.py
-ENV ENCRYPTION_KEY=x2vKINWwhAMEgX
+ENV ENCRYPTION_KEY='84-7WpbNp9Y2h5aDQ-jqphkcZ7Uj3d5I4C5b09vrm9U='
 
 EXPOSE 5000
 

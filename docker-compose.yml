@@ -8,7 +8,7 @@ services:
       - "5000:5000"
     volumes:
       - ./app:/app/app
-      - ./users.db:/app/users.db
+      - ./users:/app/users
     environment:
       - FLASK_ENV=production
-      - ENCRYPTION_KEY=x2vKINWwhAMEgX  # Replace with a secure key
+      - ENCRYPTION_KEY='84-7WpbNp9Y2h5aDQ-jqphkcZ7Uj3d5I4C5b09vrm9U='

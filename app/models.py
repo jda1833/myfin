@@ -5,7 +5,11 @@ from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from cryptography.fernet import Fernet
 import os
+key = Fernet.generate_key()
+Base = declarative_base()
 
+
+# Create the base class for declarative models
 Base = declarative_base()
 
 # Generate or load encryption key

@@ -1,7 +1,7 @@
 # app/routes.py
 # Defines routes for registration, login, 2FA, API key input, and transaction display.
 # python
-from flask import Blueprint, request, render_template, redirect, url_for, flash, session
+from flask import Blueprint, request, render_template, redirect, url_for, flash, session, current_app
 import bcrypt
 import pyotp
 import qrcode
@@ -26,7 +26,8 @@ def register():
         password = request.form['password']
         email = request.form['email']
         
-        db_session = request.app.config['DB_SESSION']
+        print(request)
+        db_session = current_app.config['DB_SESSION']
         existing_user = db_session.query(User).filter_by(username=username).first()
         if existing_user:
             flash('Username already exists!')
@@ -77,7 +78,7 @@ def login():
         username = request.form['username']
         password = request.form['password']
         
-        db_session = request.app.config['DB_SESSION']
+        db_session = current_app.config['DB_SESSION']
         user = db_session.query(User).filter_by(username=username).first()
         if user and bcrypt.checkpw(password.encode('utf-8'), user.password.encode('utf-8')):
             session['temp_user_id'] = user.id
@@ -96,7 +97,7 @@ def verify_2fa():
     
     if request.method == 'POST':
         code = request.form['code']
-        db_session = request.app.config['DB_SESSION']
+        db_session = current_app.config['DB_SESSION']
         user = db_session.query(User).filter_by(id=session['temp_user_id']).first()
         totp = pyotp.TOTP(user.totp_secret)
         
@@ -117,7 +118,7 @@ def api_keys():
         flash('Please log in first!')
         return redirect(url_for('main.login'))
     
-    db_session = request.app.config['DB_SESSION']
+    db_session = current_app.config['DB_SESSION']
     user = db_session.query(User).filter_by(id=session['user_id']).first()
     
     if request.method == 'POST':
@@ -136,7 +137,7 @@ def transactions():
         flash('Please log in first!')
         return redirect(url_for('main.login'))
     
-    db_session = request.app.config['DB_SESSION']
+    db_session = current_app.config['DB_SESSION']
     user = db_session.query(User).filter_by(id=session['user_id']).first()
     api_key, api_secret = user.get_api_keys()
     
