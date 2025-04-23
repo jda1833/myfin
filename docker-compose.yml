@@ -1,0 +1,14 @@
+# docker-compose.yml
+# yaml
+version: '3.8'
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./app:/app/app
+      - ./users.db:/app/users.db
+    environment:
+      - FLASK_ENV=production
+      - ENCRYPTION_KEY=x2vKINWwhAMEgX  # Replace with a secure key

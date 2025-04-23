@@ -1,0 +1,9 @@
+<!-- app/templates/transactions.html
+html -->
+{% extends "base.html" %}
+{% block content %}
+<h2>Coinbase Transactions</h2>
+{% for table in tables %}
+    {{ table|safe }}
+{% endfor %}
+{% endblock %}

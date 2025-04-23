@@ -1,0 +1,11 @@
+<!-- app/templates/api_keys.html
+html -->
+{% extends "base.html" %}
+{% block content %}
+<h2>Set Coinbase API Keys</h2>
+<form method="post">
+    <p>API Key: <input type="text" name="api_key" required></p>
+    <p>API Secret: <input type="text" name="api_secret" required></p>
+    <p><input type="submit" value="Save Keys"></p>
+</form>
+{% endblock %}

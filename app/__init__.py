@@ -9,7 +9,7 @@ from sqlalchemy.ext.declarative import declarative_base
 
 def create_app():
     app = Flask(__name__)
-    app.config['SECRET_KEY'] = 'your_secure_secret_key'  # Replace or use environment variable
+    app.config['SECRET_KEY'] = 'x2vKINWwhAMEgX'  #TODO: Replace or use environment variable
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
     
     # Initialize database

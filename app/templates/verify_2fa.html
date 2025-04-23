@@ -1,0 +1,10 @@
+<!-- app/templates/verify_2fa.html
+html -->
+{% extends "base.html" %}
+{% block content %}
+<h2>2FA Verification</h2>
+<form method="post">
+    <p>Enter 6-digit code from your authenticator app: <input type="text" name="code" required></p>
+    <p><input type="submit" value="Verify"></p>
+</form>
+{% endblock %}
