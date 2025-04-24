@@ -1507,3 +1507,58 @@ ERROR:app.routes.coinbase:Error processing row 465: could not convert string to 
 ERROR:app.routes.coinbase:Error processing row 466: could not convert string to float: '$3647.24'
 ERROR:app.routes.coinbase:Error processing row 467: could not convert string to float: '$1.38'
 INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 117-669-810
+DEBUG:app.routes.coinbase:CSV columns: ['ID', 'Timestamp', 'Transaction Type', 'Asset', 'Quantity Transacted', 'Price Currency', 'Price at Transaction', 'Subtotal', 'Total (inclusive of fees and/or spread)', 'Fees and/or Spread', 'Notes']
+ERROR:app.routes.coinbase:Unexpected error processing row 107: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 108: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 109: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 123: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 292: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 384: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 385: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 401: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 402: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 403: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 434: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 437: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 440: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 443: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 451: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 453: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 458: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 468: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 469: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 470: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 473: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 479: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 482: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 485: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 499: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 500: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 501: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 502: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 514: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 516: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 531: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 532: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 533: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 535: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 536: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 537: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 538: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 539: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 540: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 561: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 569: 'Total (inclusive of fees)'
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:20:44] "[32mPOST /coinbase/import_transactions HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:20:44] "[35m[1mGET /coinbase/transactions HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:20:44] "GET /coinbase/transactions?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:20:44] "GET /coinbase/transactions?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:20:45] "GET /coinbase/transactions?__debugger__=yes&cmd=resource&f=console.png&s=O3PvVDIztqutwRat3Lqr HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:20:46] "HEAD /coinbase/transactions?__debugger__=yes&cmd=resource&f=console.png&s=O3PvVDIztqutwRat3Lqr HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:20:46] "GET /coinbase/transactions?__debugger__=yes&cmd=resource&f=console.png&s=O3PvVDIztqutwRat3Lqr HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:20:46] "GET /coinbase/transactions?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:20:46] "GET /coinbase/transactions?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:20:46] "GET /coinbase/transactions?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:20:46] "GET /coinbase/transactions?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
