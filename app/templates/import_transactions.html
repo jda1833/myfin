@@ -1,46 +1,16 @@
 {% extends 'base.html' %}
 
-{% block title %}Import Transactions{% endblock %}
+{% block title %}Import Coinbase Transactions{% endblock %}
 
 {% block content %}
-    <h1>Import Transactions</h1>
+    <h1>Import Coinbase Transactions</h1>
     <div class="card">
-        <form method="POST" enctype="multipart/form-data" action="{{ url_for('coinbase.import_transactions') }}">
-            <div class="form-group">
-                <label for="csv_file">Upload Coinbase CSV:</label>
-                <div class="drop-zone" id="drop-zone">
-                    <p>Drag and drop your CSV file here, or click to select</p>
-                    <input type="file" id="csv_file" name="csv_file" accept=".csv" style="display: none;">
-                </div>
-            </div>
+        <h2>Upload Coinbase CSV</h2>
+        <p>Upload a CSV file containing your Coinbase transactions.</p>
+        <form method="POST" action="{{ url_for('coinbase.import_transactions') }}" enctype="multipart/form-data">
+            <label for="csv_file">Select CSV File:</label>
+            <input type="file" id="csv_file" name="csv_file" accept=".csv" required>
             <button type="submit">Import</button>
         </form>
     </div>
-
-    <script>
-        const dropZone = document.getElementById('drop-zone');
-        const fileInput = document.getElementById('csv_file');
-
-        dropZone.addEventListener('click', () => fileInput.click());
-
-        dropZone.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            dropZone.classList.add('dragover');
-        });
-
-        dropZone.addEventListener('dragleave', () => {
-            dropZone.classList.remove('dragover');
-        });
-
-        dropZone.addEventListener('drop', (e) => {
-            e.preventDefault();
-            dropZone.classList.remove('dragover');
-            fileInput.files = e.dataTransfer.files;
-            dropZone.querySelector('p').textContent = fileInput.files[0]?.name || 'No file selected';
-        });
-
-        fileInput.addEventListener('change', () => {
-            dropZone.querySelector('p').textContent = fileInput.files[0]?.name || 'No file selected';
-        });
-    </script>
 {% endblock %}

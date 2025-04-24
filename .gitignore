@@ -1,16 +1,5 @@
-# Python
 __pycache__/
 *.pyc
-*.pyo
-*.pyd
-
-# Database
-database/users.db
-
-# Secret configuration
-config.py
-
-# Environment
-*.env
-venv/
-.env/
+*.db
+*.csv
+*.log

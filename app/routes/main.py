@@ -13,23 +13,43 @@ def index():
     if not user:
         return redirect(url_for('auth.login'))
 
-    # Calculate non-zero balances per currency
-    balances = (
+    # Crypto balances (source='coinbase')
+    crypto_balances = (
         db.session.query(
             Transaction.currency,
             func.sum(Transaction.amount).label('total_amount')
         )
-        .filter_by(user_id=user.id)
+        .filter_by(user_id=user.id, source='coinbase')
         .group_by(Transaction.currency)
-        .having(func.sum(Transaction.amount) > 0.0001)
+        .having(func.sum(Transaction.amount) != 0)
         .order_by(Transaction.currency)
         .all()
     )
-
-    # Format balances for display (8 decimal places)
-    formatted_balances = [
+    formatted_crypto_balances = [
         {'currency': balance.currency, 'amount': f"{balance.total_amount:.8f}"}
-        for balance in balances
+        for balance in crypto_balances
     ]
 
-    return render_template('index.html', user=user, balances=formatted_balances)
+    # Stock balances (source='fidelity')
+    stock_balances = (
+        db.session.query(
+            Transaction.currency,
+            func.sum(Transaction.amount).label('total_amount')
+        )
+        .filter_by(user_id=user.id, source='fidelity')
+        .group_by(Transaction.currency)
+        .having(func.sum(Transaction.amount) != 0)
+        .order_by(Transaction.currency)
+        .all()
+    )
+    formatted_stock_balances = [
+        {'currency': balance.currency, 'amount': f"{balance.total_amount:.2f}"}
+        for balance in stock_balances
+    ]
+
+    return render_template(
+        'index.html',
+        user=user,
+        crypto_balances=formatted_crypto_balances,
+        stock_balances=formatted_stock_balances
+    )

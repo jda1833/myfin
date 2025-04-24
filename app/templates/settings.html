@@ -8,12 +8,12 @@
     <!-- Account Settings -->
     <div class="card">
         <h2>Account Settings</h2>
-        <form method="POST" action="{{ url_for('settings.settings') }}">
+        <form method="POST" action="{{ url_for('settings.update_email') }}">
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" value="{{ user.email }}" required>
             <button type="submit">Update Email</button>
         </form>
-        <form method="POST" action="{{ url_for('settings.settings') }}">
+        <form method="POST" action="{{ url_for('settings.update_password') }}">
             <label for="password">New Password:</label>
             <input type="password" id="password" name="password" required>
             <button type="submit">Update Password</button>
@@ -23,7 +23,7 @@
     <!-- Coinbase API Credentials -->
     <div class="card">
         <h2>Coinbase API Credentials</h2>
-        <form method="POST" action="{{ url_for('settings.settings') }}">
+        <form method="POST" action="{{ url_for('settings.update_coinbase_credentials') }}">
             <label for="api_key">API Key:</label>
             <input type="text" id="api_key" name="api_key" required>
             <label for="api_secret">API Secret:</label>
@@ -46,24 +46,45 @@
         {% endif %}
     </div>
 
-    <!-- Transaction Backup -->
+    <!-- Coinbase Transaction Backup -->
     <div class="card">
-        <h2>Transaction Backup</h2>
+        <h2>Coinbase Transaction Backup</h2>
         <form method="POST" action="{{ url_for('settings.export_transactions') }}">
-            <button type="submit">Export Transactions</button>
+            <button type="submit">Export Coinbase Transactions</button>
         </form>
         <form method="POST" action="{{ url_for('settings.import_transactions') }}" enctype="multipart/form-data">
-            <label for="backup_file">Import Transactions:</label>
-            <input type="file" id="backup_file" name="backup_file" accept=".csv">
+            <label for="coinbase_backup_file">Import Coinbase Transactions:</label>
+            <input type="file" id="coinbase_backup_file" name="backup_file" accept=".csv">
             <button type="submit">Import</button>
         </form>
     </div>
 
-    <!-- Clear Transactions -->
+    <!-- Fidelity Transaction Backup -->
     <div class="card">
-        <h2>Clear Transactions</h2>
+        <h2>Fidelity Transaction Backup</h2>
+        <form method="POST" action="{{ url_for('settings.export_fidelity_transactions') }}">
+            <button type="submit">Export Fidelity Transactions</button>
+        </form>
+        <form method="POST" action="{{ url_for('settings.import_fidelity_transactions') }}" enctype="multipart/form-data">
+            <label for="fidelity_backup_file">Import Fidelity Transactions:</label>
+            <input type="file" id="fidelity_backup_file" name="backup_file" accept=".csv">
+            <button type="submit">Import</button>
+        </form>
+    </div>
+
+    <!-- Clear Coinbase Transactions -->
+    <div class="card">
+        <h2>Clear Coinbase Transactions</h2>
         <form method="POST" action="{{ url_for('settings.clear_transactions') }}">
-            <button type="submit" class="danger">Clear Transactions</button>
+            <button type="submit" class="danger">Clear Coinbase Transactions</button>
+        </form>
+    </div>
+
+    <!-- Clear Fidelity Transactions -->
+    <div class="card">
+        <h2>Clear Fidelity Transactions</h2>
+        <form method="POST" action="{{ url_for('settings.clear_fidelity_transactions') }}">
+            <button type="submit" class="danger">Clear Fidelity Transactions</button>
         </form>
     </div>
 {% endblock %}

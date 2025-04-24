@@ -45,3 +45,1465 @@ INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 14:18:02] "GET /transactions?currency=E
 INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 14:18:02] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
 INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 14:18:05] "GET / HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 14:18:05] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 117-669-810
+INFO:app.routes.auth.login:User jda1833 logged out
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 14:39:06] "[32mGET /logout HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 14:39:06] "GET /login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 14:39:06] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 14:39:11] "GET /register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 14:39:11] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+INFO:app.routes.auth.register:User jda1833 registered
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 14:39:17] "[32mPOST /register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 14:39:17] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 14:39:17] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 14:39:20] "GET /transactions HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 14:39:20] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 14:39:23] "GET /import_transactions HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 14:39:23] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 14:40:37] "[35m[1mGET /import_transactions HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 14:40:37] "GET /import_transactions?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 14:40:37] "GET /import_transactions?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 14:40:37] "GET /import_transactions?__debugger__=yes&cmd=resource&f=console.png&s=5FrII2Sj1oRECj8bzsJg HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 14:40:37] "GET /import_transactions?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 14:40:37] "GET /import_transactions?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 14:40:38] "HEAD /import_transactions?__debugger__=yes&cmd=resource&f=console.png&s=5FrII2Sj1oRECj8bzsJg HTTP/1.1" 200 -
+INFO:werkzeug: * Detected change in 'D:\\git\\myfin\\database\\models.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 117-669-810
+INFO:werkzeug: * Detected change in 'D:\\git\\myfin\\app\\routes\\coinbase\\display_transactions.py', reloading
+INFO:werkzeug: * Restarting with stat
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 117-669-810
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:20] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:20] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:20] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:20] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:20] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:20] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:20] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:20] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:20] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:20] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:20] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:20] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:20] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:20] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:20] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:20] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:20] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:20] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:20] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:20] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:21] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:21] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:21] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:21] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:21] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:22] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:22] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:22] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:22] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:22] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:22] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:22] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:22] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:22] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:22] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:22] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:22] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:22] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:22] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:22] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:23] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:23] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:23] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:23] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:23] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:23] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:23] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:23] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:23] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:23] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:23] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:23] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:23] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:23] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:23] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:23] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:23] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:24] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:24] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:24] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:29] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:29] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:29] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:29] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:29] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:29] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:29] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:29] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:29] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:29] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:29] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:29] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:29] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:29] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:29] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:29] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:29] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:29] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:29] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:29] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:37] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:37] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:37] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:37] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:37] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:37] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:37] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:37] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:37] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:37] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:37] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:37] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:37] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:37] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:37] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:37] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:37] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:37] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:37] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:37] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:47] "[36mGET /import_transactions?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:49] "[33mGET /logout HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:55] "[33mGET /logout HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:04:56] "[33mGET /logout HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:00] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:00] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:00] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:00] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:00] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:00] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:00] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:00] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:00] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:00] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:00] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:00] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:00] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:00] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:00] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:00] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:00] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:00] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:00] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:00] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:01] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:01] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:01] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:01] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:01] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:01] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:01] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:01] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:01] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:01] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:01] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:01] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:01] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:01] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:01] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:01] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:01] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:01] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:01] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:01] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:06] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:06] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:06] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:06] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:06] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:06] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:06] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:06] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:07] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:07] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:07] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:07] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:07] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:07] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:07] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:07] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:07] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:07] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:07] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:07] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:37] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:37] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:37] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:37] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:37] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:37] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:37] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:37] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:37] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:37] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:37] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:37] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:37] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:37] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:37] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:37] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:37] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:37] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:37] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:05:37] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 117-669-810
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:16] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:16] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:16] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:16] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:16] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:16] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:16] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:16] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:16] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:16] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:16] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:16] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:16] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:16] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:16] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:16] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:16] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:16] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:16] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:16] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:17] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:17] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:17] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:17] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:17] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:17] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:17] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:17] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:17] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:17] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:17] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:17] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:17] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:17] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:17] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:17] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:17] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:17] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:17] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:17] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:22] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:22] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:22] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:22] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:22] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:22] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:22] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:22] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:22] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:22] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:22] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:22] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:22] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:22] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:22] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:22] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:22] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:22] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:22] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:23] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:56] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:56] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:56] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:56] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:56] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:56] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:56] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:56] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:56] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:56] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:56] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:56] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:56] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:56] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:56] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:56] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:56] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:56] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:56] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:06:56] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:07:01] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:07:01] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:07:01] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:07:01] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:07:01] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:07:01] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:07:01] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:07:01] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:07:01] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:07:01] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:07:01] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:07:01] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:07:01] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:07:01] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:07:01] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:07:01] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:07:01] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:07:01] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:07:01] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:07:01] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:07:07] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:07:07] "GET /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:07:08] "GET /static/css/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:03] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:03] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:03] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:03] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:03] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:03] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:03] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:03] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:03] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:03] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:03] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:03] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:03] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:03] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:03] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:03] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:03] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:03] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:03] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:03] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:04] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:04] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:04] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:04] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:04] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:04] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:04] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:04] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:04] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:04] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:04] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:04] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:04] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:04] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:04] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:04] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:04] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:04] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:05] "[32mGET / HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:05] "[32mGET /auth/login HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:31] "GET /auth/login HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:31] "GET /static/css/styles.css HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:35] "GET /auth/register HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:35] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:36] "GET /static/css/styles.css HTTP/1.1" 200 -
+INFO:app.routes.auth.register:User jda1833 registered
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:43] "[32mPOST /auth/register HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:43] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:43] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:48] "GET /settings HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:48] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:50] "GET /auth/setup_2fa HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:08:50] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+INFO:app.routes.auth.twofa:User jda1833 enabled 2FA
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:09:12] "[32mPOST /auth/verify_2fa HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:09:12] "GET /settings HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:09:12] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:09:19] "GET /coinbase/import_transactions HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:09:19] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+DEBUG:app.routes.coinbase:CSV columns: ['ID', 'Timestamp', 'Transaction Type', 'Asset', 'Quantity Transacted', 'Price Currency', 'Price at Transaction', 'Subtotal', 'Total (inclusive of fees and/or spread)', 'Fees and/or Spread', 'Notes']
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:09:31] "[32mPOST /coinbase/import_transactions HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:09:31] "GET /coinbase/import_transactions HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:09:31] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug: * Detected change in 'D:\\git\\myfin\\app\\routes\\coinbase.py', reloading
+INFO:werkzeug: * Restarting with stat
+WARNING:werkzeug: * Debugger is active!
+INFO:werkzeug: * Debugger PIN: 117-669-810
+DEBUG:app.routes.coinbase:CSV columns: ['ID', 'Timestamp', 'Transaction Type', 'Asset', 'Quantity Transacted', 'Price Currency', 'Price at Transaction', 'Subtotal', 'Total (inclusive of fees and/or spread)', 'Fees and/or Spread', 'Notes']
+ERROR:app.routes.coinbase:Error processing row 0: could not convert string to float: '$1814.465'
+ERROR:app.routes.coinbase:Error processing row 1: could not convert string to float: '$2008.66'
+ERROR:app.routes.coinbase:Error processing row 2: could not convert string to float: '$0.2377'
+ERROR:app.routes.coinbase:Error processing row 3: could not convert string to float: '$2089.755'
+ERROR:app.routes.coinbase:Error processing row 4: could not convert string to float: '$0.2125'
+ERROR:app.routes.coinbase:Error processing row 5: could not convert string to float: '$1978.345'
+ERROR:app.routes.coinbase:Error processing row 6: could not convert string to float: '$1873.265'
+ERROR:app.routes.coinbase:Error processing row 7: could not convert string to float: '$1933.405'
+ERROR:app.routes.coinbase:Error processing row 8: could not convert string to float: '$0.2181'
+ERROR:app.routes.coinbase:Error processing row 9: could not convert string to float: '$1915.525'
+ERROR:app.routes.coinbase:Error processing row 10: could not convert string to float: '$0.21595'
+ERROR:app.routes.coinbase:Error processing row 11: could not convert string to float: '$1888.075'
+ERROR:app.routes.coinbase:Error processing row 12: could not convert string to float: '$1873.11'
+ERROR:app.routes.coinbase:Error processing row 13: could not convert string to float: '$2007.45'
+ERROR:app.routes.coinbase:Error processing row 14: could not convert string to float: '$2137.73'
+ERROR:app.routes.coinbase:Error processing row 15: could not convert string to float: '$0.248'
+ERROR:app.routes.coinbase:Error processing row 16: could not convert string to float: '$2206.495'
+ERROR:app.routes.coinbase:Error processing row 17: could not convert string to float: '$2183.195'
+ERROR:app.routes.coinbase:Error processing row 18: could not convert string to float: '$2195.185'
+ERROR:app.routes.coinbase:Error processing row 19: could not convert string to float: '$2125.845'
+ERROR:app.routes.coinbase:Error processing row 20: could not convert string to float: '$0.2926'
+ERROR:app.routes.coinbase:Error processing row 21: could not convert string to float: '$2215.135'
+ERROR:app.routes.coinbase:Error processing row 22: could not convert string to float: '$0.2731'
+ERROR:app.routes.coinbase:Error processing row 23: could not convert string to float: '$0.2726499999993184'
+ERROR:app.routes.coinbase:Error processing row 24: could not convert string to float: '$0.00'
+ERROR:app.routes.coinbase:Error processing row 25: could not convert string to float: '$85900.64'
+ERROR:app.routes.coinbase:Error processing row 26: could not convert string to float: '$86028.905712319339298'
+ERROR:app.routes.coinbase:Error processing row 27: could not convert string to float: '$2506.86'
+ERROR:app.routes.coinbase:Error processing row 28: could not convert string to float: '$0.26035'
+ERROR:app.routes.coinbase:Error processing row 29: could not convert string to float: '$2785.665'
+ERROR:app.routes.coinbase:Error processing row 30: could not convert string to float: '$98679.395'
+ERROR:app.routes.coinbase:Error processing row 31: could not convert string to float: '$0.30295'
+ERROR:app.routes.coinbase:Error processing row 32: could not convert string to float: '$96444.1058184729040285'
+ERROR:app.routes.coinbase:Error processing row 33: could not convert string to float: '$96519.040793772591488'
+ERROR:app.routes.coinbase:Error processing row 34: could not convert string to float: '$2722.39'
+ERROR:app.routes.coinbase:Error processing row 35: could not convert string to float: '$0.3174'
+ERROR:app.routes.coinbase:Error processing row 36: could not convert string to float: '$2695.305'
+ERROR:app.routes.coinbase:Error processing row 37: could not convert string to float: '$0.3235'
+ERROR:app.routes.coinbase:Error processing row 38: could not convert string to float: '$2639.405'
+ERROR:app.routes.coinbase:Error processing row 39: could not convert string to float: '$2650.635'
+ERROR:app.routes.coinbase:Error processing row 40: could not convert string to float: '$0.30825'
+ERROR:app.routes.coinbase:Error processing row 41: could not convert string to float: '$2641.23'
+ERROR:app.routes.coinbase:Error processing row 42: could not convert string to float: '$0.31975'
+ERROR:app.routes.coinbase:Error processing row 43: could not convert string to float: '$2670.235'
+ERROR:app.routes.coinbase:Error processing row 44: could not convert string to float: '$99816.775'
+ERROR:app.routes.coinbase:Error processing row 45: could not convert string to float: '$3081.645'
+ERROR:app.routes.coinbase:Error processing row 46: could not convert string to float: '$0.3856'
+ERROR:app.routes.coinbase:Error processing row 47: could not convert string to float: '$3176.645'
+ERROR:app.routes.coinbase:Error processing row 48: could not convert string to float: '$0.4112'
+ERROR:app.routes.coinbase:Error processing row 49: could not convert string to float: '$3153.70'
+ERROR:app.routes.coinbase:Error processing row 50: could not convert string to float: '$3319.585'
+ERROR:app.routes.coinbase:Error processing row 51: could not convert string to float: '$0.43785'
+ERROR:app.routes.coinbase:Error processing row 52: could not convert string to float: '$3232.035'
+ERROR:app.routes.coinbase:Error processing row 53: could not convert string to float: '$0.4459'
+ERROR:app.routes.coinbase:Error processing row 54: could not convert string to float: '$3309.51'
+ERROR:app.routes.coinbase:Error processing row 55: could not convert string to float: '$3419.205'
+ERROR:app.routes.coinbase:Error processing row 56: could not convert string to float: '$0.4733'
+ERROR:app.routes.coinbase:Error processing row 57: could not convert string to float: '$0.47125'
+ERROR:app.routes.coinbase:Error processing row 58: could not convert string to float: '$3197.125'
+ERROR:app.routes.coinbase:Error processing row 59: could not convert string to float: '$3284.615'
+ERROR:app.routes.coinbase:Error processing row 60: could not convert string to float: '$0.4527'
+ERROR:app.routes.coinbase:Error processing row 61: could not convert string to float: '$3285.96'
+ERROR:app.routes.coinbase:Error processing row 62: could not convert string to float: '$3388.41'
+ERROR:app.routes.coinbase:Error processing row 63: could not convert string to float: '$3388.105'
+ERROR:app.routes.coinbase:Error processing row 64: could not convert string to float: '$0.51825'
+ERROR:app.routes.coinbase:Error processing row 65: could not convert string to float: '$3634.53'
+ERROR:app.routes.coinbase:Error processing row 66: could not convert string to float: '$3478.84'
+ERROR:app.routes.coinbase:Error processing row 67: could not convert string to float: '$0.4837'
+ERROR:app.routes.coinbase:Error processing row 68: could not convert string to float: '$94601.355'
+ERROR:app.routes.coinbase:Error processing row 69: could not convert string to float: '$3339.945'
+ERROR:app.routes.coinbase:Error processing row 70: could not convert string to float: '$3339.945'
+ERROR:app.routes.coinbase:Error processing row 71: could not convert string to float: '$3329.925'
+ERROR:app.routes.coinbase:Error processing row 72: could not convert string to float: '$0.44745'
+ERROR:app.routes.coinbase:Error processing row 73: could not convert string to float: '$3399.925'
+ERROR:app.routes.coinbase:Error processing row 74: could not convert string to float: '$3331.405'
+ERROR:app.routes.coinbase:Error processing row 75: could not convert string to float: '$0.4901'
+ERROR:app.routes.coinbase:Error processing row 76: could not convert string to float: '$0.4901'
+ERROR:app.routes.coinbase:Error processing row 77: could not convert string to float: '$3493.71'
+ERROR:app.routes.coinbase:Error processing row 78: could not convert string to float: '$0.47875'
+ERROR:app.routes.coinbase:Error processing row 79: could not convert string to float: '$3397.025'
+ERROR:app.routes.coinbase:Error processing row 80: could not convert string to float: '$3701.21'
+ERROR:app.routes.coinbase:Error processing row 81: could not convert string to float: '$0.5737'
+ERROR:app.routes.coinbase:Error processing row 82: could not convert string to float: '$0.59715'
+ERROR:app.routes.coinbase:Error processing row 83: could not convert string to float: '$0.597'
+ERROR:app.routes.coinbase:Error processing row 84: could not convert string to float: '$3890.685'
+ERROR:app.routes.coinbase:Error processing row 85: could not convert string to float: '$3914.805'
+ERROR:app.routes.coinbase:Error processing row 86: could not convert string to float: '$0.6557'
+ERROR:app.routes.coinbase:Error processing row 87: could not convert string to float: '$0.5779'
+ERROR:app.routes.coinbase:Error processing row 88: could not convert string to float: '$3749.285'
+ERROR:app.routes.coinbase:Error processing row 89: could not convert string to float: '$0.7043'
+ERROR:app.routes.coinbase:Error processing row 90: could not convert string to float: '$0.7021'
+ERROR:app.routes.coinbase:Error processing row 91: could not convert string to float: '$4059.135'
+ERROR:app.routes.coinbase:Error processing row 92: could not convert string to float: '$0.7248'
+ERROR:app.routes.coinbase:Error processing row 93: could not convert string to float: '$3646.005'
+ERROR:app.routes.coinbase:Error processing row 94: could not convert string to float: '$0.726'
+ERROR:app.routes.coinbase:Error processing row 95: could not convert string to float: '$0.7437'
+ERROR:app.routes.coinbase:Error processing row 96: could not convert string to float: '$95969.96'
+ERROR:app.routes.coinbase:Error processing row 97: could not convert string to float: '$0.60135'
+ERROR:app.routes.coinbase:Error processing row 98: could not convert string to float: '$3701.315'
+ERROR:app.routes.coinbase:Error processing row 99: could not convert string to float: '$3701.315'
+ERROR:app.routes.coinbase:Error processing row 100: could not convert string to float: '$3706.06'
+ERROR:app.routes.coinbase:Error processing row 101: could not convert string to float: '$3724.995'
+ERROR:app.routes.coinbase:Error processing row 102: could not convert string to float: '$3641.33'
+ERROR:app.routes.coinbase:Error processing row 103: could not convert string to float: '$0.52105'
+ERROR:app.routes.coinbase:Error processing row 104: could not convert string to float: '$0.5865'
+ERROR:app.routes.coinbase:Error processing row 105: could not convert string to float: '$3361.14'
+ERROR:app.routes.coinbase:Error processing row 106: could not convert string to float: '$0.00'
+ERROR:app.routes.coinbase:Unexpected error processing row 107: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 108: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 109: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Error processing row 110: could not convert string to float: '$0.6554'
+ERROR:app.routes.coinbase:Error processing row 111: could not convert string to float: '$0.65615'
+ERROR:app.routes.coinbase:Error processing row 112: could not convert string to float: '$0.65615'
+ERROR:app.routes.coinbase:Error processing row 113: could not convert string to float: '$1.1555'
+ERROR:app.routes.coinbase:Error processing row 114: could not convert string to float: '$1.1555'
+ERROR:app.routes.coinbase:Error processing row 115: could not convert string to float: '$1.1555'
+ERROR:app.routes.coinbase:Error processing row 116: could not convert string to float: '$1.1555'
+ERROR:app.routes.coinbase:Error processing row 117: could not convert string to float: '$0.955'
+ERROR:app.routes.coinbase:Error processing row 118: could not convert string to float: '$0.954'
+ERROR:app.routes.coinbase:Error processing row 119: could not convert string to float: '$0.9525'
+ERROR:app.routes.coinbase:Error processing row 120: could not convert string to float: '$0.9525'
+ERROR:app.routes.coinbase:Error processing row 121: could not convert string to float: '$0.9525'
+ERROR:app.routes.coinbase:Error processing row 122: could not convert string to float: '$3316.345'
+ERROR:app.routes.coinbase:Unexpected error processing row 123: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Error processing row 124: could not convert string to float: '$0.4383'
+ERROR:app.routes.coinbase:Error processing row 125: could not convert string to float: '$3167.615'
+ERROR:app.routes.coinbase:Error processing row 126: could not convert string to float: '$0.3983'
+ERROR:app.routes.coinbase:Error processing row 127: could not convert string to float: '$3044.34'
+ERROR:app.routes.coinbase:Error processing row 128: could not convert string to float: '$3264.00'
+ERROR:app.routes.coinbase:Error processing row 129: could not convert string to float: '$0.40595'
+ERROR:app.routes.coinbase:Error processing row 130: could not convert string to float: '$3027.585'
+ERROR:app.routes.coinbase:Error processing row 131: could not convert string to float: '$2659.125'
+ERROR:app.routes.coinbase:Error processing row 132: could not convert string to float: '$0.32395'
+ERROR:app.routes.coinbase:Error processing row 133: could not convert string to float: '$0.32395'
+ERROR:app.routes.coinbase:Error processing row 134: could not convert string to float: '$2445.875'
+ERROR:app.routes.coinbase:Error processing row 135: could not convert string to float: '$2486.015'
+ERROR:app.routes.coinbase:Error processing row 136: could not convert string to float: '$2486.015'
+ERROR:app.routes.coinbase:Error processing row 137: could not convert string to float: '$2505.705'
+ERROR:app.routes.coinbase:Error processing row 138: could not convert string to float: '$0.3163'
+ERROR:app.routes.coinbase:Error processing row 139: could not convert string to float: '$69571.595'
+ERROR:app.routes.coinbase:Error processing row 140: could not convert string to float: '$0.31775'
+ERROR:app.routes.coinbase:Error processing row 141: could not convert string to float: '$2517.635'
+ERROR:app.routes.coinbase:Error processing row 142: could not convert string to float: '$2511.375'
+ERROR:app.routes.coinbase:Error processing row 143: could not convert string to float: '$0.3255'
+ERROR:app.routes.coinbase:Error processing row 144: could not convert string to float: '$0.32545'
+ERROR:app.routes.coinbase:Error processing row 145: could not convert string to float: '$2545.845'
+ERROR:app.routes.coinbase:Error processing row 146: could not convert string to float: '$2635.245'
+ERROR:app.routes.coinbase:Error processing row 147: could not convert string to float: '$0.36655'
+ERROR:app.routes.coinbase:Error processing row 148: could not convert string to float: '$0.36485'
+ERROR:app.routes.coinbase:Error processing row 149: could not convert string to float: '$2645.165'
+ERROR:app.routes.coinbase:Error processing row 150: could not convert string to float: '$0.36725'
+ERROR:app.routes.coinbase:Error processing row 151: could not convert string to float: '$2620.345'
+ERROR:app.routes.coinbase:Error processing row 152: could not convert string to float: '$2456.835'
+ERROR:app.routes.coinbase:Error processing row 153: could not convert string to float: '$0.37385'
+ERROR:app.routes.coinbase:Error processing row 154: could not convert string to float: '$2397.005'
+ERROR:app.routes.coinbase:Error processing row 155: could not convert string to float: '$0.37645'
+ERROR:app.routes.coinbase:Error processing row 156: could not convert string to float: '$2445.785'
+ERROR:app.routes.coinbase:Error processing row 157: could not convert string to float: '$0.3842'
+ERROR:app.routes.coinbase:Error processing row 158: could not convert string to float: '$2397.96'
+ERROR:app.routes.coinbase:Error processing row 159: could not convert string to float: '$0.37935'
+ERROR:app.routes.coinbase:Error processing row 160: could not convert string to float: '$2436.28'
+ERROR:app.routes.coinbase:Error processing row 161: could not convert string to float: '$2436.28'
+ERROR:app.routes.coinbase:Error processing row 162: could not convert string to float: '$0.38505'
+ERROR:app.routes.coinbase:Error processing row 163: could not convert string to float: '$2469.00'
+ERROR:app.routes.coinbase:Error processing row 164: could not convert string to float: '$2506.195'
+ERROR:app.routes.coinbase:Error processing row 165: could not convert string to float: '$63850.77'
+ERROR:app.routes.coinbase:Error processing row 166: could not convert string to float: '$2676.385'
+ERROR:app.routes.coinbase:Error processing row 167: could not convert string to float: '$0.435'
+ERROR:app.routes.coinbase:Error processing row 168: could not convert string to float: '$0.4336'
+ERROR:app.routes.coinbase:Error processing row 169: could not convert string to float: '$2633.09'
+ERROR:app.routes.coinbase:Error processing row 170: could not convert string to float: '$2576.665'
+ERROR:app.routes.coinbase:Error processing row 171: could not convert string to float: '$0.40155'
+ERROR:app.routes.coinbase:Error processing row 172: could not convert string to float: '$2535.265'
+ERROR:app.routes.coinbase:Error processing row 173: could not convert string to float: '$0.38175'
+ERROR:app.routes.coinbase:Error processing row 174: could not convert string to float: '$2307.91'
+ERROR:app.routes.coinbase:Error processing row 175: could not convert string to float: '$2283.30'
+ERROR:app.routes.coinbase:Error processing row 176: could not convert string to float: '$0.37875'
+ERROR:app.routes.coinbase:Error processing row 177: could not convert string to float: '$0.37885'
+ERROR:app.routes.coinbase:Error processing row 178: could not convert string to float: '$2387.795'
+ERROR:app.routes.coinbase:Error processing row 179: could not convert string to float: '$2272.90'
+ERROR:app.routes.coinbase:Error processing row 180: could not convert string to float: '$0.37355'
+ERROR:app.routes.coinbase:Error processing row 181: could not convert string to float: '$2411.605'
+ERROR:app.routes.coinbase:Error processing row 182: could not convert string to float: '$2461.77'
+ERROR:app.routes.coinbase:Error processing row 183: could not convert string to float: '$0.40425'
+ERROR:app.routes.coinbase:Error processing row 184: could not convert string to float: '$0.4066'
+ERROR:app.routes.coinbase:Error processing row 185: could not convert string to float: '$58133.255'
+ERROR:app.routes.coinbase:Error processing row 186: could not convert string to float: '$2494.065'
+ERROR:app.routes.coinbase:Error processing row 187: could not convert string to float: '$2494.065'
+ERROR:app.routes.coinbase:Error processing row 188: could not convert string to float: '$2498.725'
+ERROR:app.routes.coinbase:Error processing row 189: could not convert string to float: '$2523.375'
+ERROR:app.routes.coinbase:Error processing row 190: could not convert string to float: '$0.43925'
+ERROR:app.routes.coinbase:Error processing row 191: could not convert string to float: '$0.43405'
+ERROR:app.routes.coinbase:Error processing row 192: could not convert string to float: '$2690.545'
+ERROR:app.routes.coinbase:Error processing row 193: could not convert string to float: '$0.5363'
+ERROR:app.routes.coinbase:Error processing row 194: could not convert string to float: '$0.5392'
+ERROR:app.routes.coinbase:Error processing row 195: could not convert string to float: '$2745.18'
+ERROR:app.routes.coinbase:Error processing row 196: could not convert string to float: '$2576.69'
+ERROR:app.routes.coinbase:Error processing row 197: could not convert string to float: '$0.4158'
+ERROR:app.routes.coinbase:Error processing row 198: could not convert string to float: '$2655.325'
+ERROR:app.routes.coinbase:Error processing row 199: could not convert string to float: '$2653.895'
+ERROR:app.routes.coinbase:Error processing row 200: could not convert string to float: '$0.42545'
+ERROR:app.routes.coinbase:Error processing row 201: could not convert string to float: '$2548.93'
+ERROR:app.routes.coinbase:Error processing row 202: could not convert string to float: '$2609.62'
+ERROR:app.routes.coinbase:Error processing row 203: could not convert string to float: '$0.4262'
+ERROR:app.routes.coinbase:Error processing row 204: could not convert string to float: '$0.42715'
+ERROR:app.routes.coinbase:Error processing row 205: could not convert string to float: '$2476.245'
+ERROR:app.routes.coinbase:Error processing row 206: could not convert string to float: '$2915.47'
+ERROR:app.routes.coinbase:Error processing row 207: could not convert string to float: '$0.46945'
+ERROR:app.routes.coinbase:Error processing row 208: could not convert string to float: '$0.47205'
+ERROR:app.routes.coinbase:Error processing row 209: could not convert string to float: '$0.4909'
+ERROR:app.routes.coinbase:Error processing row 210: could not convert string to float: '$3178.725'
+ERROR:app.routes.coinbase:Error processing row 211: could not convert string to float: '$3178.725'
+ERROR:app.routes.coinbase:Error processing row 212: could not convert string to float: '$3176.935'
+ERROR:app.routes.coinbase:Error processing row 213: could not convert string to float: '$64353.235'
+ERROR:app.routes.coinbase:Error processing row 214: could not convert string to float: '$3163.67'
+ERROR:app.routes.coinbase:Error processing row 215: could not convert string to float: '$3332.555'
+ERROR:app.routes.coinbase:Error processing row 216: could not convert string to float: '$0.5219'
+ERROR:app.routes.coinbase:Error processing row 217: could not convert string to float: '$3228.175'
+ERROR:app.routes.coinbase:Error processing row 218: could not convert string to float: '$3309.695'
+ERROR:app.routes.coinbase:Error processing row 219: could not convert string to float: '$3488.495'
+ERROR:app.routes.coinbase:Error processing row 220: could not convert string to float: '$0.5443'
+ERROR:app.routes.coinbase:Error processing row 221: could not convert string to float: '$3492.92'
+ERROR:app.routes.coinbase:Error processing row 222: could not convert string to float: '$0.5541'
+ERROR:app.routes.coinbase:Error processing row 223: could not convert string to float: '$3183.28'
+ERROR:app.routes.coinbase:Error processing row 224: could not convert string to float: '$0.5063'
+ERROR:app.routes.coinbase:Error processing row 225: could not convert string to float: '$3083.235'
+ERROR:app.routes.coinbase:Error processing row 226: could not convert string to float: '$0.5046'
+ERROR:app.routes.coinbase:Error processing row 227: could not convert string to float: '$3055.905'
+ERROR:app.routes.coinbase:Error processing row 228: could not convert string to float: '$2972.67'
+ERROR:app.routes.coinbase:Error processing row 229: could not convert string to float: '$3278.025'
+ERROR:app.routes.coinbase:Error processing row 230: could not convert string to float: '$0.55935'
+ERROR:app.routes.coinbase:Error processing row 231: could not convert string to float: '$0.57145'
+ERROR:app.routes.coinbase:Error processing row 232: could not convert string to float: '$0.56355'
+ERROR:app.routes.coinbase:Error processing row 233: could not convert string to float: '$62806.595'
+ERROR:app.routes.coinbase:Error processing row 234: could not convert string to float: '$3455.35'
+ERROR:app.routes.coinbase:Error processing row 235: could not convert string to float: '$3455.35'
+ERROR:app.routes.coinbase:Error processing row 236: could not convert string to float: '$3472.475'
+ERROR:app.routes.coinbase:Error processing row 237: could not convert string to float: '$3486.345'
+ERROR:app.routes.coinbase:Error processing row 238: could not convert string to float: '$3385.545'
+ERROR:app.routes.coinbase:Error processing row 239: could not convert string to float: '$0.56495'
+ERROR:app.routes.coinbase:Error processing row 240: could not convert string to float: '$0.56415'
+ERROR:app.routes.coinbase:Error processing row 241: could not convert string to float: '$3376.655'
+ERROR:app.routes.coinbase:Error processing row 242: could not convert string to float: '$0.57695'
+ERROR:app.routes.coinbase:Error processing row 243: could not convert string to float: '$3504.70'
+ERROR:app.routes.coinbase:Error processing row 244: could not convert string to float: '$0.54915'
+ERROR:app.routes.coinbase:Error processing row 245: could not convert string to float: '$0.57335'
+ERROR:app.routes.coinbase:Error processing row 246: could not convert string to float: '$3519.765'
+ERROR:app.routes.coinbase:Error processing row 247: could not convert string to float: '$3552.765'
+ERROR:app.routes.coinbase:Error processing row 248: could not convert string to float: '$3482.77'
+ERROR:app.routes.coinbase:Error processing row 249: could not convert string to float: '$0.6329'
+ERROR:app.routes.coinbase:Error processing row 250: could not convert string to float: '$3707.40'
+ERROR:app.routes.coinbase:Error processing row 251: could not convert string to float: '$0.66705'
+ERROR:app.routes.coinbase:Error processing row 252: could not convert string to float: '$3829.205'
+ERROR:app.routes.coinbase:Error processing row 253: could not convert string to float: '$0.70585'
+ERROR:app.routes.coinbase:Error processing row 254: could not convert string to float: '$0.7014'
+ERROR:app.routes.coinbase:Error processing row 255: could not convert string to float: '$3781.185'
+ERROR:app.routes.coinbase:Error processing row 256: could not convert string to float: '$67721.11'
+ERROR:app.routes.coinbase:Error processing row 257: could not convert string to float: '$0.70035'
+ERROR:app.routes.coinbase:Error processing row 258: could not convert string to float: '$3791.915'
+ERROR:app.routes.coinbase:Error processing row 259: could not convert string to float: '$3791.915'
+ERROR:app.routes.coinbase:Error processing row 260: could not convert string to float: '$3788.62'
+ERROR:app.routes.coinbase:Error processing row 261: could not convert string to float: '$3745.535'
+ERROR:app.routes.coinbase:Error processing row 262: could not convert string to float: '$3801.115'
+ERROR:app.routes.coinbase:Error processing row 263: could not convert string to float: '$0.7331'
+ERROR:app.routes.coinbase:Error processing row 264: could not convert string to float: '$0.7289'
+ERROR:app.routes.coinbase:Error processing row 265: could not convert string to float: '$3896.96'
+ERROR:app.routes.coinbase:Error processing row 266: could not convert string to float: '$3740.99'
+ERROR:app.routes.coinbase:Error processing row 267: could not convert string to float: '$3715.08'
+ERROR:app.routes.coinbase:Error processing row 268: could not convert string to float: '$3805.955'
+ERROR:app.routes.coinbase:Error processing row 269: could not convert string to float: '$0.7296'
+ERROR:app.routes.coinbase:Error processing row 270: could not convert string to float: '$0.7448'
+ERROR:app.routes.coinbase:Error processing row 271: could not convert string to float: '$2951.10'
+ERROR:app.routes.coinbase:Error processing row 272: could not convert string to float: '$0.67105'
+ERROR:app.routes.coinbase:Error processing row 273: could not convert string to float: '$0.67175'
+ERROR:app.routes.coinbase:Error processing row 274: could not convert string to float: '$2928.375'
+ERROR:app.routes.coinbase:Error processing row 275: could not convert string to float: '$0.6934'
+ERROR:app.routes.coinbase:Error processing row 276: could not convert string to float: '$0.69335'
+ERROR:app.routes.coinbase:Error processing row 277: could not convert string to float: '$3079.79'
+ERROR:app.routes.coinbase:Error processing row 278: could not convert string to float: '$0.7344'
+ERROR:app.routes.coinbase:Error processing row 279: could not convert string to float: '$3084.645'
+ERROR:app.routes.coinbase:Error processing row 280: could not convert string to float: '$58267.99'
+ERROR:app.routes.coinbase:Error processing row 281: could not convert string to float: '$2971.105'
+ERROR:app.routes.coinbase:Error processing row 282: could not convert string to float: '$2971.075'
+ERROR:app.routes.coinbase:Error processing row 283: could not convert string to float: '$2940.315'
+ERROR:app.routes.coinbase:Error processing row 284: could not convert string to float: '$0.652'
+ERROR:app.routes.coinbase:Error processing row 285: could not convert string to float: '$3024.26'
+ERROR:app.routes.coinbase:Error processing row 286: could not convert string to float: '$0.733'
+ERROR:app.routes.coinbase:Error processing row 287: could not convert string to float: '$0.7336'
+ERROR:app.routes.coinbase:Error processing row 288: could not convert string to float: '$3149.385'
+ERROR:app.routes.coinbase:Error processing row 289: could not convert string to float: '$3120.20'
+ERROR:app.routes.coinbase:Error processing row 290: could not convert string to float: '$0.74715'
+ERROR:app.routes.coinbase:Error processing row 291: could not convert string to float: '$0.7481'
+ERROR:app.routes.coinbase:Unexpected error processing row 292: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Error processing row 293: could not convert string to float: '$3160.015'
+ERROR:app.routes.coinbase:Error processing row 294: could not convert string to float: '$3073.655'
+ERROR:app.routes.coinbase:Error processing row 295: could not convert string to float: '$0.70265'
+ERROR:app.routes.coinbase:Error processing row 296: could not convert string to float: '$3064.335'
+ERROR:app.routes.coinbase:Error processing row 297: could not convert string to float: '$3245.375'
+ERROR:app.routes.coinbase:Error processing row 298: could not convert string to float: '$0.88455'
+ERROR:app.routes.coinbase:Error processing row 299: could not convert string to float: '$3517.81'
+ERROR:app.routes.coinbase:Error processing row 300: could not convert string to float: '$3341.535'
+ERROR:app.routes.coinbase:Error processing row 301: could not convert string to float: '$0.88835'
+ERROR:app.routes.coinbase:Error processing row 302: could not convert string to float: '$3357.85'
+ERROR:app.routes.coinbase:Error processing row 303: could not convert string to float: '$3481.89'
+ERROR:app.routes.coinbase:Error processing row 304: could not convert string to float: '$3539.955'
+ERROR:app.routes.coinbase:Error processing row 305: could not convert string to float: '$3540.66'
+ERROR:app.routes.coinbase:Error processing row 306: could not convert string to float: '$69952.355'
+ERROR:app.routes.coinbase:Error processing row 307: could not convert string to float: '$3560.37'
+ERROR:app.routes.coinbase:Error processing row 308: could not convert string to float: '$0.984'
+ERROR:app.routes.coinbase:Error processing row 309: could not convert string to float: '$1.00285'
+ERROR:app.routes.coinbase:Error processing row 310: could not convert string to float: '$1.00235'
+ERROR:app.routes.coinbase:Error processing row 311: could not convert string to float: '$3571.675'
+ERROR:app.routes.coinbase:Error processing row 312: could not convert string to float: '$1.0485'
+ERROR:app.routes.coinbase:Error processing row 313: could not convert string to float: '$3582.90'
+ERROR:app.routes.coinbase:Error processing row 314: could not convert string to float: '$3309.39'
+ERROR:app.routes.coinbase:Error processing row 315: could not convert string to float: '$0.9913'
+ERROR:app.routes.coinbase:Error processing row 316: could not convert string to float: '$3226.22'
+ERROR:app.routes.coinbase:Error processing row 317: could not convert string to float: '$3642.15'
+ERROR:app.routes.coinbase:Error processing row 318: could not convert string to float: '$1.0454'
+ERROR:app.routes.coinbase:Error processing row 319: could not convert string to float: '$1.0481'
+ERROR:app.routes.coinbase:Error processing row 320: could not convert string to float: '$3887.425'
+ERROR:app.routes.coinbase:Error processing row 321: could not convert string to float: '$1.21185'
+ERROR:app.routes.coinbase:Error processing row 322: could not convert string to float: '$1.21285'
+ERROR:app.routes.coinbase:Error processing row 323: could not convert string to float: '$3911.455'
+ERROR:app.routes.coinbase:Error processing row 324: could not convert string to float: '$3908.51'
+ERROR:app.routes.coinbase:Error processing row 325: could not convert string to float: '$1.11905'
+ERROR:app.routes.coinbase:Error processing row 326: could not convert string to float: '$3620.29'
+ERROR:app.routes.coinbase:Error processing row 327: could not convert string to float: '$3429.21'
+ERROR:app.routes.coinbase:Error processing row 328: could not convert string to float: '$1.01645'
+ERROR:app.routes.coinbase:Error processing row 329: could not convert string to float: '$1.0155'
+ERROR:app.routes.coinbase:Error processing row 330: could not convert string to float: '$3234.175'
+ERROR:app.routes.coinbase:Error processing row 331: could not convert string to float: '$2981.31'
+ERROR:app.routes.coinbase:Error processing row 332: could not convert string to float: '$0.98995'
+ERROR:app.routes.coinbase:Error processing row 333: could not convert string to float: '$0.98875'
+ERROR:app.routes.coinbase:Error processing row 334: could not convert string to float: '$0.04417'
+ERROR:app.routes.coinbase:Error processing row 335: could not convert string to float: '$2895.855'
+ERROR:app.routes.coinbase:Error processing row 336: could not convert string to float: '$2902.17'
+ERROR:app.routes.coinbase:Error processing row 337: could not convert string to float: '$0.9977'
+ERROR:app.routes.coinbase:Error processing row 338: could not convert string to float: '$0.993'
+ERROR:app.routes.coinbase:Error processing row 339: could not convert string to float: '$2826.745'
+ERROR:app.routes.coinbase:Error processing row 340: could not convert string to float: '$0.0345850000022083'
+ERROR:app.routes.coinbase:Error processing row 341: could not convert string to float: '$0.0347'
+ERROR:app.routes.coinbase:Error processing row 342: could not convert string to float: '$0.034695'
+ERROR:app.routes.coinbase:Error processing row 343: could not convert string to float: '$0.84955'
+ERROR:app.routes.coinbase:Error processing row 344: could not convert string to float: '$2656.17'
+ERROR:app.routes.coinbase:Error processing row 345: could not convert string to float: '$2648.09'
+ERROR:app.routes.coinbase:Error processing row 346: could not convert string to float: '$2492.63'
+ERROR:app.routes.coinbase:Error processing row 347: could not convert string to float: '$2492.31'
+ERROR:app.routes.coinbase:Error processing row 348: could not convert string to float: '$2485.00'
+ERROR:app.routes.coinbase:Error processing row 349: could not convert string to float: '$47455.21'
+ERROR:app.routes.coinbase:Error processing row 350: could not convert string to float: '$47555.085'
+ERROR:app.routes.coinbase:Error processing row 351: could not convert string to float: '$2487.605'
+ERROR:app.routes.coinbase:Error processing row 352: could not convert string to float: '$2487.585'
+ERROR:app.routes.coinbase:Error processing row 353: could not convert string to float: '$2487.095'
+ERROR:app.routes.coinbase:Error processing row 354: could not convert string to float: '$0.83385'
+ERROR:app.routes.coinbase:Error processing row 355: could not convert string to float: '$2382.355'
+ERROR:app.routes.coinbase:Error processing row 356: could not convert string to float: '$2300.27'
+ERROR:app.routes.coinbase:Error processing row 357: could not convert string to float: '$0.79935'
+ERROR:app.routes.coinbase:Error processing row 358: could not convert string to float: '$2299.77'
+ERROR:app.routes.coinbase:Error processing row 359: could not convert string to float: '$2220.25'
+ERROR:app.routes.coinbase:Error processing row 360: could not convert string to float: '$2220.25'
+ERROR:app.routes.coinbase:Error processing row 361: could not convert string to float: '$2237.955'
+ERROR:app.routes.coinbase:Error processing row 362: could not convert string to float: '$2300.705'
+ERROR:app.routes.coinbase:Error processing row 363: could not convert string to float: '$2262.7802962522475065'
+ERROR:app.routes.coinbase:Error processing row 364: could not convert string to float: '$0.8956'
+ERROR:app.routes.coinbase:Error processing row 365: could not convert string to float: '$1.00'
+ERROR:app.routes.coinbase:Error processing row 366: could not convert string to float: '$0.10105'
+ERROR:app.routes.coinbase:Error processing row 367: could not convert string to float: '$0.31915'
+ERROR:app.routes.coinbase:Error processing row 368: could not convert string to float: '$0.3035'
+ERROR:app.routes.coinbase:Error processing row 369: could not convert string to float: '$0.314'
+ERROR:app.routes.coinbase:Error processing row 370: could not convert string to float: '$0.31015'
+ERROR:app.routes.coinbase:Error processing row 371: could not convert string to float: '$0.33785'
+ERROR:app.routes.coinbase:Error processing row 372: could not convert string to float: '$0.3852'
+ERROR:app.routes.coinbase:Error processing row 373: could not convert string to float: '$0.38455'
+ERROR:app.routes.coinbase:Error processing row 374: could not convert string to float: '$0.42375'
+ERROR:app.routes.coinbase:Error processing row 375: could not convert string to float: '$0.3995'
+ERROR:app.routes.coinbase:Error processing row 376: could not convert string to float: '$0.3635'
+ERROR:app.routes.coinbase:Error processing row 377: could not convert string to float: '$0.3675'
+ERROR:app.routes.coinbase:Error processing row 378: could not convert string to float: '$0.36625'
+ERROR:app.routes.coinbase:Error processing row 379: could not convert string to float: '$0.3847'
+ERROR:app.routes.coinbase:Error processing row 380: could not convert string to float: '$0.8413'
+ERROR:app.routes.coinbase:Error processing row 381: could not convert string to float: '$0.42565'
+ERROR:app.routes.coinbase:Error processing row 382: could not convert string to float: '$0.44105'
+ERROR:app.routes.coinbase:Error processing row 383: could not convert string to float: '$0.4452'
+ERROR:app.routes.coinbase:Unexpected error processing row 384: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 385: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Error processing row 386: could not convert string to float: '$0.062335'
+ERROR:app.routes.coinbase:Error processing row 387: could not convert string to float: '$0.062345'
+ERROR:app.routes.coinbase:Error processing row 388: could not convert string to float: '$0.06234'
+ERROR:app.routes.coinbase:Error processing row 389: could not convert string to float: '$3.9115'
+ERROR:app.routes.coinbase:Error processing row 390: could not convert string to float: '$3.9105'
+ERROR:app.routes.coinbase:Error processing row 391: could not convert string to float: '$3.914'
+ERROR:app.routes.coinbase:Error processing row 392: could not convert string to float: '$0.46025'
+ERROR:app.routes.coinbase:Error processing row 393: could not convert string to float: '$0.51'
+ERROR:app.routes.coinbase:Error processing row 394: could not convert string to float: '$0.47905'
+ERROR:app.routes.coinbase:Error processing row 395: could not convert string to float: '$0.46075'
+ERROR:app.routes.coinbase:Error processing row 396: could not convert string to float: '$0.46435'
+ERROR:app.routes.coinbase:Error processing row 397: could not convert string to float: '$21378.255'
+ERROR:app.routes.coinbase:Error processing row 398: could not convert string to float: '$21351.3025895927345788'
+ERROR:app.routes.coinbase:Error processing row 399: could not convert string to float: '$0.4538'
+ERROR:app.routes.coinbase:Error processing row 400: could not convert string to float: '$0.54005'
+ERROR:app.routes.coinbase:Unexpected error processing row 401: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 402: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 403: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Error processing row 404: could not convert string to float: '$3.328'
+ERROR:app.routes.coinbase:Error processing row 405: could not convert string to float: '$3.3285'
+ERROR:app.routes.coinbase:Error processing row 406: could not convert string to float: '$3.3315'
+ERROR:app.routes.coinbase:Error processing row 407: could not convert string to float: '$0.26155'
+ERROR:app.routes.coinbase:Error processing row 408: could not convert string to float: '$0.26155'
+ERROR:app.routes.coinbase:Error processing row 409: could not convert string to float: '$0.26155'
+ERROR:app.routes.coinbase:Error processing row 410: could not convert string to float: '$0.0082'
+ERROR:app.routes.coinbase:Error processing row 411: could not convert string to float: '$0.51165'
+ERROR:app.routes.coinbase:Error processing row 412: could not convert string to float: '$0.50975'
+ERROR:app.routes.coinbase:Error processing row 413: could not convert string to float: '$0.52365'
+ERROR:app.routes.coinbase:Error processing row 414: could not convert string to float: '$0.472'
+ERROR:app.routes.coinbase:Error processing row 415: could not convert string to float: '$0.5158'
+ERROR:app.routes.coinbase:Error processing row 416: could not convert string to float: '$0.49995'
+ERROR:app.routes.coinbase:Error processing row 417: could not convert string to float: '$0.43975'
+ERROR:app.routes.coinbase:Error processing row 418: could not convert string to float: '$0.5001'
+ERROR:app.routes.coinbase:Error processing row 419: could not convert string to float: '$0.46835'
+ERROR:app.routes.coinbase:Error processing row 420: could not convert string to float: '$992.17'
+ERROR:app.routes.coinbase:Error processing row 421: could not convert string to float: '$19012.245000011637'
+ERROR:app.routes.coinbase:Error processing row 422: could not convert string to float: '$0.35895'
+ERROR:app.routes.coinbase:Error processing row 423: could not convert string to float: '$0.5762'
+ERROR:app.routes.coinbase:Error processing row 424: could not convert string to float: '$0.62075'
+ERROR:app.routes.coinbase:Error processing row 425: could not convert string to float: '$0.45435'
+ERROR:app.routes.coinbase:Error processing row 426: could not convert string to float: '$0.626'
+ERROR:app.routes.coinbase:Error processing row 427: could not convert string to float: '$29185.605000016987'
+ERROR:app.routes.coinbase:Error processing row 428: could not convert string to float: '$29255.75'
+ERROR:app.routes.coinbase:Error processing row 429: could not convert string to float: '$0.5205263888888889'
+ERROR:app.routes.coinbase:Error processing row 430: could not convert string to float: '$0.5900888111888112'
+ERROR:app.routes.coinbase:Error processing row 431: could not convert string to float: '$43752.68'
+ERROR:app.routes.coinbase:Error processing row 432: could not convert string to float: '$43686.675'
+ERROR:app.routes.coinbase:Error processing row 433: could not convert string to float: '$1.39'
+ERROR:app.routes.coinbase:Unexpected error processing row 434: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Error processing row 435: could not convert string to float: '$2605.91'
+ERROR:app.routes.coinbase:Error processing row 436: could not convert string to float: '$2606.62'
+ERROR:app.routes.coinbase:Unexpected error processing row 437: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Error processing row 438: could not convert string to float: '$72.73'
+ERROR:app.routes.coinbase:Error processing row 439: could not convert string to float: '$72.705'
+ERROR:app.routes.coinbase:Unexpected error processing row 440: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Error processing row 441: could not convert string to float: '$2437.25'
+ERROR:app.routes.coinbase:Error processing row 442: could not convert string to float: '$2422.055'
+ERROR:app.routes.coinbase:Unexpected error processing row 443: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Error processing row 444: could not convert string to float: '$2430.61'
+ERROR:app.routes.coinbase:Error processing row 445: could not convert string to float: '$2351.56'
+ERROR:app.routes.coinbase:Error processing row 446: could not convert string to float: '$2746.97'
+ERROR:app.routes.coinbase:Error processing row 447: could not convert string to float: '$42179.98'
+ERROR:app.routes.coinbase:Error processing row 448: could not convert string to float: '$42003.045'
+ERROR:app.routes.coinbase:Error processing row 449: could not convert string to float: '$1.00'
+ERROR:app.routes.coinbase:Error processing row 450: could not convert string to float: '$0.99574806'
+ERROR:app.routes.coinbase:Unexpected error processing row 451: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Error processing row 452: could not convert string to float: '$276.54'
+ERROR:app.routes.coinbase:Unexpected error processing row 453: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Error processing row 454: could not convert string to float: '$276.63'
+ERROR:app.routes.coinbase:Error processing row 455: could not convert string to float: '$39.05'
+ERROR:app.routes.coinbase:Error processing row 456: could not convert string to float: '$39.05'
+ERROR:app.routes.coinbase:Error processing row 457: could not convert string to float: '$39.05'
+ERROR:app.routes.coinbase:Unexpected error processing row 458: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Error processing row 459: could not convert string to float: '$0.37'
+ERROR:app.routes.coinbase:Error processing row 460: could not convert string to float: '$1.88'
+ERROR:app.routes.coinbase:Error processing row 461: could not convert string to float: '$67385.01'
+ERROR:app.routes.coinbase:Error processing row 462: could not convert string to float: '$1.88895'
+ERROR:app.routes.coinbase:Error processing row 463: could not convert string to float: '$67249.80'
+ERROR:app.routes.coinbase:Error processing row 464: could not convert string to float: '$62590.66'
+ERROR:app.routes.coinbase:Error processing row 465: could not convert string to float: '$62620.585'
+ERROR:app.routes.coinbase:Error processing row 466: could not convert string to float: '$3647.24'
+ERROR:app.routes.coinbase:Error processing row 467: could not convert string to float: '$1.38'
+ERROR:app.routes.coinbase:Unexpected error processing row 468: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 469: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 470: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Error processing row 471: could not convert string to float: '$0.00'
+ERROR:app.routes.coinbase:Error processing row 472: could not convert string to float: '$53968.48'
+ERROR:app.routes.coinbase:Unexpected error processing row 473: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Error processing row 474: could not convert string to float: '$0.24'
+ERROR:app.routes.coinbase:Error processing row 475: could not convert string to float: '$0.24'
+ERROR:app.routes.coinbase:Error processing row 476: could not convert string to float: '$0.24565'
+ERROR:app.routes.coinbase:Error processing row 477: could not convert string to float: '$3607.99'
+ERROR:app.routes.coinbase:Error processing row 478: could not convert string to float: '$0.24'
+ERROR:app.routes.coinbase:Unexpected error processing row 479: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Error processing row 480: could not convert string to float: '$3602.91'
+ERROR:app.routes.coinbase:Error processing row 481: could not convert string to float: '$3611.585'
+ERROR:app.routes.coinbase:Unexpected error processing row 482: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Error processing row 483: could not convert string to float: '$1.00'
+ERROR:app.routes.coinbase:Error processing row 484: could not convert string to float: '$1.00'
+ERROR:app.routes.coinbase:Unexpected error processing row 485: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Error processing row 486: could not convert string to float: '$0.106755'
+ERROR:app.routes.coinbase:Error processing row 487: could not convert string to float: '$0.106755'
+ERROR:app.routes.coinbase:Error processing row 488: could not convert string to float: '$0.106515'
+ERROR:app.routes.coinbase:Error processing row 489: could not convert string to float: '$1.473'
+ERROR:app.routes.coinbase:Error processing row 490: could not convert string to float: '$1.4718'
+ERROR:app.routes.coinbase:Error processing row 491: could not convert string to float: '$3785.32'
+ERROR:app.routes.coinbase:Error processing row 492: could not convert string to float: '$49931.735'
+ERROR:app.routes.coinbase:Error processing row 493: could not convert string to float: '$49966.135'
+ERROR:app.routes.coinbase:Error processing row 494: could not convert string to float: '$3807.965'
+ERROR:app.routes.coinbase:Error processing row 495: could not convert string to float: '$1.00'
+ERROR:app.routes.coinbase:Error processing row 496: could not convert string to float: '$1.00'
+ERROR:app.routes.coinbase:Error processing row 497: could not convert string to float: '$1.66045'
+ERROR:app.routes.coinbase:Error processing row 498: could not convert string to float: '$1.66025'
+ERROR:app.routes.coinbase:Unexpected error processing row 499: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 500: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 501: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 502: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Error processing row 503: could not convert string to float: '$1.02705'
+ERROR:app.routes.coinbase:Error processing row 504: could not convert string to float: '$1.595'
+ERROR:app.routes.coinbase:Error processing row 505: could not convert string to float: '$1.595'
+ERROR:app.routes.coinbase:Error processing row 506: could not convert string to float: '$1.595'
+ERROR:app.routes.coinbase:Error processing row 507: could not convert string to float: '$0.5785'
+ERROR:app.routes.coinbase:Error processing row 508: could not convert string to float: '$0.57825'
+ERROR:app.routes.coinbase:Error processing row 509: could not convert string to float: '$0.57785'
+ERROR:app.routes.coinbase:Error processing row 510: could not convert string to float: '$0.19315'
+ERROR:app.routes.coinbase:Error processing row 511: could not convert string to float: '$0.19275'
+ERROR:app.routes.coinbase:Error processing row 512: could not convert string to float: '$1.00'
+ERROR:app.routes.coinbase:Error processing row 513: could not convert string to float: '$1.00'
+ERROR:app.routes.coinbase:Unexpected error processing row 514: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Error processing row 515: could not convert string to float: '$1.00'
+ERROR:app.routes.coinbase:Unexpected error processing row 516: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Error processing row 517: could not convert string to float: '$30.265'
+ERROR:app.routes.coinbase:Error processing row 518: could not convert string to float: '$36.10'
+ERROR:app.routes.coinbase:Error processing row 519: could not convert string to float: '$36.10'
+ERROR:app.routes.coinbase:Error processing row 520: could not convert string to float: '$36.085'
+ERROR:app.routes.coinbase:Error processing row 521: could not convert string to float: '$0.11056'
+ERROR:app.routes.coinbase:Error processing row 522: could not convert string to float: '$0.11056'
+ERROR:app.routes.coinbase:Error processing row 523: could not convert string to float: '$0.110985'
+ERROR:app.routes.coinbase:Error processing row 524: could not convert string to float: '$1.5761'
+ERROR:app.routes.coinbase:Error processing row 525: could not convert string to float: '$1.5757'
+ERROR:app.routes.coinbase:Error processing row 526: could not convert string to float: '$0.3258'
+ERROR:app.routes.coinbase:Error processing row 527: could not convert string to float: '$0.32595'
+ERROR:app.routes.coinbase:Error processing row 528: could not convert string to float: '$0.325'
+ERROR:app.routes.coinbase:Error processing row 529: could not convert string to float: '$0.37125'
+ERROR:app.routes.coinbase:Error processing row 530: could not convert string to float: '$0.37685'
+ERROR:app.routes.coinbase:Unexpected error processing row 531: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 532: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 533: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Error processing row 534: could not convert string to float: '$1.00'
+ERROR:app.routes.coinbase:Unexpected error processing row 535: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 536: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 537: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 538: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 539: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 540: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Error processing row 541: could not convert string to float: '$425.16'
+ERROR:app.routes.coinbase:Error processing row 542: could not convert string to float: '$424.915'
+ERROR:app.routes.coinbase:Error processing row 543: could not convert string to float: '$426.47'
+ERROR:app.routes.coinbase:Error processing row 544: could not convert string to float: '$0.3983435'
+ERROR:app.routes.coinbase:Error processing row 545: could not convert string to float: '$0.4010855'
+ERROR:app.routes.coinbase:Error processing row 546: could not convert string to float: '$0.399481'
+ERROR:app.routes.coinbase:Error processing row 547: could not convert string to float: '$0.3984545'
+ERROR:app.routes.coinbase:Error processing row 548: could not convert string to float: '$0.397393'
+ERROR:app.routes.coinbase:Error processing row 549: could not convert string to float: '$0.8192'
+ERROR:app.routes.coinbase:Error processing row 550: could not convert string to float: '$0.8197'
+ERROR:app.routes.coinbase:Error processing row 551: could not convert string to float: '$0.8197'
+ERROR:app.routes.coinbase:Error processing row 552: could not convert string to float: '$21.703'
+ERROR:app.routes.coinbase:Error processing row 553: could not convert string to float: '$21.688'
+ERROR:app.routes.coinbase:Error processing row 554: could not convert string to float: '$21.7015'
+ERROR:app.routes.coinbase:Error processing row 555: could not convert string to float: '$1.83845'
+ERROR:app.routes.coinbase:Error processing row 556: could not convert string to float: '$1.83735'
+ERROR:app.routes.coinbase:Error processing row 557: could not convert string to float: '$1.83735'
+ERROR:app.routes.coinbase:Error processing row 558: could not convert string to float: '$0.100885'
+ERROR:app.routes.coinbase:Error processing row 559: could not convert string to float: '$1.72865'
+ERROR:app.routes.coinbase:Error processing row 560: could not convert string to float: '$2562.105'
+ERROR:app.routes.coinbase:Unexpected error processing row 561: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Error processing row 562: could not convert string to float: '$2404.415'
+ERROR:app.routes.coinbase:Error processing row 563: could not convert string to float: '$2573.835'
+ERROR:app.routes.coinbase:Error processing row 564: could not convert string to float: '$38811.925'
+ERROR:app.routes.coinbase:Error processing row 565: could not convert string to float: '$38618.615'
+ERROR:app.routes.coinbase:Error processing row 566: could not convert string to float: '$2554.125'
+ERROR:app.routes.coinbase:Error processing row 567: could not convert string to float: '$4069.995'
+ERROR:app.routes.coinbase:Error processing row 568: could not convert string to float: '$3797.805'
+ERROR:app.routes.coinbase:Unexpected error processing row 569: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Error processing row 570: could not convert string to float: '$4161.39'
+ERROR:app.routes.coinbase:Error processing row 571: could not convert string to float: '$4157.025'
+ERROR:app.routes.coinbase:Error processing row 572: could not convert string to float: '$4184.98'
+ERROR:app.routes.coinbase:Error processing row 573: could not convert string to float: '$1.00'
+ERROR:app.routes.coinbase:Error processing row 574: could not convert string to float: '$56437.66'
+ERROR:app.routes.coinbase:Error processing row 575: could not convert string to float: '$55583.12'
+ERROR:app.routes.coinbase:Error processing row 576: could not convert string to float: '$1.00'
+ERROR:app.routes.coinbase:Error processing row 577: could not convert string to float: '$58057.575'
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:13:36] "[32mPOST /coinbase/import_transactions HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:13:36] "GET /coinbase/transactions HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:13:37] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:13:42] "GET /coinbase/transactions HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:13:42] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:13:54] "GET /coinbase/import_transactions HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:13:54] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:13:56] "GET /settings HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:13:56] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:13:59] "GET /fidelity/transactions HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:13:59] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:14:01] "GET /coinbase/import_transactions HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [24/Apr/2025 15:14:01] "[36mGET /static/css/styles.css HTTP/1.1[0m" 304 -
+DEBUG:app.routes.coinbase:CSV columns: ['ID', 'Timestamp', 'Transaction Type', 'Asset', 'Quantity Transacted', 'Price Currency', 'Price at Transaction', 'Subtotal', 'Total (inclusive of fees and/or spread)', 'Fees and/or Spread', 'Notes']
+ERROR:app.routes.coinbase:Error processing row 0: could not convert string to float: '$1814.465'
+ERROR:app.routes.coinbase:Error processing row 1: could not convert string to float: '$2008.66'
+ERROR:app.routes.coinbase:Error processing row 2: could not convert string to float: '$0.2377'
+ERROR:app.routes.coinbase:Error processing row 3: could not convert string to float: '$2089.755'
+ERROR:app.routes.coinbase:Error processing row 4: could not convert string to float: '$0.2125'
+ERROR:app.routes.coinbase:Error processing row 5: could not convert string to float: '$1978.345'
+ERROR:app.routes.coinbase:Error processing row 6: could not convert string to float: '$1873.265'
+ERROR:app.routes.coinbase:Error processing row 7: could not convert string to float: '$1933.405'
+ERROR:app.routes.coinbase:Error processing row 8: could not convert string to float: '$0.2181'
+ERROR:app.routes.coinbase:Error processing row 9: could not convert string to float: '$1915.525'
+ERROR:app.routes.coinbase:Error processing row 10: could not convert string to float: '$0.21595'
+ERROR:app.routes.coinbase:Error processing row 11: could not convert string to float: '$1888.075'
+ERROR:app.routes.coinbase:Error processing row 12: could not convert string to float: '$1873.11'
+ERROR:app.routes.coinbase:Error processing row 13: could not convert string to float: '$2007.45'
+ERROR:app.routes.coinbase:Error processing row 14: could not convert string to float: '$2137.73'
+ERROR:app.routes.coinbase:Error processing row 15: could not convert string to float: '$0.248'
+ERROR:app.routes.coinbase:Error processing row 16: could not convert string to float: '$2206.495'
+ERROR:app.routes.coinbase:Error processing row 17: could not convert string to float: '$2183.195'
+ERROR:app.routes.coinbase:Error processing row 18: could not convert string to float: '$2195.185'
+ERROR:app.routes.coinbase:Error processing row 19: could not convert string to float: '$2125.845'
+ERROR:app.routes.coinbase:Error processing row 20: could not convert string to float: '$0.2926'
+ERROR:app.routes.coinbase:Error processing row 21: could not convert string to float: '$2215.135'
+ERROR:app.routes.coinbase:Error processing row 22: could not convert string to float: '$0.2731'
+ERROR:app.routes.coinbase:Error processing row 23: could not convert string to float: '$0.2726499999993184'
+ERROR:app.routes.coinbase:Error processing row 24: could not convert string to float: '$0.00'
+ERROR:app.routes.coinbase:Error processing row 25: could not convert string to float: '$85900.64'
+ERROR:app.routes.coinbase:Error processing row 26: could not convert string to float: '$86028.905712319339298'
+ERROR:app.routes.coinbase:Error processing row 27: could not convert string to float: '$2506.86'
+ERROR:app.routes.coinbase:Error processing row 28: could not convert string to float: '$0.26035'
+ERROR:app.routes.coinbase:Error processing row 29: could not convert string to float: '$2785.665'
+ERROR:app.routes.coinbase:Error processing row 30: could not convert string to float: '$98679.395'
+ERROR:app.routes.coinbase:Error processing row 31: could not convert string to float: '$0.30295'
+ERROR:app.routes.coinbase:Error processing row 32: could not convert string to float: '$96444.1058184729040285'
+ERROR:app.routes.coinbase:Error processing row 33: could not convert string to float: '$96519.040793772591488'
+ERROR:app.routes.coinbase:Error processing row 34: could not convert string to float: '$2722.39'
+ERROR:app.routes.coinbase:Error processing row 35: could not convert string to float: '$0.3174'
+ERROR:app.routes.coinbase:Error processing row 36: could not convert string to float: '$2695.305'
+ERROR:app.routes.coinbase:Error processing row 37: could not convert string to float: '$0.3235'
+ERROR:app.routes.coinbase:Error processing row 38: could not convert string to float: '$2639.405'
+ERROR:app.routes.coinbase:Error processing row 39: could not convert string to float: '$2650.635'
+ERROR:app.routes.coinbase:Error processing row 40: could not convert string to float: '$0.30825'
+ERROR:app.routes.coinbase:Error processing row 41: could not convert string to float: '$2641.23'
+ERROR:app.routes.coinbase:Error processing row 42: could not convert string to float: '$0.31975'
+ERROR:app.routes.coinbase:Error processing row 43: could not convert string to float: '$2670.235'
+ERROR:app.routes.coinbase:Error processing row 44: could not convert string to float: '$99816.775'
+ERROR:app.routes.coinbase:Error processing row 45: could not convert string to float: '$3081.645'
+ERROR:app.routes.coinbase:Error processing row 46: could not convert string to float: '$0.3856'
+ERROR:app.routes.coinbase:Error processing row 47: could not convert string to float: '$3176.645'
+ERROR:app.routes.coinbase:Error processing row 48: could not convert string to float: '$0.4112'
+ERROR:app.routes.coinbase:Error processing row 49: could not convert string to float: '$3153.70'
+ERROR:app.routes.coinbase:Error processing row 50: could not convert string to float: '$3319.585'
+ERROR:app.routes.coinbase:Error processing row 51: could not convert string to float: '$0.43785'
+ERROR:app.routes.coinbase:Error processing row 52: could not convert string to float: '$3232.035'
+ERROR:app.routes.coinbase:Error processing row 53: could not convert string to float: '$0.4459'
+ERROR:app.routes.coinbase:Error processing row 54: could not convert string to float: '$3309.51'
+ERROR:app.routes.coinbase:Error processing row 55: could not convert string to float: '$3419.205'
+ERROR:app.routes.coinbase:Error processing row 56: could not convert string to float: '$0.4733'
+ERROR:app.routes.coinbase:Error processing row 57: could not convert string to float: '$0.47125'
+ERROR:app.routes.coinbase:Error processing row 58: could not convert string to float: '$3197.125'
+ERROR:app.routes.coinbase:Error processing row 59: could not convert string to float: '$3284.615'
+ERROR:app.routes.coinbase:Error processing row 60: could not convert string to float: '$0.4527'
+ERROR:app.routes.coinbase:Error processing row 61: could not convert string to float: '$3285.96'
+ERROR:app.routes.coinbase:Error processing row 62: could not convert string to float: '$3388.41'
+ERROR:app.routes.coinbase:Error processing row 63: could not convert string to float: '$3388.105'
+ERROR:app.routes.coinbase:Error processing row 64: could not convert string to float: '$0.51825'
+ERROR:app.routes.coinbase:Error processing row 65: could not convert string to float: '$3634.53'
+ERROR:app.routes.coinbase:Error processing row 66: could not convert string to float: '$3478.84'
+ERROR:app.routes.coinbase:Error processing row 67: could not convert string to float: '$0.4837'
+ERROR:app.routes.coinbase:Error processing row 68: could not convert string to float: '$94601.355'
+ERROR:app.routes.coinbase:Error processing row 69: could not convert string to float: '$3339.945'
+ERROR:app.routes.coinbase:Error processing row 70: could not convert string to float: '$3339.945'
+ERROR:app.routes.coinbase:Error processing row 71: could not convert string to float: '$3329.925'
+ERROR:app.routes.coinbase:Error processing row 72: could not convert string to float: '$0.44745'
+ERROR:app.routes.coinbase:Error processing row 73: could not convert string to float: '$3399.925'
+ERROR:app.routes.coinbase:Error processing row 74: could not convert string to float: '$3331.405'
+ERROR:app.routes.coinbase:Error processing row 75: could not convert string to float: '$0.4901'
+ERROR:app.routes.coinbase:Error processing row 76: could not convert string to float: '$0.4901'
+ERROR:app.routes.coinbase:Error processing row 77: could not convert string to float: '$3493.71'
+ERROR:app.routes.coinbase:Error processing row 78: could not convert string to float: '$0.47875'
+ERROR:app.routes.coinbase:Error processing row 79: could not convert string to float: '$3397.025'
+ERROR:app.routes.coinbase:Error processing row 80: could not convert string to float: '$3701.21'
+ERROR:app.routes.coinbase:Error processing row 81: could not convert string to float: '$0.5737'
+ERROR:app.routes.coinbase:Error processing row 82: could not convert string to float: '$0.59715'
+ERROR:app.routes.coinbase:Error processing row 83: could not convert string to float: '$0.597'
+ERROR:app.routes.coinbase:Error processing row 84: could not convert string to float: '$3890.685'
+ERROR:app.routes.coinbase:Error processing row 85: could not convert string to float: '$3914.805'
+ERROR:app.routes.coinbase:Error processing row 86: could not convert string to float: '$0.6557'
+ERROR:app.routes.coinbase:Error processing row 87: could not convert string to float: '$0.5779'
+ERROR:app.routes.coinbase:Error processing row 88: could not convert string to float: '$3749.285'
+ERROR:app.routes.coinbase:Error processing row 89: could not convert string to float: '$0.7043'
+ERROR:app.routes.coinbase:Error processing row 90: could not convert string to float: '$0.7021'
+ERROR:app.routes.coinbase:Error processing row 91: could not convert string to float: '$4059.135'
+ERROR:app.routes.coinbase:Error processing row 92: could not convert string to float: '$0.7248'
+ERROR:app.routes.coinbase:Error processing row 93: could not convert string to float: '$3646.005'
+ERROR:app.routes.coinbase:Error processing row 94: could not convert string to float: '$0.726'
+ERROR:app.routes.coinbase:Error processing row 95: could not convert string to float: '$0.7437'
+ERROR:app.routes.coinbase:Error processing row 96: could not convert string to float: '$95969.96'
+ERROR:app.routes.coinbase:Error processing row 97: could not convert string to float: '$0.60135'
+ERROR:app.routes.coinbase:Error processing row 98: could not convert string to float: '$3701.315'
+ERROR:app.routes.coinbase:Error processing row 99: could not convert string to float: '$3701.315'
+ERROR:app.routes.coinbase:Error processing row 100: could not convert string to float: '$3706.06'
+ERROR:app.routes.coinbase:Error processing row 101: could not convert string to float: '$3724.995'
+ERROR:app.routes.coinbase:Error processing row 102: could not convert string to float: '$3641.33'
+ERROR:app.routes.coinbase:Error processing row 103: could not convert string to float: '$0.52105'
+ERROR:app.routes.coinbase:Error processing row 104: could not convert string to float: '$0.5865'
+ERROR:app.routes.coinbase:Error processing row 105: could not convert string to float: '$3361.14'
+ERROR:app.routes.coinbase:Error processing row 106: could not convert string to float: '$0.00'
+ERROR:app.routes.coinbase:Unexpected error processing row 107: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 108: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 109: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Error processing row 110: could not convert string to float: '$0.6554'
+ERROR:app.routes.coinbase:Error processing row 111: could not convert string to float: '$0.65615'
+ERROR:app.routes.coinbase:Error processing row 112: could not convert string to float: '$0.65615'
+ERROR:app.routes.coinbase:Error processing row 113: could not convert string to float: '$1.1555'
+ERROR:app.routes.coinbase:Error processing row 114: could not convert string to float: '$1.1555'
+ERROR:app.routes.coinbase:Error processing row 115: could not convert string to float: '$1.1555'
+ERROR:app.routes.coinbase:Error processing row 116: could not convert string to float: '$1.1555'
+ERROR:app.routes.coinbase:Error processing row 117: could not convert string to float: '$0.955'
+ERROR:app.routes.coinbase:Error processing row 118: could not convert string to float: '$0.954'
+ERROR:app.routes.coinbase:Error processing row 119: could not convert string to float: '$0.9525'
+ERROR:app.routes.coinbase:Error processing row 120: could not convert string to float: '$0.9525'
+ERROR:app.routes.coinbase:Error processing row 121: could not convert string to float: '$0.9525'
+ERROR:app.routes.coinbase:Error processing row 122: could not convert string to float: '$3316.345'
+ERROR:app.routes.coinbase:Unexpected error processing row 123: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Error processing row 124: could not convert string to float: '$0.4383'
+ERROR:app.routes.coinbase:Error processing row 125: could not convert string to float: '$3167.615'
+ERROR:app.routes.coinbase:Error processing row 126: could not convert string to float: '$0.3983'
+ERROR:app.routes.coinbase:Error processing row 127: could not convert string to float: '$3044.34'
+ERROR:app.routes.coinbase:Error processing row 128: could not convert string to float: '$3264.00'
+ERROR:app.routes.coinbase:Error processing row 129: could not convert string to float: '$0.40595'
+ERROR:app.routes.coinbase:Error processing row 130: could not convert string to float: '$3027.585'
+ERROR:app.routes.coinbase:Error processing row 131: could not convert string to float: '$2659.125'
+ERROR:app.routes.coinbase:Error processing row 132: could not convert string to float: '$0.32395'
+ERROR:app.routes.coinbase:Error processing row 133: could not convert string to float: '$0.32395'
+ERROR:app.routes.coinbase:Error processing row 134: could not convert string to float: '$2445.875'
+ERROR:app.routes.coinbase:Error processing row 135: could not convert string to float: '$2486.015'
+ERROR:app.routes.coinbase:Error processing row 136: could not convert string to float: '$2486.015'
+ERROR:app.routes.coinbase:Error processing row 137: could not convert string to float: '$2505.705'
+INFO:werkzeug: * Detected change in 'D:\\git\\myfin\\app\\routes\\coinbase.py', reloading
+ERROR:app.routes.coinbase:Error processing row 138: could not convert string to float: '$0.3163'
+ERROR:app.routes.coinbase:Error processing row 139: could not convert string to float: '$69571.595'
+ERROR:app.routes.coinbase:Error processing row 140: could not convert string to float: '$0.31775'
+ERROR:app.routes.coinbase:Error processing row 141: could not convert string to float: '$2517.635'
+ERROR:app.routes.coinbase:Error processing row 142: could not convert string to float: '$2511.375'
+ERROR:app.routes.coinbase:Error processing row 143: could not convert string to float: '$0.3255'
+ERROR:app.routes.coinbase:Error processing row 144: could not convert string to float: '$0.32545'
+ERROR:app.routes.coinbase:Error processing row 145: could not convert string to float: '$2545.845'
+ERROR:app.routes.coinbase:Error processing row 146: could not convert string to float: '$2635.245'
+ERROR:app.routes.coinbase:Error processing row 147: could not convert string to float: '$0.36655'
+ERROR:app.routes.coinbase:Error processing row 148: could not convert string to float: '$0.36485'
+ERROR:app.routes.coinbase:Error processing row 149: could not convert string to float: '$2645.165'
+ERROR:app.routes.coinbase:Error processing row 150: could not convert string to float: '$0.36725'
+ERROR:app.routes.coinbase:Error processing row 151: could not convert string to float: '$2620.345'
+ERROR:app.routes.coinbase:Error processing row 152: could not convert string to float: '$2456.835'
+ERROR:app.routes.coinbase:Error processing row 153: could not convert string to float: '$0.37385'
+ERROR:app.routes.coinbase:Error processing row 154: could not convert string to float: '$2397.005'
+ERROR:app.routes.coinbase:Error processing row 155: could not convert string to float: '$0.37645'
+ERROR:app.routes.coinbase:Error processing row 156: could not convert string to float: '$2445.785'
+ERROR:app.routes.coinbase:Error processing row 157: could not convert string to float: '$0.3842'
+ERROR:app.routes.coinbase:Error processing row 158: could not convert string to float: '$2397.96'
+ERROR:app.routes.coinbase:Error processing row 159: could not convert string to float: '$0.37935'
+ERROR:app.routes.coinbase:Error processing row 160: could not convert string to float: '$2436.28'
+ERROR:app.routes.coinbase:Error processing row 161: could not convert string to float: '$2436.28'
+ERROR:app.routes.coinbase:Error processing row 162: could not convert string to float: '$0.38505'
+ERROR:app.routes.coinbase:Error processing row 163: could not convert string to float: '$2469.00'
+ERROR:app.routes.coinbase:Error processing row 164: could not convert string to float: '$2506.195'
+ERROR:app.routes.coinbase:Error processing row 165: could not convert string to float: '$63850.77'
+ERROR:app.routes.coinbase:Error processing row 166: could not convert string to float: '$2676.385'
+ERROR:app.routes.coinbase:Error processing row 167: could not convert string to float: '$0.435'
+ERROR:app.routes.coinbase:Error processing row 168: could not convert string to float: '$0.4336'
+ERROR:app.routes.coinbase:Error processing row 169: could not convert string to float: '$2633.09'
+ERROR:app.routes.coinbase:Error processing row 170: could not convert string to float: '$2576.665'
+ERROR:app.routes.coinbase:Error processing row 171: could not convert string to float: '$0.40155'
+ERROR:app.routes.coinbase:Error processing row 172: could not convert string to float: '$2535.265'
+ERROR:app.routes.coinbase:Error processing row 173: could not convert string to float: '$0.38175'
+ERROR:app.routes.coinbase:Error processing row 174: could not convert string to float: '$2307.91'
+ERROR:app.routes.coinbase:Error processing row 175: could not convert string to float: '$2283.30'
+ERROR:app.routes.coinbase:Error processing row 176: could not convert string to float: '$0.37875'
+ERROR:app.routes.coinbase:Error processing row 177: could not convert string to float: '$0.37885'
+ERROR:app.routes.coinbase:Error processing row 178: could not convert string to float: '$2387.795'
+ERROR:app.routes.coinbase:Error processing row 179: could not convert string to float: '$2272.90'
+ERROR:app.routes.coinbase:Error processing row 180: could not convert string to float: '$0.37355'
+ERROR:app.routes.coinbase:Error processing row 181: could not convert string to float: '$2411.605'
+ERROR:app.routes.coinbase:Error processing row 182: could not convert string to float: '$2461.77'
+ERROR:app.routes.coinbase:Error processing row 183: could not convert string to float: '$0.40425'
+ERROR:app.routes.coinbase:Error processing row 184: could not convert string to float: '$0.4066'
+ERROR:app.routes.coinbase:Error processing row 185: could not convert string to float: '$58133.255'
+ERROR:app.routes.coinbase:Error processing row 186: could not convert string to float: '$2494.065'
+ERROR:app.routes.coinbase:Error processing row 187: could not convert string to float: '$2494.065'
+ERROR:app.routes.coinbase:Error processing row 188: could not convert string to float: '$2498.725'
+ERROR:app.routes.coinbase:Error processing row 189: could not convert string to float: '$2523.375'
+ERROR:app.routes.coinbase:Error processing row 190: could not convert string to float: '$0.43925'
+ERROR:app.routes.coinbase:Error processing row 191: could not convert string to float: '$0.43405'
+ERROR:app.routes.coinbase:Error processing row 192: could not convert string to float: '$2690.545'
+ERROR:app.routes.coinbase:Error processing row 193: could not convert string to float: '$0.5363'
+ERROR:app.routes.coinbase:Error processing row 194: could not convert string to float: '$0.5392'
+ERROR:app.routes.coinbase:Error processing row 195: could not convert string to float: '$2745.18'
+ERROR:app.routes.coinbase:Error processing row 196: could not convert string to float: '$2576.69'
+ERROR:app.routes.coinbase:Error processing row 197: could not convert string to float: '$0.4158'
+ERROR:app.routes.coinbase:Error processing row 198: could not convert string to float: '$2655.325'
+ERROR:app.routes.coinbase:Error processing row 199: could not convert string to float: '$2653.895'
+ERROR:app.routes.coinbase:Error processing row 200: could not convert string to float: '$0.42545'
+ERROR:app.routes.coinbase:Error processing row 201: could not convert string to float: '$2548.93'
+ERROR:app.routes.coinbase:Error processing row 202: could not convert string to float: '$2609.62'
+ERROR:app.routes.coinbase:Error processing row 203: could not convert string to float: '$0.4262'
+ERROR:app.routes.coinbase:Error processing row 204: could not convert string to float: '$0.42715'
+ERROR:app.routes.coinbase:Error processing row 205: could not convert string to float: '$2476.245'
+ERROR:app.routes.coinbase:Error processing row 206: could not convert string to float: '$2915.47'
+ERROR:app.routes.coinbase:Error processing row 207: could not convert string to float: '$0.46945'
+ERROR:app.routes.coinbase:Error processing row 208: could not convert string to float: '$0.47205'
+ERROR:app.routes.coinbase:Error processing row 209: could not convert string to float: '$0.4909'
+ERROR:app.routes.coinbase:Error processing row 210: could not convert string to float: '$3178.725'
+ERROR:app.routes.coinbase:Error processing row 211: could not convert string to float: '$3178.725'
+ERROR:app.routes.coinbase:Error processing row 212: could not convert string to float: '$3176.935'
+ERROR:app.routes.coinbase:Error processing row 213: could not convert string to float: '$64353.235'
+ERROR:app.routes.coinbase:Error processing row 214: could not convert string to float: '$3163.67'
+ERROR:app.routes.coinbase:Error processing row 215: could not convert string to float: '$3332.555'
+ERROR:app.routes.coinbase:Error processing row 216: could not convert string to float: '$0.5219'
+ERROR:app.routes.coinbase:Error processing row 217: could not convert string to float: '$3228.175'
+ERROR:app.routes.coinbase:Error processing row 218: could not convert string to float: '$3309.695'
+ERROR:app.routes.coinbase:Error processing row 219: could not convert string to float: '$3488.495'
+ERROR:app.routes.coinbase:Error processing row 220: could not convert string to float: '$0.5443'
+ERROR:app.routes.coinbase:Error processing row 221: could not convert string to float: '$3492.92'
+ERROR:app.routes.coinbase:Error processing row 222: could not convert string to float: '$0.5541'
+ERROR:app.routes.coinbase:Error processing row 223: could not convert string to float: '$3183.28'
+ERROR:app.routes.coinbase:Error processing row 224: could not convert string to float: '$0.5063'
+ERROR:app.routes.coinbase:Error processing row 225: could not convert string to float: '$3083.235'
+ERROR:app.routes.coinbase:Error processing row 226: could not convert string to float: '$0.5046'
+ERROR:app.routes.coinbase:Error processing row 227: could not convert string to float: '$3055.905'
+ERROR:app.routes.coinbase:Error processing row 228: could not convert string to float: '$2972.67'
+ERROR:app.routes.coinbase:Error processing row 229: could not convert string to float: '$3278.025'
+ERROR:app.routes.coinbase:Error processing row 230: could not convert string to float: '$0.55935'
+ERROR:app.routes.coinbase:Error processing row 231: could not convert string to float: '$0.57145'
+ERROR:app.routes.coinbase:Error processing row 232: could not convert string to float: '$0.56355'
+ERROR:app.routes.coinbase:Error processing row 233: could not convert string to float: '$62806.595'
+ERROR:app.routes.coinbase:Error processing row 234: could not convert string to float: '$3455.35'
+ERROR:app.routes.coinbase:Error processing row 235: could not convert string to float: '$3455.35'
+ERROR:app.routes.coinbase:Error processing row 236: could not convert string to float: '$3472.475'
+ERROR:app.routes.coinbase:Error processing row 237: could not convert string to float: '$3486.345'
+ERROR:app.routes.coinbase:Error processing row 238: could not convert string to float: '$3385.545'
+ERROR:app.routes.coinbase:Error processing row 239: could not convert string to float: '$0.56495'
+ERROR:app.routes.coinbase:Error processing row 240: could not convert string to float: '$0.56415'
+ERROR:app.routes.coinbase:Error processing row 241: could not convert string to float: '$3376.655'
+ERROR:app.routes.coinbase:Error processing row 242: could not convert string to float: '$0.57695'
+ERROR:app.routes.coinbase:Error processing row 243: could not convert string to float: '$3504.70'
+ERROR:app.routes.coinbase:Error processing row 244: could not convert string to float: '$0.54915'
+ERROR:app.routes.coinbase:Error processing row 245: could not convert string to float: '$0.57335'
+ERROR:app.routes.coinbase:Error processing row 246: could not convert string to float: '$3519.765'
+ERROR:app.routes.coinbase:Error processing row 247: could not convert string to float: '$3552.765'
+ERROR:app.routes.coinbase:Error processing row 248: could not convert string to float: '$3482.77'
+ERROR:app.routes.coinbase:Error processing row 249: could not convert string to float: '$0.6329'
+ERROR:app.routes.coinbase:Error processing row 250: could not convert string to float: '$3707.40'
+ERROR:app.routes.coinbase:Error processing row 251: could not convert string to float: '$0.66705'
+ERROR:app.routes.coinbase:Error processing row 252: could not convert string to float: '$3829.205'
+ERROR:app.routes.coinbase:Error processing row 253: could not convert string to float: '$0.70585'
+ERROR:app.routes.coinbase:Error processing row 254: could not convert string to float: '$0.7014'
+ERROR:app.routes.coinbase:Error processing row 255: could not convert string to float: '$3781.185'
+ERROR:app.routes.coinbase:Error processing row 256: could not convert string to float: '$67721.11'
+ERROR:app.routes.coinbase:Error processing row 257: could not convert string to float: '$0.70035'
+ERROR:app.routes.coinbase:Error processing row 258: could not convert string to float: '$3791.915'
+ERROR:app.routes.coinbase:Error processing row 259: could not convert string to float: '$3791.915'
+ERROR:app.routes.coinbase:Error processing row 260: could not convert string to float: '$3788.62'
+ERROR:app.routes.coinbase:Error processing row 261: could not convert string to float: '$3745.535'
+ERROR:app.routes.coinbase:Error processing row 262: could not convert string to float: '$3801.115'
+ERROR:app.routes.coinbase:Error processing row 263: could not convert string to float: '$0.7331'
+ERROR:app.routes.coinbase:Error processing row 264: could not convert string to float: '$0.7289'
+ERROR:app.routes.coinbase:Error processing row 265: could not convert string to float: '$3896.96'
+ERROR:app.routes.coinbase:Error processing row 266: could not convert string to float: '$3740.99'
+ERROR:app.routes.coinbase:Error processing row 267: could not convert string to float: '$3715.08'
+ERROR:app.routes.coinbase:Error processing row 268: could not convert string to float: '$3805.955'
+ERROR:app.routes.coinbase:Error processing row 269: could not convert string to float: '$0.7296'
+ERROR:app.routes.coinbase:Error processing row 270: could not convert string to float: '$0.7448'
+ERROR:app.routes.coinbase:Error processing row 271: could not convert string to float: '$2951.10'
+ERROR:app.routes.coinbase:Error processing row 272: could not convert string to float: '$0.67105'
+ERROR:app.routes.coinbase:Error processing row 273: could not convert string to float: '$0.67175'
+ERROR:app.routes.coinbase:Error processing row 274: could not convert string to float: '$2928.375'
+ERROR:app.routes.coinbase:Error processing row 275: could not convert string to float: '$0.6934'
+ERROR:app.routes.coinbase:Error processing row 276: could not convert string to float: '$0.69335'
+ERROR:app.routes.coinbase:Error processing row 277: could not convert string to float: '$3079.79'
+ERROR:app.routes.coinbase:Error processing row 278: could not convert string to float: '$0.7344'
+ERROR:app.routes.coinbase:Error processing row 279: could not convert string to float: '$3084.645'
+ERROR:app.routes.coinbase:Error processing row 280: could not convert string to float: '$58267.99'
+ERROR:app.routes.coinbase:Error processing row 281: could not convert string to float: '$2971.105'
+ERROR:app.routes.coinbase:Error processing row 282: could not convert string to float: '$2971.075'
+ERROR:app.routes.coinbase:Error processing row 283: could not convert string to float: '$2940.315'
+ERROR:app.routes.coinbase:Error processing row 284: could not convert string to float: '$0.652'
+ERROR:app.routes.coinbase:Error processing row 285: could not convert string to float: '$3024.26'
+ERROR:app.routes.coinbase:Error processing row 286: could not convert string to float: '$0.733'
+ERROR:app.routes.coinbase:Error processing row 287: could not convert string to float: '$0.7336'
+ERROR:app.routes.coinbase:Error processing row 288: could not convert string to float: '$3149.385'
+ERROR:app.routes.coinbase:Error processing row 289: could not convert string to float: '$3120.20'
+ERROR:app.routes.coinbase:Error processing row 290: could not convert string to float: '$0.74715'
+ERROR:app.routes.coinbase:Error processing row 291: could not convert string to float: '$0.7481'
+ERROR:app.routes.coinbase:Unexpected error processing row 292: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Error processing row 293: could not convert string to float: '$3160.015'
+ERROR:app.routes.coinbase:Error processing row 294: could not convert string to float: '$3073.655'
+ERROR:app.routes.coinbase:Error processing row 295: could not convert string to float: '$0.70265'
+ERROR:app.routes.coinbase:Error processing row 296: could not convert string to float: '$3064.335'
+ERROR:app.routes.coinbase:Error processing row 297: could not convert string to float: '$3245.375'
+ERROR:app.routes.coinbase:Error processing row 298: could not convert string to float: '$0.88455'
+ERROR:app.routes.coinbase:Error processing row 299: could not convert string to float: '$3517.81'
+ERROR:app.routes.coinbase:Error processing row 300: could not convert string to float: '$3341.535'
+ERROR:app.routes.coinbase:Error processing row 301: could not convert string to float: '$0.88835'
+ERROR:app.routes.coinbase:Error processing row 302: could not convert string to float: '$3357.85'
+ERROR:app.routes.coinbase:Error processing row 303: could not convert string to float: '$3481.89'
+ERROR:app.routes.coinbase:Error processing row 304: could not convert string to float: '$3539.955'
+ERROR:app.routes.coinbase:Error processing row 305: could not convert string to float: '$3540.66'
+ERROR:app.routes.coinbase:Error processing row 306: could not convert string to float: '$69952.355'
+ERROR:app.routes.coinbase:Error processing row 307: could not convert string to float: '$3560.37'
+ERROR:app.routes.coinbase:Error processing row 308: could not convert string to float: '$0.984'
+ERROR:app.routes.coinbase:Error processing row 309: could not convert string to float: '$1.00285'
+ERROR:app.routes.coinbase:Error processing row 310: could not convert string to float: '$1.00235'
+ERROR:app.routes.coinbase:Error processing row 311: could not convert string to float: '$3571.675'
+ERROR:app.routes.coinbase:Error processing row 312: could not convert string to float: '$1.0485'
+ERROR:app.routes.coinbase:Error processing row 313: could not convert string to float: '$3582.90'
+ERROR:app.routes.coinbase:Error processing row 314: could not convert string to float: '$3309.39'
+ERROR:app.routes.coinbase:Error processing row 315: could not convert string to float: '$0.9913'
+ERROR:app.routes.coinbase:Error processing row 316: could not convert string to float: '$3226.22'
+ERROR:app.routes.coinbase:Error processing row 317: could not convert string to float: '$3642.15'
+ERROR:app.routes.coinbase:Error processing row 318: could not convert string to float: '$1.0454'
+ERROR:app.routes.coinbase:Error processing row 319: could not convert string to float: '$1.0481'
+ERROR:app.routes.coinbase:Error processing row 320: could not convert string to float: '$3887.425'
+ERROR:app.routes.coinbase:Error processing row 321: could not convert string to float: '$1.21185'
+ERROR:app.routes.coinbase:Error processing row 322: could not convert string to float: '$1.21285'
+ERROR:app.routes.coinbase:Error processing row 323: could not convert string to float: '$3911.455'
+ERROR:app.routes.coinbase:Error processing row 324: could not convert string to float: '$3908.51'
+ERROR:app.routes.coinbase:Error processing row 325: could not convert string to float: '$1.11905'
+ERROR:app.routes.coinbase:Error processing row 326: could not convert string to float: '$3620.29'
+ERROR:app.routes.coinbase:Error processing row 327: could not convert string to float: '$3429.21'
+ERROR:app.routes.coinbase:Error processing row 328: could not convert string to float: '$1.01645'
+ERROR:app.routes.coinbase:Error processing row 329: could not convert string to float: '$1.0155'
+ERROR:app.routes.coinbase:Error processing row 330: could not convert string to float: '$3234.175'
+ERROR:app.routes.coinbase:Error processing row 331: could not convert string to float: '$2981.31'
+ERROR:app.routes.coinbase:Error processing row 332: could not convert string to float: '$0.98995'
+ERROR:app.routes.coinbase:Error processing row 333: could not convert string to float: '$0.98875'
+ERROR:app.routes.coinbase:Error processing row 334: could not convert string to float: '$0.04417'
+ERROR:app.routes.coinbase:Error processing row 335: could not convert string to float: '$2895.855'
+ERROR:app.routes.coinbase:Error processing row 336: could not convert string to float: '$2902.17'
+ERROR:app.routes.coinbase:Error processing row 337: could not convert string to float: '$0.9977'
+ERROR:app.routes.coinbase:Error processing row 338: could not convert string to float: '$0.993'
+ERROR:app.routes.coinbase:Error processing row 339: could not convert string to float: '$2826.745'
+ERROR:app.routes.coinbase:Error processing row 340: could not convert string to float: '$0.0345850000022083'
+ERROR:app.routes.coinbase:Error processing row 341: could not convert string to float: '$0.0347'
+ERROR:app.routes.coinbase:Error processing row 342: could not convert string to float: '$0.034695'
+ERROR:app.routes.coinbase:Error processing row 343: could not convert string to float: '$0.84955'
+ERROR:app.routes.coinbase:Error processing row 344: could not convert string to float: '$2656.17'
+ERROR:app.routes.coinbase:Error processing row 345: could not convert string to float: '$2648.09'
+ERROR:app.routes.coinbase:Error processing row 346: could not convert string to float: '$2492.63'
+ERROR:app.routes.coinbase:Error processing row 347: could not convert string to float: '$2492.31'
+ERROR:app.routes.coinbase:Error processing row 348: could not convert string to float: '$2485.00'
+ERROR:app.routes.coinbase:Error processing row 349: could not convert string to float: '$47455.21'
+ERROR:app.routes.coinbase:Error processing row 350: could not convert string to float: '$47555.085'
+ERROR:app.routes.coinbase:Error processing row 351: could not convert string to float: '$2487.605'
+ERROR:app.routes.coinbase:Error processing row 352: could not convert string to float: '$2487.585'
+ERROR:app.routes.coinbase:Error processing row 353: could not convert string to float: '$2487.095'
+ERROR:app.routes.coinbase:Error processing row 354: could not convert string to float: '$0.83385'
+ERROR:app.routes.coinbase:Error processing row 355: could not convert string to float: '$2382.355'
+ERROR:app.routes.coinbase:Error processing row 356: could not convert string to float: '$2300.27'
+ERROR:app.routes.coinbase:Error processing row 357: could not convert string to float: '$0.79935'
+ERROR:app.routes.coinbase:Error processing row 358: could not convert string to float: '$2299.77'
+ERROR:app.routes.coinbase:Error processing row 359: could not convert string to float: '$2220.25'
+ERROR:app.routes.coinbase:Error processing row 360: could not convert string to float: '$2220.25'
+ERROR:app.routes.coinbase:Error processing row 361: could not convert string to float: '$2237.955'
+ERROR:app.routes.coinbase:Error processing row 362: could not convert string to float: '$2300.705'
+ERROR:app.routes.coinbase:Error processing row 363: could not convert string to float: '$2262.7802962522475065'
+ERROR:app.routes.coinbase:Error processing row 364: could not convert string to float: '$0.8956'
+ERROR:app.routes.coinbase:Error processing row 365: could not convert string to float: '$1.00'
+ERROR:app.routes.coinbase:Error processing row 366: could not convert string to float: '$0.10105'
+ERROR:app.routes.coinbase:Error processing row 367: could not convert string to float: '$0.31915'
+ERROR:app.routes.coinbase:Error processing row 368: could not convert string to float: '$0.3035'
+ERROR:app.routes.coinbase:Error processing row 369: could not convert string to float: '$0.314'
+ERROR:app.routes.coinbase:Error processing row 370: could not convert string to float: '$0.31015'
+ERROR:app.routes.coinbase:Error processing row 371: could not convert string to float: '$0.33785'
+ERROR:app.routes.coinbase:Error processing row 372: could not convert string to float: '$0.3852'
+ERROR:app.routes.coinbase:Error processing row 373: could not convert string to float: '$0.38455'
+ERROR:app.routes.coinbase:Error processing row 374: could not convert string to float: '$0.42375'
+ERROR:app.routes.coinbase:Error processing row 375: could not convert string to float: '$0.3995'
+ERROR:app.routes.coinbase:Error processing row 376: could not convert string to float: '$0.3635'
+ERROR:app.routes.coinbase:Error processing row 377: could not convert string to float: '$0.3675'
+ERROR:app.routes.coinbase:Error processing row 378: could not convert string to float: '$0.36625'
+ERROR:app.routes.coinbase:Error processing row 379: could not convert string to float: '$0.3847'
+ERROR:app.routes.coinbase:Error processing row 380: could not convert string to float: '$0.8413'
+ERROR:app.routes.coinbase:Error processing row 381: could not convert string to float: '$0.42565'
+ERROR:app.routes.coinbase:Error processing row 382: could not convert string to float: '$0.44105'
+ERROR:app.routes.coinbase:Error processing row 383: could not convert string to float: '$0.4452'
+ERROR:app.routes.coinbase:Unexpected error processing row 384: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 385: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Error processing row 386: could not convert string to float: '$0.062335'
+ERROR:app.routes.coinbase:Error processing row 387: could not convert string to float: '$0.062345'
+ERROR:app.routes.coinbase:Error processing row 388: could not convert string to float: '$0.06234'
+ERROR:app.routes.coinbase:Error processing row 389: could not convert string to float: '$3.9115'
+ERROR:app.routes.coinbase:Error processing row 390: could not convert string to float: '$3.9105'
+ERROR:app.routes.coinbase:Error processing row 391: could not convert string to float: '$3.914'
+ERROR:app.routes.coinbase:Error processing row 392: could not convert string to float: '$0.46025'
+ERROR:app.routes.coinbase:Error processing row 393: could not convert string to float: '$0.51'
+ERROR:app.routes.coinbase:Error processing row 394: could not convert string to float: '$0.47905'
+ERROR:app.routes.coinbase:Error processing row 395: could not convert string to float: '$0.46075'
+ERROR:app.routes.coinbase:Error processing row 396: could not convert string to float: '$0.46435'
+ERROR:app.routes.coinbase:Error processing row 397: could not convert string to float: '$21378.255'
+ERROR:app.routes.coinbase:Error processing row 398: could not convert string to float: '$21351.3025895927345788'
+ERROR:app.routes.coinbase:Error processing row 399: could not convert string to float: '$0.4538'
+ERROR:app.routes.coinbase:Error processing row 400: could not convert string to float: '$0.54005'
+ERROR:app.routes.coinbase:Unexpected error processing row 401: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 402: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Unexpected error processing row 403: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Error processing row 404: could not convert string to float: '$3.328'
+ERROR:app.routes.coinbase:Error processing row 405: could not convert string to float: '$3.3285'
+ERROR:app.routes.coinbase:Error processing row 406: could not convert string to float: '$3.3315'
+ERROR:app.routes.coinbase:Error processing row 407: could not convert string to float: '$0.26155'
+ERROR:app.routes.coinbase:Error processing row 408: could not convert string to float: '$0.26155'
+ERROR:app.routes.coinbase:Error processing row 409: could not convert string to float: '$0.26155'
+ERROR:app.routes.coinbase:Error processing row 410: could not convert string to float: '$0.0082'
+ERROR:app.routes.coinbase:Error processing row 411: could not convert string to float: '$0.51165'
+ERROR:app.routes.coinbase:Error processing row 412: could not convert string to float: '$0.50975'
+ERROR:app.routes.coinbase:Error processing row 413: could not convert string to float: '$0.52365'
+ERROR:app.routes.coinbase:Error processing row 414: could not convert string to float: '$0.472'
+ERROR:app.routes.coinbase:Error processing row 415: could not convert string to float: '$0.5158'
+ERROR:app.routes.coinbase:Error processing row 416: could not convert string to float: '$0.49995'
+ERROR:app.routes.coinbase:Error processing row 417: could not convert string to float: '$0.43975'
+ERROR:app.routes.coinbase:Error processing row 418: could not convert string to float: '$0.5001'
+ERROR:app.routes.coinbase:Error processing row 419: could not convert string to float: '$0.46835'
+ERROR:app.routes.coinbase:Error processing row 420: could not convert string to float: '$992.17'
+ERROR:app.routes.coinbase:Error processing row 421: could not convert string to float: '$19012.245000011637'
+ERROR:app.routes.coinbase:Error processing row 422: could not convert string to float: '$0.35895'
+ERROR:app.routes.coinbase:Error processing row 423: could not convert string to float: '$0.5762'
+ERROR:app.routes.coinbase:Error processing row 424: could not convert string to float: '$0.62075'
+ERROR:app.routes.coinbase:Error processing row 425: could not convert string to float: '$0.45435'
+ERROR:app.routes.coinbase:Error processing row 426: could not convert string to float: '$0.626'
+ERROR:app.routes.coinbase:Error processing row 427: could not convert string to float: '$29185.605000016987'
+ERROR:app.routes.coinbase:Error processing row 428: could not convert string to float: '$29255.75'
+ERROR:app.routes.coinbase:Error processing row 429: could not convert string to float: '$0.5205263888888889'
+ERROR:app.routes.coinbase:Error processing row 430: could not convert string to float: '$0.5900888111888112'
+ERROR:app.routes.coinbase:Error processing row 431: could not convert string to float: '$43752.68'
+ERROR:app.routes.coinbase:Error processing row 432: could not convert string to float: '$43686.675'
+ERROR:app.routes.coinbase:Error processing row 433: could not convert string to float: '$1.39'
+ERROR:app.routes.coinbase:Unexpected error processing row 434: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Error processing row 435: could not convert string to float: '$2605.91'
+ERROR:app.routes.coinbase:Error processing row 436: could not convert string to float: '$2606.62'
+ERROR:app.routes.coinbase:Unexpected error processing row 437: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Error processing row 438: could not convert string to float: '$72.73'
+ERROR:app.routes.coinbase:Error processing row 439: could not convert string to float: '$72.705'
+ERROR:app.routes.coinbase:Unexpected error processing row 440: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Error processing row 441: could not convert string to float: '$2437.25'
+ERROR:app.routes.coinbase:Error processing row 442: could not convert string to float: '$2422.055'
+ERROR:app.routes.coinbase:Unexpected error processing row 443: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Error processing row 444: could not convert string to float: '$2430.61'
+ERROR:app.routes.coinbase:Error processing row 445: could not convert string to float: '$2351.56'
+ERROR:app.routes.coinbase:Error processing row 446: could not convert string to float: '$2746.97'
+ERROR:app.routes.coinbase:Error processing row 447: could not convert string to float: '$42179.98'
+ERROR:app.routes.coinbase:Error processing row 448: could not convert string to float: '$42003.045'
+ERROR:app.routes.coinbase:Error processing row 449: could not convert string to float: '$1.00'
+ERROR:app.routes.coinbase:Error processing row 450: could not convert string to float: '$0.99574806'
+ERROR:app.routes.coinbase:Unexpected error processing row 451: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Error processing row 452: could not convert string to float: '$276.54'
+ERROR:app.routes.coinbase:Unexpected error processing row 453: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Error processing row 454: could not convert string to float: '$276.63'
+ERROR:app.routes.coinbase:Error processing row 455: could not convert string to float: '$39.05'
+ERROR:app.routes.coinbase:Error processing row 456: could not convert string to float: '$39.05'
+ERROR:app.routes.coinbase:Error processing row 457: could not convert string to float: '$39.05'
+ERROR:app.routes.coinbase:Unexpected error processing row 458: 'Total (inclusive of fees)'
+ERROR:app.routes.coinbase:Error processing row 459: could not convert string to float: '$0.37'
+ERROR:app.routes.coinbase:Error processing row 460: could not convert string to float: '$1.88'
+ERROR:app.routes.coinbase:Error processing row 461: could not convert string to float: '$67385.01'
+ERROR:app.routes.coinbase:Error processing row 462: could not convert string to float: '$1.88895'
+ERROR:app.routes.coinbase:Error processing row 463: could not convert string to float: '$67249.80'
+ERROR:app.routes.coinbase:Error processing row 464: could not convert string to float: '$62590.66'
+ERROR:app.routes.coinbase:Error processing row 465: could not convert string to float: '$62620.585'
+ERROR:app.routes.coinbase:Error processing row 466: could not convert string to float: '$3647.24'
+ERROR:app.routes.coinbase:Error processing row 467: could not convert string to float: '$1.38'
+INFO:werkzeug: * Restarting with stat

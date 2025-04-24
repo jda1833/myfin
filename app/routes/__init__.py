@@ -1,1 +1,1 @@
-# Empty file to make routes a package
+# Empty file, used to make routes a package

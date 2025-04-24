@@ -2,30 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-    <div class="container">
-        {% if 'username' in session %}
-            <div class="sidebar">
-                <h3>Menu</h3>
-                <a href="{{ url_for('main.index') }}">Home</a>
-                <a href="{{ url_for('coinbase.transactions') }}">Transactions</a>
-                <a href="{{ url_for('coinbase.import_transactions') }}">Import Transactions</a>
-                <a href="{{ url_for('settings.settings') }}">Settings</a>
-                <a href="{{ url_for('auth.logout') }}">Logout</a>
-            </div>
-        {% endif %}
-        <div class="content">
-            {% for category, message in get_flashed_messages(with_categories=true) %}
-                <div class="flash {{ category }}">{{ message }}</div>
-            {% endfor %}
-            {% block content %}
-            {% endblock %}
-        </div>
+    <nav class="sidebar">
+        <ul>
+            <li><a href="{{ url_for('main.index') }}">Home</a></li>
+            <li><a href="{{ url_for('coinbase.transactions') }}">Coinbase Transactions</a></li>
+            <li><a href="{{ url_for('coinbase.import_transactions') }}">Import Coinbase Transactions</a></li>
+            <li><a href="{{ url_for('fidelity.transactions') }}">Fidelity Transactions</a></li>
+            <li><a href="{{ url_for('fidelity.import_transactions') }}">Import Fidelity Transactions</a></li>
+            <li><a href="{{ url_for('settings.settings') }}">Settings</a></li>
+            <li><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+        </ul>
+    </nav>
+    <div class="content">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash {{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
     </div>
 </body>
 </html>
