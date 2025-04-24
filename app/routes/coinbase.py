@@ -8,6 +8,7 @@ import logging
 import os
 import requests
 from sqlalchemy import func
+import re
 
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)
@@ -28,7 +29,7 @@ def transactions():
     # Get query parameters
     currency = request.args.get('currency', '')
     page = request.args.get('page', 1, type=int)
-    per_page = 10  # Transactions per page
+    per_page = 30  # Transactions per page
 
     # Base query for transactions
     query = Transaction.query.filter_by(user_id=user.id)
@@ -77,7 +78,7 @@ def transactions():
         if tx_type in ['buy', 'receive']:
             balance += amount
         elif tx_type in ['sell', 'send']:
-            balance -= amount
+            balance -= amount if amount > 0 else (amount * -1 )
         # Store balance for the date (last transaction of the day)
         chart_data[date] = balance
 
@@ -206,44 +207,119 @@ def import_transactions():
             logger.debug(f"CSV columns: {df.columns.tolist()}")
 
             # Required Coinbase CSV columns
-            required_columns = ['ID', 'Timestamp', 'Transaction Type', 'Asset', 'Quantity Transacted', 'Price at Transaction']
+            required_columns = ['ID', 'Timestamp', 'Transaction Type', 'Asset', 'Quantity Transacted', 'Price at Transaction', 'Notes']
             if not all(col in df.columns for col in required_columns):
-                flash('Invalid CSV format. Ensure it includes ID, Timestamp, Transaction Type, Asset, Quantity Transacted, and Price at Transaction.', 'error')
+                flash('Invalid CSV format. Ensure it includes ID, Timestamp, Transaction Type, Asset, Quantity Transacted, Price at Transaction, and Notes.', 'error')
                 return redirect(url_for('coinbase.import_transactions'))
 
             # Process each row
             imported_count = 0
             for index, row in df.iterrows():
-                # Use the ID column for coinbase_tx_id
                 tx_id = row['ID']
-                if Transaction.query.filter_by(coinbase_tx_id=tx_id).first():
-                    continue  # Skip duplicates
+                tx_type = row['Transaction Type'].lower()
 
-                try:
-                    # Parse timestamp
-                    timestamp = pd.to_datetime(row['Timestamp']).to_pydatetime()
-                    # Parse Price at Transaction (e.g., "$45.67" -> 45.67)
-                    price_str = row['Price at Transaction'].replace('$', '').replace(',', '')
-                    price = float(price_str)
-                    # Map CSV fields to Transaction model
-                    new_tx = Transaction(
-                        coinbase_tx_id=tx_id,
-                        user_id=user.id,
-                        type=row['Transaction Type'].lower(),
-                        amount=float(row['Quantity Transacted']),
-                        currency=row['Asset'],
-                        timestamp=timestamp,
-                        status='completed',
-                        price_at_transaction=price
-                    )
-                    db.session.add(new_tx)
-                    imported_count += 1
-                except (ValueError, TypeError) as e:
-                    logger.error(f"Error processing row {index}: {str(e)}")
+                # Skip Pro Withdrawal transactions
+                if tx_type == 'pro withdrawal':
+                    logger.info(f"Skipped Pro Withdrawal transaction at row {index}: ID={tx_id}")
                     continue
-                except Exception as e:
-                    logger.error(f"Unexpected error processing row {index}: {str(e)}")
-                    continue
+
+                # Handle Convert transactions
+                if tx_type == 'convert':
+                    notes = row['Notes']
+                    # Regex to parse "Converted <amount1> <currency1> to <amount2> <currency2>"
+                    match = re.match(r'Converted\s+([\d.]+)\s+([A-Z]+)\s+to\s+([\d.]+)\s+([A-Z]+)', notes)
+                    if not match:
+                        logger.error(f"Invalid Notes format for Convert transaction at row {index}: {notes}")
+                        continue
+
+                    try:
+                        source_amount = float(match.group(1))
+                        source_currency = match.group(2)
+                        target_amount = float(match.group(3))
+                        target_currency = match.group(4)
+                        timestamp = pd.to_datetime(row['Timestamp']).to_pydatetime()
+                        price_str = row['Price at Transaction'].replace('$', '').replace(',', '')
+                        price = float(price_str) if price_str else None
+
+                        # Negate source_amount for sell transaction if positive
+                        sell_amount = -source_amount if source_amount > 0 else source_amount
+                        if source_amount > 0:
+                            logger.debug(f"Negated sell amount for Convert transaction at row {index}: {source_amount} -> {sell_amount}")
+
+                        # Create Sell transaction (source currency)
+                        sell_tx_id = f"{tx_id}_sell"
+                        if not Transaction.query.filter_by(coinbase_tx_id=sell_tx_id).first():
+                            sell_tx = Transaction(
+                                coinbase_tx_id=sell_tx_id,
+                                user_id=user.id,
+                                type='sell',
+                                amount=sell_amount,
+                                currency=source_currency,
+                                timestamp=timestamp,
+                                status='completed',
+                                price_at_transaction=price
+                            )
+                            db.session.add(sell_tx)
+                            imported_count += 1
+
+                        # Create Buy transaction (target currency)
+                        buy_tx_id = f"{tx_id}_buy"
+                        if not Transaction.query.filter_by(coinbase_tx_id=buy_tx_id).first():
+                            buy_tx = Transaction(
+                                coinbase_tx_id=buy_tx_id,
+                                user_id=user.id,
+                                type='buy',
+                                amount=target_amount,
+                                currency=target_currency,
+                                timestamp=timestamp,
+                                status='completed',
+                                price_at_transaction=price
+                            )
+                            db.session.add(buy_tx)
+                            imported_count += 1
+
+                    except (ValueError, TypeError) as e:
+                        logger.error(f"Error processing Convert transaction at row {index}: {str(e)}")
+                        continue
+                    except Exception as e:
+                        logger.error(f"Unexpected error processing Convert transaction at row {index}: {str(e)}")
+                        continue
+
+                else:
+                    # Handle non-Convert transactions
+                    if Transaction.query.filter_by(coinbase_tx_id=tx_id).first():
+                        continue  # Skip duplicates
+
+                    try:
+                        timestamp = pd.to_datetime(row['Timestamp']).to_pydatetime()
+                        price_str = row['Price at Transaction'].replace('$', '').replace(',', '')
+                        price = float(price_str) if price_str else None
+                        amount = float(row['Quantity Transacted'])
+
+                        # Negate amount for sell transactions if positive
+                        if tx_type == 'sell':
+                            amount = -amount if amount > 0 else amount
+                            if amount != float(row['Quantity Transacted']):
+                                logger.debug(f"Negated sell amount for transaction at row {index}: {row['Quantity Transacted']} -> {amount}")
+
+                        new_tx = Transaction(
+                            coinbase_tx_id=tx_id,
+                            user_id=user.id,
+                            type=tx_type,
+                            amount=amount,
+                            currency=row['Asset'],
+                            timestamp=timestamp,
+                            status='completed',
+                            price_at_transaction=price
+                        )
+                        db.session.add(new_tx)
+                        imported_count += 1
+                    except (ValueError, TypeError) as e:
+                        logger.error(f"Error processing row {index}: {str(e)}")
+                        continue
+                    except Exception as e:
+                        logger.error(f"Unexpected error processing row {index}: {str(e)}")
+                        continue
 
             db.session.commit()
             flash(f'Successfully imported {imported_count} transactions.', 'success')

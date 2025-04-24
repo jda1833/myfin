@@ -69,7 +69,17 @@
         <div id="fetch-message"></div>
     </div>
 
+    <!-- Clear Transactions -->
+    <div class="card">
+        <h2>Clear Transactions</h2>
+        <p>Remove all transaction records. This action cannot be undone.</p>
+        <button id="clear-transactions-btn" style="background-color: #e74c3c; color: white;">Clear Transactions</button>
+        <div id="clear-loading" style="display: none;">Clearing transactions...</div>
+        <div id="clear-message"></div>
+    </div>
+
     <script>
+        // Fetch Transactions (unchanged)
         document.getElementById('fetch-transactions-btn').addEventListener('click', function() {
             const loading = document.getElementById('loading');
             const fetchMessage = document.getElementById('fetch-message');
@@ -95,6 +105,36 @@
                 fetchMessage.textContent = 'Error fetching transactions: ' + error.message;
                 fetchMessage.className = 'flash error';
             });
+        });
+
+        // Clear Transactions
+        document.getElementById('clear-transactions-btn').addEventListener('click', function() {
+            if (confirm('Are you sure you want to clear all transactions? This action cannot be undone.')) {
+                const loading = document.getElementById('clear-loading');
+                const clearMessage = document.getElementById('clear-message');
+                loading.style.display = 'block';
+                clearMessage.textContent = '';
+                clearMessage.className = '';
+
+                fetch('{{ url_for("settings.clear_transactions") }}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-Token': '{{ session.get("csrf_token", "") }}'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    loading.style.display = 'none';
+                    clearMessage.textContent = data.message;
+                    clearMessage.className = data.success ? 'flash success' : 'flash error';
+                })
+                .catch(error => {
+                    loading.style.display = 'none';
+                    clearMessage.textContent = 'Error clearing transactions: ' + error.message;
+                    clearMessage.className = 'flash error';
+                });
+            }
         });
     </script>
 {% endblock %}

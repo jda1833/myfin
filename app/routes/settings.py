@@ -1,5 +1,5 @@
-from flask import Blueprint, render_template, redirect, url_for, session, flash, request
-from database.models import db, User
+from flask import Blueprint, render_template, redirect, url_for, session, flash, request, jsonify
+from database.models import db, User, Transaction
 from werkzeug.security import check_password_hash, generate_password_hash
 import logging
 
@@ -68,3 +68,29 @@ def settings():
         return redirect(url_for('settings.settings'))
 
     return render_template('settings.html', user=user)
+
+@settings_bp.route('/clear_transactions', methods=['POST'])
+def clear_transactions():
+    if 'username' not in session:
+        return jsonify({'success': False, 'message': 'Please log in.'}), 401
+
+    user = User.query.filter_by(username=session['username']).first()
+    if not user:
+        return jsonify({'success': False, 'message': 'User not found.'}), 404
+
+    # Verify CSRF token
+    csrf_token = request.headers.get('X-CSRF-Token')
+    if not csrf_token or csrf_token != session.get('csrf_token'):
+        logger.warning(f"CSRF token validation failed for user {session['username']}")
+        return jsonify({'success': False, 'message': 'Invalid CSRF token.'}), 403
+
+    try:
+        # Delete all transactions for the user
+        num_deleted = db.session.query(Transaction).filter_by(user_id=user.id).delete()
+        db.session.commit()
+        logger.info(f"User {session['username']} cleared {num_deleted} transactions")
+        return jsonify({'success': True, 'message': f'Successfully cleared {num_deleted} transactions.'})
+    except Exception as e:
+        db.session.rollback()
+        logger.error(f"Error clearing transactions for user {session['username']}: {str(e)}")
+        return jsonify({'success': False, 'message': f'Failed to clear transactions: {str(e)}'}), 500
