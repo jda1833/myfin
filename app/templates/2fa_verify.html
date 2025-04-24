@@ -4,14 +4,13 @@
 
 {% block content %}
     <h1>Verify Two-Factor Authentication</h1>
-    <p>Enter the code from your authenticator app.</p>
-    <form method="POST">
-        <div>
-            <label>TOTP Code:</label>
-            <input type="text" name="totp_code" required>
-        </div>
-        <div>
+    <div class="card">
+        <form method="POST" action="{{ url_for('auth.verify_2fa') }}">
+            <div class="form-group">
+                <label for="totp_code">Enter the 6-digit code from your authenticator app:</label>
+                <input type="text" id="totp_code" name="totp_code" required>
+            </div>
             <button type="submit">Verify</button>
-        </div>
-    </form>
+        </form>
+    </div>
 {% endblock %}

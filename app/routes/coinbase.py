@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, redirect, url_for, session, flash,
 from database.models import db, User, Transaction
 from coinbase.wallet.client import Client
 from coinbase.wallet.error import APIError
-from datetime import datetime, timedelta
+from datetime import datetime
 import pandas as pd
 import logging
 import os
@@ -30,7 +30,7 @@ def transactions():
     page = request.args.get('page', 1, type=int)
     per_page = 10  # Transactions per page
 
-    # Base query
+    # Base query for transactions
     query = Transaction.query.filter_by(user_id=user.id)
 
     # Apply currency filter
@@ -45,26 +45,45 @@ def transactions():
     currencies = db.session.query(Transaction.currency).filter_by(user_id=user.id).distinct().all()
     currencies = [c[0] for c in currencies]
 
-    # Prepare chart data (aggregate amount by date)
-    chart_query = Transaction.query.filter_by(user_id=user.id)
+    # Prepare chart data (cumulative amount owned by date)
+    chart_query = (
+        Transaction.query
+        .filter_by(user_id=user.id)
+        .filter(Transaction.type.in_(['buy', 'receive', 'sell', 'send']))  # Relevant transaction types
+    )
     if currency:
         chart_query = chart_query.filter_by(currency=currency)
 
-    # Aggregate by date (sum amounts per day)
-    chart_data = (
+    # Fetch transactions ordered by timestamp
+    chart_transactions = (
         chart_query
         .with_entities(
             func.date(Transaction.timestamp).label('date'),
-            func.sum(Transaction.amount).label('total_amount')
+            Transaction.amount,
+            Transaction.type
         )
-        .group_by(func.date(Transaction.timestamp))
-        .order_by(func.date(Transaction.timestamp))
+        .order_by(Transaction.timestamp)
         .all()
     )
 
+    # Calculate cumulative amount owned by date
+    balance = 0
+    chart_data = {}
+    for tx in chart_transactions:
+        date = tx.date
+        amount = tx.amount
+        tx_type = tx.type.lower()
+        # Update balance based on transaction type
+        if tx_type in ['buy', 'receive']:
+            balance += amount
+        elif tx_type in ['sell', 'send']:
+            balance -= amount
+        # Store balance for the date (last transaction of the day)
+        chart_data[date] = balance
+
     # Format chart data for Chart.js
-    chart_labels = [row.date for row in chart_data]
-    chart_values = [float(row.total_amount) for row in chart_data]
+    chart_labels = sorted(chart_data.keys())
+    chart_values = [float(chart_data[date]) for date in chart_labels]
     chart_data_dict = {'labels': chart_labels, 'values': chart_values}
 
     return render_template(

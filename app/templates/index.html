@@ -3,6 +3,13 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-    <h1>Welcome, {{ username }}!</h1>
-    <p>This is the home page. You are logged in.</p>
+    <h1>Welcome to Your Dashboard</h1>
+    <div class="card">
+        <p>Use the sidebar to navigate to Transactions, Import Transactions, or Settings.</p>
+        {% if 'username' in session %}
+            <p>Logged in as: {{ session['username'] }}</p>
+        {% else %}
+            <p>Please <a href="{{ url_for('auth.login') }}">log in</a> or <a href="{{ url_for('auth.register') }}">register</a>.</p>
+        {% endif %}
+    </div>
 {% endblock %}

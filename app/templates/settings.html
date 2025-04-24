@@ -3,85 +3,97 @@
 {% block title %}Settings{% endblock %}
 
 {% block content %}
-    <h1>User Settings</h1>
-    <form method="POST" id="settings-form">
-        <h3>Coinbase API Credentials</h3>
-        <div>
-            <label>API Key:</label>
-            <input type="text" name="coinbase_api_key" placeholder="Enter Coinbase API Key" value="{{ user.coinbase_api_key | default('', true) }}">
-        </div>
-        <div>
-            <label>API Secret:</label>
-            <input type="text" name="coinbase_api_secret" placeholder="Enter Coinbase API Secret" value="{{ user.coinbase_api_secret | default('', true) }}">
-        </div>
-        <div>
-            <button type="button" id="fetch-transactions-btn">Fetch Transactions</button>
-            <div id="fetch-message" style="margin-top: 10px;"></div>
-            <div id="loading" style="display: none;">Loading...</div>
-        </div>
+    <h1>Settings</h1>
 
-        <h3>Email Address</h3>
-        <div>
-            <label>Email:</label>
-            <input type="email" name="email" placeholder="Enter email address" value="{{ user.email | default('', true) }}">
-        </div>
+    <!-- Update Email -->
+    <div class="card">
+        <h2>Update Email</h2>
+        <form method="POST" action="{{ url_for('settings.settings') }}">
+            <input type="hidden" name="form_type" value="update_email">
+            <div class="form-group">
+                <label for="email">New Email:</label>
+                <input type="email" id="email" name="email" value="{{ session.get('email', '') }}" required>
+            </div>
+            <button type="submit">Update Email</button>
+        </form>
+    </div>
 
-        <h3>Two-Factor Authentication</h3>
-        <div>
-            <label>
-                <input type="checkbox" name="enable_2fa" {% if user.totp_secret %}checked{% endif %}> Enable 2FA
-            </label>
-        </div>
+    <!-- Update Password -->
+    <div class="card">
+        <h2>Update Password</h2>
+        <form method="POST" action="{{ url_for('settings.settings') }}">
+            <input type="hidden" name="form_type" value="update_password">
+            <div class="form-group">
+                <label for="current_password">Current Password:</label>
+                <input type="password" id="current_password" name="current_password" required>
+            </div>
+            <div class="form-group">
+                <label for="new_password">New Password:</label>
+                <input type="password" id="new_password" name="new_password" required>
+            </div>
+            <div class="form-group">
+                <label for="confirm_password">Confirm New Password:</label>
+                <input type="password" id="confirm_password" name="confirm_password" required>
+            </div>
+            <button type="submit">Update Password</button>
+        </form>
+    </div>
 
-        <h3>Change Password</h3>
-        <div>
-            <label>Current Password:</label>
-            <input type="password" name="current_password" placeholder="Enter current password">
-        </div>
-        <div>
-            <label>New Password:</label>
-            <input type="password" name="new_password" placeholder="Enter new password">
-        </div>
-        <div>
-            <label>Confirm New Password:</label>
-            <input type="password" name="confirm_password" placeholder="Confirm new password">
-        </div>
+    <!-- 2FA Setup -->
+    <div class="card">
+        <h2>Two-Factor Authentication</h2>
+        {% if not session.get('totp_secret') %}
+            <p>2FA is not set up. <a href="{{ url_for('auth.setup_2fa') }}">Set up 2FA</a></p>
+        {% else %}
+            <p>2FA is enabled. <a href="{{ url_for('auth.disable_2fa') }}">Disable 2FA</a></p>
+        {% endif %}
+    </div>
 
-        <div>
-            <button type="submit">Save Changes</button>
-        </div>
-    </form>
+    <!-- Coinbase API Credentials -->
+    <div class="card">
+        <h2>Coinbase API Credentials</h2>
+        <form method="POST" action="{{ url_for('settings.settings') }}">
+            <input type="hidden" name="form_type" value="update_credentials">
+            <div class="form-group">
+                <label for="coinbase_api_key">Coinbase API Key:</label>
+                <input type="text" id="coinbase_api_key" name="coinbase_api_key" value="{{ session.get('coinbase_api_key', '') }}">
+            </div>
+            <div class="form-group">
+                <label for="coinbase_api_secret">Coinbase API Secret:</label>
+                <input type="text" id="coinbase_api_secret" name="coinbase_api_secret" value="{{ session.get('coinbase_api_secret', '') }}">
+            </div>
+            <button type="submit">Update Credentials</button>
+        </form>
+        <button id="fetch-transactions-btn">Fetch Transactions</button>
+        <div id="loading" style="display: none;">Fetching transactions...</div>
+        <div id="fetch-message"></div>
+    </div>
 
     <script>
         document.getElementById('fetch-transactions-btn').addEventListener('click', function() {
-            const messageDiv = document.getElementById('fetch-message');
-            const loadingDiv = document.getElementById('loading');
-            messageDiv.textContent = '';
-            loadingDiv.style.display = 'block';
+            const loading = document.getElementById('loading');
+            const fetchMessage = document.getElementById('fetch-message');
+            loading.style.display = 'block';
+            fetchMessage.textContent = '';
+            fetchMessage.className = '';
 
             fetch('{{ url_for("coinbase.fetch_transactions") }}', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    // Basic CSRF token (for development; use Flask-WTF for production)
                     'X-CSRF-Token': '{{ session.get("csrf_token", "") }}'
                 }
             })
             .then(response => response.json())
             .then(data => {
-                loadingDiv.style.display = 'none';
-                if (data.success) {
-                    messageDiv.style.color = '#155724';
-                    messageDiv.textContent = data.message;
-                } else {
-                    messageDiv.style.color = '#721c24';
-                    messageDiv.textContent = data.message;
-                }
+                loading.style.display = 'none';
+                fetchMessage.textContent = data.message;
+                fetchMessage.className = data.success ? 'flash success' : 'flash error';
             })
             .catch(error => {
-                loadingDiv.style.display = 'none';
-                messageDiv.style.color = '#721c24';
-                messageDiv.textContent = 'Error fetching transactions: ' + error.message;
+                loading.style.display = 'none';
+                fetchMessage.textContent = 'Error fetching transactions: ' + error.message;
+                fetchMessage.className = 'flash error';
             });
         });
     </script>

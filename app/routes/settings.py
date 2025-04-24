@@ -1,7 +1,11 @@
-from flask import Blueprint, render_template, request, redirect, url_for, flash, session
-from werkzeug.security import generate_password_hash, check_password_hash
+from flask import Blueprint, render_template, redirect, url_for, session, flash, request
 from database.models import db, User
-import pyotp
+from werkzeug.security import check_password_hash, generate_password_hash
+import logging
+
+# Configure logging
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
 
 settings_bp = Blueprint('settings', __name__)
 
@@ -16,56 +20,50 @@ def settings():
         return redirect(url_for('auth.login'))
 
     if request.method == 'POST':
-        # Coinbase API credentials
-        coinbase_api_key = request.form.get('coinbase_api_key')
-        coinbase_api_secret = request.form.get('coinbase_api_secret')
-        if coinbase_api_key and coinbase_api_secret:
-            user.set_coinbase_api_key(coinbase_api_key)
-            user.set_coinbase_api_secret(coinbase_api_secret)
-            flash('Coinbase API credentials updated.', 'success')
-        elif coinbase_api_key or coinbase_api_secret:
-            flash('Both API key and secret must be provided.', 'error')
-            return redirect(url_for('settings.settings'))
+        form_type = request.form.get('form_type')
 
-        # Email
-        email = request.form.get('email')
-        if email:
-            if User.query.filter_by(email=email).first() and user.email != email:
-                flash('Email already in use.', 'error')
-                return redirect(url_for('settings.settings'))
-            user.email = email
-            flash('Email updated.', 'success')
+        # Update Email
+        if form_type == 'update_email':
+            email = request.form.get('email')
+            if email:
+                user.email = email
+                session['email'] = email
+                db.session.commit()
+                flash('Email updated successfully.', 'success')
+            else:
+                flash('Email cannot be empty.', 'error')
 
-        # 2FA
-        enable_2fa = 'enable_2fa' in request.form
-        if enable_2fa and not user.totp_secret:
-            user.totp_secret = pyotp.random_base32()
-            db.session.commit()
-            session['setup_username'] = user.username
-            return redirect(url_for('auth.setup_2fa'))
-        elif not enable_2fa and user.totp_secret:
-            user.totp_secret = None
-            flash('2FA disabled.', 'success')
+        # Update Password
+        elif form_type == 'update_password':
+            current_password = request.form.get('current_password')
+            new_password = request.form.get('new_password')
+            confirm_password = request.form.get('confirm_password')
 
-        # Password
-        current_password = request.form.get('current_password')
-        new_password = request.form.get('new_password')
-        confirm_password = request.form.get('confirm_password')
-        if current_password and new_password and confirm_password:
             if not check_password_hash(user.password, current_password):
                 flash('Current password is incorrect.', 'error')
-                return redirect(url_for('settings.settings'))
-            if new_password != confirm_password:
+            elif new_password != confirm_password:
                 flash('New passwords do not match.', 'error')
-                return redirect(url_for('settings.settings'))
-            user.password = generate_password_hash(new_password, method='pbkdf2:sha256')
-            flash('Password updated.', 'success')
+            elif len(new_password) < 8:
+                flash('New password must be at least 8 characters.', 'error')
+            else:
+                user.password = generate_password_hash(new_password)
+                db.session.commit()
+                flash('Password updated successfully.', 'success')
 
-        try:
-            db.session.commit()
-        except Exception as e:
-            db.session.rollback()
-            flash('An error occurred while saving settings.', 'error')
+        # Update Coinbase API Credentials
+        elif form_type == 'update_credentials':
+            api_key = request.form.get('coinbase_api_key')
+            api_secret = request.form.get('coinbase_api_secret')
+            try:
+                user.set_coinbase_api_key(api_key)
+                user.set_coinbase_api_secret(api_secret)
+                db.session.commit()
+                session['coinbase_api_key'] = api_key
+                session['coinbase_api_secret'] = api_secret
+                flash('Coinbase API credentials updated successfully.', 'success')
+            except Exception as e:
+                logger.error(f"Error updating Coinbase credentials: {str(e)}")
+                flash('Failed to update Coinbase API credentials.', 'error')
 
         return redirect(url_for('settings.settings'))
 
