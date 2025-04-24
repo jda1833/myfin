@@ -5,11 +5,11 @@
 {% block content %}
     <h1>Verify Two-Factor Authentication</h1>
     <div class="card">
+        <h2>Enter 2FA Code</h2>
+        <p>Enter the 6-digit code from your authenticator app.</p>
         <form method="POST" action="{{ url_for('auth.verify_2fa') }}">
-            <div class="form-group">
-                <label for="totp_code">Enter the 6-digit code from your authenticator app:</label>
-                <input type="text" id="totp_code" name="totp_code" required>
-            </div>
+            <label for="code">Code:</label>
+            <input type="text" id="code" name="code" required>
             <button type="submit">Verify</button>
         </form>
     </div>

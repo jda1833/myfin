@@ -3,13 +3,31 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-    <h1>Welcome to Your Dashboard</h1>
+    <h1>Welcome, {{ session.username }}!</h1>
+    <p>This is your dashboard for managing cryptocurrency transactions.</p>
+
+    <!-- Non-Zero Crypto Balances -->
     <div class="card">
-        <p>Use the sidebar to navigate to Transactions, Import Transactions, or Settings.</p>
-        {% if 'username' in session %}
-            <p>Logged in as: {{ session['username'] }}</p>
+        <h2>Your Crypto Balances</h2>
+        {% if balances %}
+            <table class="balance-table">
+                <thead>
+                    <tr>
+                        <th>Currency</th>
+                        <th>Amount Owned</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for balance in balances %}
+                        <tr>
+                            <td>{{ balance.currency }}</td>
+                            <td>{{ balance.amount }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         {% else %}
-            <p>Please <a href="{{ url_for('auth.login') }}">log in</a> or <a href="{{ url_for('auth.register') }}">register</a>.</p>
+            <p>No non-zero balances to display. Import transactions to get started.</p>
         {% endif %}
     </div>
 {% endblock %}

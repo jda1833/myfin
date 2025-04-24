@@ -5,136 +5,65 @@
 {% block content %}
     <h1>Settings</h1>
 
-    <!-- Update Email -->
+    <!-- Account Settings -->
     <div class="card">
-        <h2>Update Email</h2>
+        <h2>Account Settings</h2>
         <form method="POST" action="{{ url_for('settings.settings') }}">
-            <input type="hidden" name="form_type" value="update_email">
-            <div class="form-group">
-                <label for="email">New Email:</label>
-                <input type="email" id="email" name="email" value="{{ session.get('email', '') }}" required>
-            </div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="{{ user.email }}" required>
             <button type="submit">Update Email</button>
         </form>
-    </div>
-
-    <!-- Update Password -->
-    <div class="card">
-        <h2>Update Password</h2>
         <form method="POST" action="{{ url_for('settings.settings') }}">
-            <input type="hidden" name="form_type" value="update_password">
-            <div class="form-group">
-                <label for="current_password">Current Password:</label>
-                <input type="password" id="current_password" name="current_password" required>
-            </div>
-            <div class="form-group">
-                <label for="new_password">New Password:</label>
-                <input type="password" id="new_password" name="new_password" required>
-            </div>
-            <div class="form-group">
-                <label for="confirm_password">Confirm New Password:</label>
-                <input type="password" id="confirm_password" name="confirm_password" required>
-            </div>
+            <label for="password">New Password:</label>
+            <input type="password" id="password" name="password" required>
             <button type="submit">Update Password</button>
         </form>
-    </div>
-
-    <!-- 2FA Setup -->
-    <div class="card">
-        <h2>Two-Factor Authentication</h2>
-        {% if not session.get('totp_secret') %}
-            <p>2FA is not set up. <a href="{{ url_for('auth.setup_2fa') }}">Set up 2FA</a></p>
-        {% else %}
-            <p>2FA is enabled. <a href="{{ url_for('auth.disable_2fa') }}">Disable 2FA</a></p>
-        {% endif %}
     </div>
 
     <!-- Coinbase API Credentials -->
     <div class="card">
         <h2>Coinbase API Credentials</h2>
         <form method="POST" action="{{ url_for('settings.settings') }}">
-            <input type="hidden" name="form_type" value="update_credentials">
-            <div class="form-group">
-                <label for="coinbase_api_key">Coinbase API Key:</label>
-                <input type="text" id="coinbase_api_key" name="coinbase_api_key" value="{{ session.get('coinbase_api_key', '') }}">
-            </div>
-            <div class="form-group">
-                <label for="coinbase_api_secret">Coinbase API Secret:</label>
-                <input type="text" id="coinbase_api_secret" name="coinbase_api_secret" value="{{ session.get('coinbase_api_secret', '') }}">
-            </div>
+            <label for="api_key">API Key:</label>
+            <input type="text" id="api_key" name="api_key" required>
+            <label for="api_secret">API Secret:</label>
+            <input type="text" id="api_secret" name="api_secret" required>
             <button type="submit">Update Credentials</button>
         </form>
-        <button id="fetch-transactions-btn">Fetch Transactions</button>
-        <div id="loading" style="display: none;">Fetching transactions...</div>
-        <div id="fetch-message"></div>
+    </div>
+
+    <!-- 2FA Settings -->
+    <div class="card">
+        <h2>Two-Factor Authentication</h2>
+        {% if user.totp_secret %}
+            <p>2FA is enabled.</p>
+            <form method="POST" action="{{ url_for('auth.disable_2fa') }}">
+                <button type="submit" class="danger">Disable 2FA</button>
+            </form>
+        {% else %}
+            <p>2FA is not enabled.</p>
+            <a href="{{ url_for('auth.setup_2fa') }}">Set up 2FA</a>
+        {% endif %}
+    </div>
+
+    <!-- Transaction Backup -->
+    <div class="card">
+        <h2>Transaction Backup</h2>
+        <form method="POST" action="{{ url_for('settings.export_transactions') }}">
+            <button type="submit">Export Transactions</button>
+        </form>
+        <form method="POST" action="{{ url_for('settings.import_transactions') }}" enctype="multipart/form-data">
+            <label for="backup_file">Import Transactions:</label>
+            <input type="file" id="backup_file" name="backup_file" accept=".csv">
+            <button type="submit">Import</button>
+        </form>
     </div>
 
     <!-- Clear Transactions -->
     <div class="card">
         <h2>Clear Transactions</h2>
-        <p>Remove all transaction records. This action cannot be undone.</p>
-        <button id="clear-transactions-btn" style="background-color: #e74c3c; color: white;">Clear Transactions</button>
-        <div id="clear-loading" style="display: none;">Clearing transactions...</div>
-        <div id="clear-message"></div>
+        <form method="POST" action="{{ url_for('settings.clear_transactions') }}">
+            <button type="submit" class="danger">Clear Transactions</button>
+        </form>
     </div>
-
-    <script>
-        // Fetch Transactions (unchanged)
-        document.getElementById('fetch-transactions-btn').addEventListener('click', function() {
-            const loading = document.getElementById('loading');
-            const fetchMessage = document.getElementById('fetch-message');
-            loading.style.display = 'block';
-            fetchMessage.textContent = '';
-            fetchMessage.className = '';
-
-            fetch('{{ url_for("coinbase.fetch_transactions") }}', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-Token': '{{ session.get("csrf_token", "") }}'
-                }
-            })
-            .then(response => response.json())
-            .then(data => {
-                loading.style.display = 'none';
-                fetchMessage.textContent = data.message;
-                fetchMessage.className = data.success ? 'flash success' : 'flash error';
-            })
-            .catch(error => {
-                loading.style.display = 'none';
-                fetchMessage.textContent = 'Error fetching transactions: ' + error.message;
-                fetchMessage.className = 'flash error';
-            });
-        });
-
-        // Clear Transactions
-        document.getElementById('clear-transactions-btn').addEventListener('click', function() {
-            if (confirm('Are you sure you want to clear all transactions? This action cannot be undone.')) {
-                const loading = document.getElementById('clear-loading');
-                const clearMessage = document.getElementById('clear-message');
-                loading.style.display = 'block';
-                clearMessage.textContent = '';
-                clearMessage.className = '';
-
-                fetch('{{ url_for("settings.clear_transactions") }}', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-Token': '{{ session.get("csrf_token", "") }}'
-                    }
-                })
-                .then(response => response.json())
-                .then(data => {
-                    loading.style.display = 'none';
-                    clearMessage.textContent = data.message;
-                    clearMessage.className = data.success ? 'flash success' : 'flash error';
-                })
-                .catch(error => {
-                    loading.style.display = 'none';
-                    clearMessage.textContent = 'Error clearing transactions: ' + error.message;
-                    clearMessage.className = 'flash error';
-                });
-            }
-        });
-    </script>
 {% endblock %}

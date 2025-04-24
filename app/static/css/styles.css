@@ -53,7 +53,7 @@ a:hover {
 
 /* Sidebar */
 .sidebar {
-    width: 240px;
+    width: 200px;
     background-color: var(--sidebar-bg);
     padding: 20px;
     position: fixed;
@@ -335,4 +335,71 @@ canvas {
         width: 100%;
         padding: 15px;
     }
+}
+
+/* Balance Table */
+.balance-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.balance-table th, .balance-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.balance-table th {
+    background-color: #3498db;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+
+.balance-table td {
+    font-family: 'Roboto', sans-serif;
+}
+
+.balance-table tr:hover {
+    background-color: #f5f5f5;
+}
+
+/* 2FA Setup and Verify */
+.card img {
+    max-width: 200px;
+    margin: 10px 0;
+}
+
+.card form {
+    margin-top: 15px;
+}
+
+.card form label {
+    display: block;
+    margin-bottom: 5px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.card form input[type="text"] {
+    padding: 8px;
+    width: 100%;
+    max-width: 200px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.card form button {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+}
+
+.card form button:hover {
+    background-color: #2980b9;
 }

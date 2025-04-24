@@ -1,135 +1,169 @@
-from flask import Blueprint, render_template, request, redirect, url_for, flash, session
-from werkzeug.security import generate_password_hash, check_password_hash
+from flask import Blueprint, render_template, redirect, url_for, request, session, flash
 from database.models import db, User
+from werkzeug.security import generate_password_hash, check_password_hash
 import pyotp
 import qrcode
-import io
+from io import BytesIO
 import base64
-from PIL import Image
+import logging
+
+# Configure logging
+logging.basicConfig(level=logging.DEBUG, filename='log.txt')
+logger = logging.getLogger(__name__)
 
 auth_bp = Blueprint('auth', __name__)
 
-@auth_bp.route('/register', methods=['GET', 'POST'])
-def register():
-    if request.method == 'POST':
-        username = request.form['username']
-        password = request.form['password']
-        email = request.form.get('email')
-        enable_2fa = 'enable_2fa' in request.form
-
-        # Check if username or email exists
-        existing_user = User.query.filter_by(username=username).first()
-        if existing_user:
-            flash('Username already exists.', 'error')
-            return render_template('register.html')
-        if email and User.query.filter_by(email=email).first():
-            flash('Email already in use.', 'error')
-            return render_template('register.html')
-
-        # Hash password
-        hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
-
-        # Generate TOTP secret if 2FA is enabled
-        totp_secret = pyotp.random_base32() if enable_2fa else None
-        new_user = User(username=username, password=hashed_password, email=email, totp_secret=totp_secret)
-
-        try:
-            db.session.add(new_user)
-            db.session.commit()
-
-            if enable_2fa:
-                session['setup_username'] = username
-                return redirect(url_for('auth.setup_2fa'))
-            else:
-                flash('Registration successful! Please log in.', 'success')
-                return redirect(url_for('auth.login'))
-        except Exception as e:
-            db.session.rollback()
-            flash('An error occurred during registration.', 'error')
-
-    return render_template('register.html')
-
-@auth_bp.route('/setup_2fa')
-def setup_2fa():
-    if 'setup_username' not in session:
-        return redirect(url_for('auth.register'))
-
-    username = session['setup_username']
-    user = User.query.filter_by(username=username).first()
-    if not user or not user.totp_secret:
-        flash('2FA setup failed.', 'error')
-        return redirect(url_for('auth.login'))
-
-    # Generate TOTP provisioning URI
-    totp_uri = pyotp.totp.TOTP(user.totp_secret).provisioning_uri(
-        name=username, issuer_name='FlaskApp'
-    )
-
-    # Generate QR code
-    qr = qrcode.QRCode(version=1, box_size=10, border=4)
-    qr.add_data(totp_uri)
-    qr.make(fit=True)
-    img = qr.make_image(fill='black', back_color='white')
-
-    # Convert QR code to base64
-    buffered = io.BytesIO()
-    img.save(buffered, format="PNG")
-    img_str = base64.b64encode(buffered.getvalue()).decode('utf-8')
-
-    return render_template('2fa_setup.html', qr_code=img_str, totp_secret=user.totp_secret)
-
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
+    if 'username' in session:
+        return redirect(url_for('main.index'))
+
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
-
-        # Find user
         user = User.query.filter_by(username=username).first()
 
         if user and check_password_hash(user.password, password):
-            session['temp_username'] = username
             if user.totp_secret:
+                session['username_pending'] = username
                 return redirect(url_for('auth.verify_2fa'))
-            else:
-                session['username'] = username
-                flash('Login successful!', 'success')
-                return redirect(url_for('main.home'))
+            session['username'] = username
+            logger.info(f"User {username} logged in")
+            return redirect(url_for('main.index'))
         else:
-            flash('Invalid username or password.', 'error')
+            flash('Invalid username or password', 'error')
 
     return render_template('login.html')
 
-@auth_bp.route('/verify_2fa', methods=['GET', 'POST'])
-def verify_2fa():
-    if 'temp_username' not in session:
-        return redirect(url_for('auth.login'))
-
-    username = session['temp_username']
-    user = User.query.filter_by(username=username).first()
-
-    if not user or not user.totp_secret:
-        flash('2FA verification failed.', 'error')
-        return redirect(url_for('auth.login'))
+@auth_bp.route('/register', methods=['GET', 'POST'])
+def register():
+    if 'username' in session:
+        return redirect(url_for('main.index'))
 
     if request.method == 'POST':
-        totp_code = request.form['totp_code']
-        totp = pyotp.TOTP(user.totp_secret)
+        username = request.form['username']
+        email = request.form['email']
+        password = request.form['password']
 
-        if totp.verify(totp_code):
-            session.pop('temp_username', None)
-            session['username'] = username
-            flash('Login successful!', 'success')
-            return redirect(url_for('main.home'))
+        if User.query.filter_by(username=username).first():
+            flash('Username already exists', 'error')
+        elif User.query.filter_by(email=email).first():
+            flash('Email already exists', 'error')
         else:
-            flash('Invalid 2FA code.', 'error')
+            hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
+            new_user = User(username=username, email=email, password=hashed_password)
+            db.session.add(new_user)
+            db.session.commit()
+            logger.info(f"User {username} registered")
+            session['username'] = username
+            return redirect(url_for('main.index'))
 
-    return render_template('2fa_verify.html')
+    return render_template('register.html')
 
 @auth_bp.route('/logout')
 def logout():
-    session.pop('username', None)
-    session.pop('temp_username', None)
-    session.pop('setup_username', None)
-    flash('You have been logged out.', 'success')
+    username = session.pop('username', None)
+    session.pop('username_pending', None)
+    if username:
+        logger.info(f"User {username} logged out")
     return redirect(url_for('auth.login'))
+
+@auth_bp.route('/setup_2fa', methods=['GET'])
+def setup_2fa():
+    if 'username' not in session:
+        flash('Please log in to set up 2FA', 'error')
+        return redirect(url_for('auth.login'))
+
+    user = User.query.filter_by(username=session['username']).first()
+    if not user:
+        flash('User not found', 'error')
+        return redirect(url_for('auth.login'))
+
+    if user.totp_secret:
+        flash('2FA is already enabled', 'info')
+        return redirect(url_for('settings.settings'))
+
+    # Generate TOTP secret
+    secret = pyotp.random_base32()
+    session['totp_secret'] = secret
+
+    # Generate provisioning URI for QR code
+    provisioning_uri = pyotp.totp.TOTP(secret).provisioning_uri(
+        name=user.username,
+        issuer_name='CryptoApp'
+    )
+
+    # Generate QR code
+    qr = qrcode.QRCode(version=1, box_size=10, border=5)
+    qr.add_data(provisioning_uri)
+    qr.make(fit=True)
+    img = qr.make_image(fill_color="black", back_color="white")
+
+    # Convert QR code to base64 for embedding in HTML
+    buffered = BytesIO()
+    img.save(buffered, format="PNG")
+    qr_base64 = base64.b64encode(buffered.getvalue()).decode('utf-8')
+
+    return render_template('2fa_setup.html', qr_base64=qr_base64, secret=secret)
+
+@auth_bp.route('/verify_2fa', methods=['GET', 'POST'])
+def verify_2fa():
+    if 'username' not in session and 'username_pending' not in session:
+        flash('Please log in to verify 2FA', 'error')
+        return redirect(url_for('auth.login'))
+
+    username = session.get('username') or session.get('username_pending')
+    user = User.query.filter_by(username=username).first()
+    if not user:
+        flash('User not found', 'error')
+        return redirect(url_for('auth.login'))
+
+    if request.method == 'POST':
+        code = request.form['code']
+        secret = session.get('totp_secret') if 'username' in session else user.totp_secret
+
+        if not secret:
+            flash('No 2FA setup in progress', 'error')
+            return redirect(url_for('auth.login'))
+
+        totp = pyotp.TOTP(secret)
+        if totp.verify(code):
+            if 'username' in session:
+                # Setting up 2FA
+                user.totp_secret = secret
+                db.session.commit()
+                session.pop('totp_secret', None)
+                logger.info(f"User {username} enabled 2FA")
+                flash('2FA enabled successfully', 'success')
+                return redirect(url_for('settings.settings'))
+            else:
+                # Logging in with 2FA
+                session.pop('username_pending', None)
+                session['username'] = username
+                logger.info(f"User {username} logged in with 2FA")
+                return redirect(url_for('main.index'))
+        else:
+            flash('Invalid 2FA code', 'error')
+
+    return render_template('2fa_verify.html')
+
+@auth_bp.route('/disable_2fa', methods=['POST'])
+def disable_2fa():
+    if 'username' not in session:
+        flash('Please log in to disable 2FA', 'error')
+        return redirect(url_for('auth.login'))
+
+    user = User.query.filter_by(username=session['username']).first()
+    if not user:
+        flash('User not found', 'error')
+        return redirect(url_for('auth.login'))
+
+    if user.totp_secret:
+        user.totp_secret = None
+        db.session.commit()
+        logger.info(f"User {user.username} disabled 2FA")
+        flash('2FA disabled successfully', 'success')
+    else:
+        flash('2FA is not enabled', 'info')
+
+    return redirect(url_for('settings.settings'))

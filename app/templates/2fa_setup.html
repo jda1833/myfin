@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
 
-{% block title %}Setup 2FA{% endblock %}
+{% block title %}Set Up 2FA{% endblock %}
 
 {% block content %}
-    <h1>Setup Two-Factor Authentication</h1>
+    <h1>Set Up Two-Factor Authentication</h1>
     <div class="card">
-        <p>Scan this QR code with your authenticator app (e.g., Google Authenticator):</p>
-        <img src="{{ qr_code }}" alt="2FA QR Code">
-        <form method="POST" action="{{ url_for('auth.setup_2fa') }}">
-            <div class="form-group">
-                <label for="totp_code">Enter the 6-digit code from your authenticator app:</label>
-                <input type="text" id="totp_code" name="totp_code" required>
-            </div>
-            <button type="submit">Verify and Enable 2FA</button>
+        <h2>Scan QR Code</h2>
+        <p>Scan the QR code below with your authenticator app (e.g., Google Authenticator, Authy).</p>
+        <img src="data:image/png;base64,{{ qr_base64 }}" alt="2FA QR Code">
+        <p>Or enter this secret manually: <strong>{{ secret }}</strong></p>
+        <form method="POST" action="{{ url_for('auth.verify_2fa') }}">
+            <label for="code">Enter the 6-digit code from your authenticator app:</label>
+            <input type="text" id="code" name="code" required>
+            <button type="submit">Verify Code</button>
         </form>
     </div>
 {% endblock %}

@@ -1,7 +1,10 @@
-from flask import Blueprint, render_template, redirect, url_for, session, flash, request, jsonify
+from flask import Blueprint, render_template, redirect, url_for, session, flash, request, jsonify, Response
 from database.models import db, User, Transaction
 from werkzeug.security import check_password_hash, generate_password_hash
 import logging
+import pandas as pd
+from io import StringIO
+from datetime import datetime
 
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)
@@ -94,3 +97,121 @@ def clear_transactions():
         db.session.rollback()
         logger.error(f"Error clearing transactions for user {session['username']}: {str(e)}")
         return jsonify({'success': False, 'message': f'Failed to clear transactions: {str(e)}'}), 500
+
+@settings_bp.route('/export_transactions', methods=['GET'])
+def export_transactions():
+    if 'username' not in session:
+        return jsonify({'success': False, 'message': 'Please log in.'}), 401
+
+    user = User.query.filter_by(username=session['username']).first()
+    if not user:
+        return jsonify({'success': False, 'message': 'User not found.'}), 404
+
+    # Verify CSRF token
+    csrf_token = request.headers.get('X-CSRF-Token')
+    if not csrf_token or csrf_token != session.get('csrf_token'):
+        logger.warning(f"CSRF token validation failed for user {session['username']}")
+        return jsonify({'success': False, 'message': 'Invalid CSRF token.'}), 403
+
+    try:
+        # Fetch all transactions for the user
+        transactions = Transaction.query.filter_by(user_id=user.id).all()
+        if not transactions:
+            return jsonify({'success': False, 'message': 'No transactions to export.'}), 404
+
+        # Create CSV
+        columns = ['coinbase_tx_id', 'type', 'amount', 'currency', 'timestamp', 'status', 'price_at_transaction']
+        data = [{
+            'coinbase_tx_id': tx.coinbase_tx_id,
+            'type': tx.type,
+            'amount': tx.amount,
+            'currency': tx.currency,
+            'timestamp': tx.timestamp.isoformat(),
+            'status': tx.status,
+            'price_at_transaction': tx.price_at_transaction
+        } for tx in transactions]
+
+        df = pd.DataFrame(data, columns=columns)
+        csv_buffer = StringIO()
+        df.to_csv(csv_buffer, index=False)
+        csv_data = csv_buffer.getvalue()
+
+        logger.info(f"User {session['username']} exported {len(transactions)} transactions")
+        return Response(
+            csv_data,
+            mimetype='text/csv',
+            headers={'Content-Disposition': f'attachment;filename=transactions_backup_{datetime.now().strftime("%Y%m%d")}.csv'}
+        )
+    except Exception as e:
+        logger.error(f"Error exporting transactions for user {session['username']}: {str(e)}")
+        return jsonify({'success': False, 'message': f'Failed to export transactions: {str(e)}'}), 500
+
+@settings_bp.route('/import_transactions', methods=['POST'])
+def import_transactions():
+    if 'username' not in session:
+        return jsonify({'success': False, 'message': 'Please log in.'}), 401
+
+    user = User.query.filter_by(username=session['username']).first()
+    if not user:
+        return jsonify({'success': False, 'message': 'User not found.'}), 404
+
+    # Verify CSRF token
+    csrf_token = request.headers.get('X-CSRF-Token')
+    if not csrf_token or csrf_token != session.get('csrf_token'):
+        logger.warning(f"CSRF token validation failed for user {session['username']}")
+        return jsonify({'success': False, 'message': 'Invalid CSRF token.'}), 403
+
+    # Check if a file was uploaded
+    if 'csv_file' not in request.files:
+        return jsonify({'success': False, 'message': 'No file selected.'}), 400
+
+    file = request.files['csv_file']
+    if not file or not file.filename.endswith('.csv'):
+        return jsonify({'success': False, 'message': 'Please upload a valid CSV file.'}), 400
+
+    try:
+        # Read CSV
+        df = pd.read_csv(file)
+        logger.debug(f"Backup CSV columns: {df.columns.tolist()}")
+
+        # Required columns
+        required_columns = ['coinbase_tx_id', 'type', 'amount', 'currency', 'timestamp', 'status']
+        if not all(col in df.columns for col in required_columns):
+            return jsonify({'success': False, 'message': 'Invalid CSV format. Ensure it includes coinbase_tx_id, type, amount, currency, timestamp, status.'}), 400
+
+        # Process each row
+        imported_count = 0
+        for index, row in df.iterrows():
+            coinbase_tx_id = row['coinbase_tx_id']
+            if Transaction.query.filter_by(coinbase_tx_id=coinbase_tx_id).first():
+                continue  # Skip duplicates
+
+            try:
+                timestamp = pd.to_datetime(row['timestamp']).to_pydatetime()
+                price = float(row['price_at_transaction']) if pd.notnull(row.get('price_at_transaction')) else None
+                new_tx = Transaction(
+                    coinbase_tx_id=coinbase_tx_id,
+                    user_id=user.id,
+                    type=row['type'].lower(),
+                    amount=float(row['amount']),
+                    currency=row['currency'],
+                    timestamp=timestamp,
+                    status=row['status'],
+                    price_at_transaction=price
+                )
+                db.session.add(new_tx)
+                imported_count += 1
+            except (ValueError, TypeError) as e:
+                logger.error(f"Error processing backup row {index}: {str(e)}")
+                continue
+            except Exception as e:
+                logger.error(f"Unexpected error processing backup row {index}: {str(e)}")
+                continue
+
+        db.session.commit()
+        logger.info(f"User {session['username']} imported {imported_count} transactions from backup")
+        return jsonify({'success': True, 'message': f'Successfully imported {imported_count} transactions.'})
+    except Exception as e:
+        db.session.rollback()
+        logger.error(f"Error importing backup for user {session['username']}: {str(e)}")
+        return jsonify({'success': False, 'message': f'Failed to import transactions: {str(e)}'}), 500
