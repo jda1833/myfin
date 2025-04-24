@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}Import Transactions{% endblock %}
+
+{% block content %}
+    <h1>Import Coinbase Transactions</h1>
+    <p>Drag and drop your Coinbase CSV file (Taxes > Documents > Generate Report) below or click to select.</p>
+    <form method="POST" enctype="multipart/form-data" id="upload-form">
+        <div class="drop-zone" id="drop-zone">
+            <p>Drop CSV file here or click to upload</p>
+            <input type="file" name="csv_file" id="file-input" accept=".csv" required style="display: none;">
+            <div id="file-name" style="margin-top: 10px;"></div>
+        </div>
+        <div>
+            <button type="submit">Upload and Import</button>
+        </div>
+    </form>
+
+    <script>
+        const dropZone = document.getElementById('drop-zone');
+        const fileInput = document.getElementById('file-input');
+        const fileNameDisplay = document.getElementById('file-name');
+
+        // Highlight drop zone on dragover
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('dragover');
+        });
+
+        // Remove highlight on dragleave
+        dropZone.addEventListener('dragleave', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+        });
+
+        // Handle file drop
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            if (files.length > 0 && files[0].name.endsWith('.csv')) {
+                fileInput.files = files;
+                fileNameDisplay.textContent = `Selected file: ${files[0].name}`;
+            } else {
+                fileNameDisplay.textContent = 'Please drop a valid CSV file.';
+            }
+        });
+
+        // Allow clicking to select file
+        dropZone.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        // Update file name display when file is selected
+        fileInput.addEventListener('change', () => {
+            if (fileInput.files.length > 0) {
+                fileNameDisplay.textContent = `Selected file: ${fileInput.files[0].name}`;
+            }
+        });
+    </script>
+{% endblock %}

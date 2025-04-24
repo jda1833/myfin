@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}Settings{% endblock %}
+
+{% block content %}
+    <h1>User Settings</h1>
+    <form method="POST">
+        <h3>Coinbase API Credentials</h3>
+        <div>
+            <label>API Key:</label>
+            <input type="text" name="coinbase_api_key" placeholder="Enter Coinbase API Key" value="{{ user.coinbase_api_key | default('', true) }}">
+        </div>
+        <div>
+            <label>API Secret:</label>
+            <input type="text" name="coinbase_api_secret" placeholder="Enter Coinbase API Secret" value="{{ user.coinbase_api_secret | default('', true) }}">
+        </div>
+
+        <h3>Email Address</h3>
+        <div>
+            <label>Email:</label>
+            <input type="email" name="email" placeholder="Enter email address" value="{{ user.email | default('', true) }}">
+        </div>
+
+        <h3>Two-Factor Authentication</h3>
+        <div>
+            <label>
+                <input type="checkbox" name="enable_2fa" {% if user.totp_secret %}checked{% endif %}> Enable 2FA
+            </label>
+        </div>
+
+        <h3>Change Password</h3>
+        <div>
+            <label>Current Password:</label>
+            <input type="password" name="current_password" placeholder="Enter current password">
+        </div>
+        <div>
+            <label>New Password:</label>
+            <input type="password" name="new_password" placeholder="Enter new password">
+        </div>
+        <div>
+            <label>Confirm New Password:</label>
+            <input type="password" name="confirm_password" placeholder="Confirm new password">
+        </div>
+
+        <div>
+            <button type="submit">Save Changes</button>
+        </div>
+    </form>
+{% endblock %}

@@ -14,12 +14,16 @@ def register():
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
+        email = request.form.get('email')
         enable_2fa = 'enable_2fa' in request.form
 
-        # Check if username exists
+        # Check if username or email exists
         existing_user = User.query.filter_by(username=username).first()
         if existing_user:
             flash('Username already exists.', 'error')
+            return render_template('register.html')
+        if email and User.query.filter_by(email=email).first():
+            flash('Email already in use.', 'error')
             return render_template('register.html')
 
         # Hash password
@@ -27,7 +31,7 @@ def register():
 
         # Generate TOTP secret if 2FA is enabled
         totp_secret = pyotp.random_base32() if enable_2fa else None
-        new_user = User(username=username, password=hashed_password, totp_secret=totp_secret)
+        new_user = User(username=username, password=hashed_password, email=email, totp_secret=totp_secret)
 
         try:
             db.session.add(new_user)

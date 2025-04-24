@@ -1,9 +1,15 @@
-from flask import Blueprint, render_template, redirect, url_for, session, flash
+from flask import Blueprint, render_template, redirect, url_for, session, flash, request
 from database.models import db, User, Transaction
 from coinbase.wallet.client import Client
 from coinbase.wallet.error import APIError
 from datetime import datetime
+import pandas as pd
+import logging
 import os
+
+# Configure logging
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
 
 coinbase_bp = Blueprint('coinbase', __name__)
 
@@ -17,40 +23,53 @@ def transactions():
         flash('User not found.', 'error')
         return redirect(url_for('auth.login'))
 
+    # Check for Coinbase API credentials
+    try:
+        api_key = user.get_coinbase_api_key()
+        api_secret = user.get_coinbase_api_secret()
+    except Exception as e:
+        logger.error(f"Error decrypting Coinbase credentials: {str(e)}")
+        flash('Failed to decrypt Coinbase API credentials. Please update in Settings.', 'error')
+        return redirect(url_for('settings.settings'))
+
+    if not api_key or not api_secret:
+        flash('Please add Coinbase API credentials in Settings or import transactions from a CSV.', 'error')
+        return redirect(url_for('settings.settings'))
+
     # Initialize Coinbase client
     try:
-        client = Client(
-            api_key=os.getenv('COINBASE_API_KEY', 'your_coinbase_api_key'),
-            api_secret=os.getenv('COINBASE_API_SECRET', 'your_coinbase_api_secret')
-        )
+        client = Client(api_key=api_key, api_secret=api_secret)
     except Exception as e:
+        logger.error(f"Failed to initialize Coinbase client: {str(e)}")
         flash(f'Failed to initialize Coinbase client: {str(e)}', 'error')
         return redirect(url_for('main.home'))
 
     # Fetch accounts
     try:
         accounts = client.get_accounts()
+        logger.debug(f"Fetched accounts: {accounts}")
     except APIError as e:
+        logger.error(f"Coinbase APIError fetching accounts: {str(e)}")
         flash(f'Failed to fetch Coinbase accounts: {str(e)}', 'error')
+        return redirect(url_for('main.home'))
+    except Exception as e:
+        logger.error(f"Unexpected error fetching accounts: {str(e)}")
+        flash(f'Unexpected error fetching accounts: {str(e)}', 'error')
         return redirect(url_for('main.home'))
 
     # Fetch and store transactions for each account
     for account in accounts.data:
         try:
-            # Handle pagination for transactions
             txs = client.get_transactions(account.id)
+            logger.debug(f"Fetched transactions for account {account.id}: {txs}")
             for tx in txs.data:
-                # Check if transaction already exists
                 existing_tx = Transaction.query.filter_by(coinbase_tx_id=tx.id).first()
                 if not existing_tx:
-                    # Parse transaction details
                     amount = float(tx.amount.amount)
                     currency = tx.amount.currency
                     tx_type = tx.type
                     timestamp = datetime.strptime(tx.created_at, '%Y-%m-%dT%H:%M:%SZ')
                     status = tx.status
-
-                    # Store transaction in database
                     new_tx = Transaction(
                         coinbase_tx_id=tx.id,
                         user_id=user.id,
@@ -63,10 +82,83 @@ def transactions():
                     db.session.add(new_tx)
             db.session.commit()
         except APIError as e:
+            logger.error(f"Coinbase APIError fetching transactions for account {account.id}: {str(e)}")
             flash(f'Failed to fetch transactions for account {account.id}: {str(e)}', 'error')
             continue
+        except Exception as e:
+            logger.error(f"Unexpected error fetching transactions for account {account.id}: {str(e)}")
+            flash(f'Unexpected error fetching transactions for account {account.id}: {str(e)}', 'error')
+            continue
 
-    # Retrieve user's transactions from database
+    # Retrieve user's transactions
     user_transactions = Transaction.query.filter_by(user_id=user.id).all()
 
     return render_template('transactions.html', transactions=user_transactions)
+
+@coinbase_bp.route('/import_transactions', methods=['GET', 'POST'])
+def import_transactions():
+    if 'username' not in session:
+        return redirect(url_for('auth.login'))
+
+    user = User.query.filter_by(username=session['username']).first()
+    if not user:
+        flash('User not found.', 'error')
+        return redirect(url_for('auth.login'))
+
+    if request.method == 'POST':
+        # Check if a file was uploaded
+        if 'csv_file' not in request.files:
+            flash('No file selected.', 'error')
+            return redirect(url_for('coinbase.import_transactions'))
+
+        file = request.files['csv_file']
+        if not file or not file.filename.endswith('.csv'):
+            flash('Please upload a valid CSV file.', 'error')
+            return redirect(url_for('coinbase.import_transactions'))
+
+        try:
+            # Read CSV using pandas
+            df = pd.read_csv(file)
+            logger.debug(f"CSV columns: {df.columns.tolist()}")
+
+            # Expected Coinbase CSV columns (adjust based on actual CSV)
+            required_columns = ['ID','Timestamp', 'Transaction Type', 'Asset', 'Quantity Transacted']
+            if not all(col in df.columns for col in required_columns):
+                flash('Invalid CSV format. Ensure it includes ID, Timestamp, Transaction Type, Asset, Quantity Transacted.', 'error')
+                return redirect(url_for('coinbase.import_transactions'))
+
+            # Process each row
+            imported_count = 0
+            for index, row in df.iterrows():
+                # Generate a unique transaction ID (since CSV may not provide one)
+                tx_id = row["ID"]
+                if Transaction.query.filter_by(coinbase_tx_id=tx_id).first():
+                    continue  # Skip duplicates
+
+                try:
+                    # Parse timestamp
+                    timestamp = pd.to_datetime(row['Timestamp']).to_pydatetime()
+                    # Map CSV fields to Transaction model
+                    new_tx = Transaction(
+                        coinbase_tx_id=tx_id,
+                        user_id=user.id,
+                        type=row['Transaction Type'].lower(),
+                        amount=float(row['Quantity Transacted']),
+                        currency=row['Asset'],
+                        timestamp=timestamp,
+                    )
+                    db.session.add(new_tx)
+                    imported_count += 1
+                except Exception as e:
+                    logger.error(f"Error processing row {index}: {str(e)}")
+                    continue  # Skip invalid rows
+
+            db.session.commit()
+            flash(f'Successfully imported {imported_count} transactions.', 'success')
+            return redirect(url_for('coinbase.transactions'))
+        except Exception as e:
+            logger.error(f"Error processing CSV: {str(e)}")
+            flash(f'Failed to import transactions: {str(e)}', 'error')
+            return redirect(url_for('coinbase.import_transactions'))
+
+    return render_template('import_transactions.html')

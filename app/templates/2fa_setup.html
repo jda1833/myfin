@@ -6,7 +6,7 @@
     <h1>Setup Two-Factor Authentication</h1>
     <p>Scan the QR code below with your authenticator app (e.g., Google Authenticator, Authy).</p>
     <img src="data:image/png;base64,{{ qr_code }}" alt="2FA QR Code">
-    <p>Or vāanually enter this secret: <strong>{{ totp_secret }}</strong></p>
+    <p>Or manually enter this secret: <strong>{{ totp_secret }}</strong></p>
     <p>Once set up, you can log in.</p>
     <a href="{{ url_for('auth.login') }}">Proceed to Login</a>
 {% endblock %}
