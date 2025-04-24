@@ -91,7 +91,8 @@ def fetch_transactions():
                         amount=amount,
                         currency=currency,
                         timestamp=timestamp,
-                        status=status
+                        status=status,
+                        price_at_transaction=None  # API doesn't provide this
                     )
                     db.session.add(new_tx)
                     imported_count += 1
@@ -139,9 +140,9 @@ def import_transactions():
             logger.debug(f"CSV columns: {df.columns.tolist()}")
 
             # Required Coinbase CSV columns
-            required_columns = ['ID', 'Timestamp', 'Transaction Type', 'Asset', 'Quantity Transacted']
+            required_columns = ['ID', 'Timestamp', 'Transaction Type', 'Asset', 'Quantity Transacted', 'Price at Transaction']
             if not all(col in df.columns for col in required_columns):
-                flash('Invalid CSV format. Ensure it includes ID, Timestamp, Transaction Type, Asset, and Quantity Transacted.', 'error')
+                flash('Invalid CSV format. Ensure it includes ID, Timestamp, Transaction Type, Asset, Quantity Transacted, and Price at Transaction.', 'error')
                 return redirect(url_for('coinbase.import_transactions'))
 
             # Process each row
@@ -155,6 +156,9 @@ def import_transactions():
                 try:
                     # Parse timestamp
                     timestamp = pd.to_datetime(row['Timestamp']).to_pydatetime()
+                    # Parse Price at Transaction (e.g., "$45.67" -> 45.67)
+                    price_str = row['Price at Transaction'].replace('$', '').replace(',', '')  # Handle "$1,234.56"
+                    price = float(price_str)
                     # Map CSV fields to Transaction model
                     new_tx = Transaction(
                         coinbase_tx_id=tx_id,
@@ -163,13 +167,17 @@ def import_transactions():
                         amount=float(row['Quantity Transacted']),
                         currency=row['Asset'],
                         timestamp=timestamp,
-                        status='completed'  # Default status since column is missing
+                        status='completed',  # Default status
+                        price_at_transaction=price
                     )
                     db.session.add(new_tx)
                     imported_count += 1
-                except Exception as e:
+                except (ValueError, TypeError) as e:
                     logger.error(f"Error processing row {index}: {str(e)}")
                     continue  # Skip invalid rows
+                except Exception as e:
+                    logger.error(f"Unexpected error processing row {index}: {str(e)}")
+                    continue
 
             db.session.commit()
             flash(f'Successfully imported {imported_count} transactions.', 'success')

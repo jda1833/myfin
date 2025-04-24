@@ -3,7 +3,7 @@
 {% block title %}Transactions{% endblock %}
 
 {% block content %}
-    <h1>Your Coinbase Transactions</h1>
+    <h1>Transactions</h1>
     {% if transactions %}
         <table>
             <tr>
@@ -13,6 +13,7 @@
                 <th>Currency</th>
                 <th>Timestamp</th>
                 <th>Status</th>
+                <th>Price at Transaction (USD)</th>
             </tr>
             {% for tx in transactions %}
                 <tr>
@@ -22,6 +23,7 @@
                     <td>{{ tx.currency }}</td>
                     <td>{{ tx.timestamp }}</td>
                     <td>{{ tx.status }}</td>
+                    <td>{{ '$%.2f' | format(tx.price_at_transaction) if tx.price_at_transaction else 'N/A' }}</td>
                 </tr>
             {% endfor %}
         </table>
