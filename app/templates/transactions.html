@@ -4,6 +4,27 @@
 
 {% block content %}
     <h1>Transactions</h1>
+
+    <!-- Currency Filter -->
+    <form method="GET" id="currency-filter-form">
+        <div>
+            <label for="currency">Filter by Currency:</label>
+            <select name="currency" id="currency" onchange="this.form.submit()">
+                <option value="">All Currencies</option>
+                {% for curr in currencies %}
+                    <option value="{{ curr }}" {% if currency == curr %}selected{% endif %}>{{ curr }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </form>
+
+    <!-- Timechart -->
+    {% if transactions %}
+        <h2>Transaction Amount Over Time</h2>
+        <canvas id="timeChart" style="max-height: 300px;"></canvas>
+    {% endif %}
+
+    <!-- Transactions Table -->
     {% if transactions %}
         <table>
             <tr>
@@ -27,7 +48,68 @@
                 </tr>
             {% endfor %}
         </table>
+
+        <!-- Pagination -->
+        <div class="pagination">
+            {% if pagination.has_prev %}
+                <a href="{{ url_for('coinbase.transactions', page=pagination.prev_num, currency=currency) }}">&laquo; Previous</a>
+            {% endif %}
+            {% for page_num in pagination.iter_pages() %}
+                {% if page_num %}
+                    {% if page_num == pagination.page %}
+                        <span class="current">{{ page_num }}</span>
+                    {% else %}
+                        <a href="{{ url_for('coinbase.transactions', page=page_num, currency=currency) }}">{{ page_num }}</a>
+                    {% endif %}
+                {% else %}
+                    <span>...</span>
+                {% endif %}
+            {% endfor %}
+            {% if pagination.has_next %}
+                <a href="{{ url_for('coinbase.transactions', page=pagination.next_num, currency=currency) }}">Next &raquo;</a>
+            {% endif %}
+        </div>
     {% else %}
-        <p>No transactions found.</p>
+        <p>No transactions found for {% if currency %}{{ currency }}{% else %}the selected criteria{% endif %}.</p>
+    {% endif %}
+
+    <!-- Chart.js and Chart Script -->
+    {% if transactions %}
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            const ctx = document.getElementById('timeChart').getContext('2d');
+            const chartData = {{ chart_data | tojson }};
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: chartData.labels,
+                    datasets: [{
+                        label: 'Transaction Amount ({{ currency or "All Currencies" }})',
+                        data: chartData.values,
+                        borderColor: '#4CAF50',
+                        fill: false,
+                        tension: 0.1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Date'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Amount'
+                            },
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        </script>
     {% endif %}
 {% endblock %}

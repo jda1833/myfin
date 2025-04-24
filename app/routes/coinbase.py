@@ -2,11 +2,12 @@ from flask import Blueprint, render_template, redirect, url_for, session, flash,
 from database.models import db, User, Transaction
 from coinbase.wallet.client import Client
 from coinbase.wallet.error import APIError
-from datetime import datetime
+from datetime import datetime, timedelta
 import pandas as pd
 import logging
 import os
 import requests
+from sqlalchemy import func
 
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)
@@ -24,10 +25,56 @@ def transactions():
         flash('User not found.', 'error')
         return redirect(url_for('auth.login'))
 
-    # Retrieve user's transactions (no API call)
-    user_transactions = Transaction.query.filter_by(user_id=user.id).all()
+    # Get query parameters
+    currency = request.args.get('currency', '')
+    page = request.args.get('page', 1, type=int)
+    per_page = 10  # Transactions per page
 
-    return render_template('transactions.html', transactions=user_transactions)
+    # Base query
+    query = Transaction.query.filter_by(user_id=user.id)
+
+    # Apply currency filter
+    if currency:
+        query = query.filter_by(currency=currency)
+
+    # Paginate results
+    pagination = query.order_by(Transaction.timestamp.desc()).paginate(page=page, per_page=per_page, error_out=False)
+    transactions = pagination.items
+
+    # Get unique currencies for filter dropdown
+    currencies = db.session.query(Transaction.currency).filter_by(user_id=user.id).distinct().all()
+    currencies = [c[0] for c in currencies]
+
+    # Prepare chart data (aggregate amount by date)
+    chart_query = Transaction.query.filter_by(user_id=user.id)
+    if currency:
+        chart_query = chart_query.filter_by(currency=currency)
+
+    # Aggregate by date (sum amounts per day)
+    chart_data = (
+        chart_query
+        .with_entities(
+            func.date(Transaction.timestamp).label('date'),
+            func.sum(Transaction.amount).label('total_amount')
+        )
+        .group_by(func.date(Transaction.timestamp))
+        .order_by(func.date(Transaction.timestamp))
+        .all()
+    )
+
+    # Format chart data for Chart.js
+    chart_labels = [row.date for row in chart_data]
+    chart_values = [float(row.total_amount) for row in chart_data]
+    chart_data_dict = {'labels': chart_labels, 'values': chart_values}
+
+    return render_template(
+        'transactions.html',
+        transactions=transactions,
+        currencies=currencies,
+        currency=currency,
+        pagination=pagination,
+        chart_data=chart_data_dict
+    )
 
 @coinbase_bp.route('/fetch_transactions', methods=['POST'])
 def fetch_transactions():
@@ -92,7 +139,7 @@ def fetch_transactions():
                         currency=currency,
                         timestamp=timestamp,
                         status=status,
-                        price_at_transaction=None  # API doesn't provide this
+                        price_at_transaction=None
                     )
                     db.session.add(new_tx)
                     imported_count += 1
@@ -157,7 +204,7 @@ def import_transactions():
                     # Parse timestamp
                     timestamp = pd.to_datetime(row['Timestamp']).to_pydatetime()
                     # Parse Price at Transaction (e.g., "$45.67" -> 45.67)
-                    price_str = row['Price at Transaction'].replace('$', '').replace(',', '')  # Handle "$1,234.56"
+                    price_str = row['Price at Transaction'].replace('$', '').replace(',', '')
                     price = float(price_str)
                     # Map CSV fields to Transaction model
                     new_tx = Transaction(
@@ -167,14 +214,14 @@ def import_transactions():
                         amount=float(row['Quantity Transacted']),
                         currency=row['Asset'],
                         timestamp=timestamp,
-                        status='completed',  # Default status
+                        status='completed',
                         price_at_transaction=price
                     )
                     db.session.add(new_tx)
                     imported_count += 1
                 except (ValueError, TypeError) as e:
                     logger.error(f"Error processing row {index}: {str(e)}")
-                    continue  # Skip invalid rows
+                    continue
                 except Exception as e:
                     logger.error(f"Unexpected error processing row {index}: {str(e)}")
                     continue
