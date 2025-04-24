@@ -60,3 +60,4 @@ class Transaction(db.Model):
     amount = db.Column(db.Float, nullable=False)
     currency = db.Column(db.String(10), nullable=False)
     timestamp = db.Column(db.DateTime, nullable=False)
+    status = db.Column(db.String(50), nullable=False)

@@ -122,3 +122,18 @@ form button:hover {
     margin: 0;
     color: #555;
 }
+
+/* Fetch Transactions Button and Message */
+#fetch-transactions-btn {
+    margin-top: 10px;
+}
+
+#fetch-message {
+    padding: 10px;
+    border-radius: 4px;
+}
+
+#loading {
+    color: #555;
+    margin-top: 10px;
+}

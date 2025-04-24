@@ -4,7 +4,7 @@
 
 {% block content %}
     <h1>User Settings</h1>
-    <form method="POST">
+    <form method="POST" id="settings-form">
         <h3>Coinbase API Credentials</h3>
         <div>
             <label>API Key:</label>
@@ -13,6 +13,11 @@
         <div>
             <label>API Secret:</label>
             <input type="text" name="coinbase_api_secret" placeholder="Enter Coinbase API Secret" value="{{ user.coinbase_api_secret | default('', true) }}">
+        </div>
+        <div>
+            <button type="button" id="fetch-transactions-btn">Fetch Transactions</button>
+            <div id="fetch-message" style="margin-top: 10px;"></div>
+            <div id="loading" style="display: none;">Loading...</div>
         </div>
 
         <h3>Email Address</h3>
@@ -46,4 +51,38 @@
             <button type="submit">Save Changes</button>
         </div>
     </form>
+
+    <script>
+        document.getElementById('fetch-transactions-btn').addEventListener('click', function() {
+            const messageDiv = document.getElementById('fetch-message');
+            const loadingDiv = document.getElementById('loading');
+            messageDiv.textContent = '';
+            loadingDiv.style.display = 'block';
+
+            fetch('{{ url_for("coinbase.fetch_transactions") }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    // Basic CSRF token (for development; use Flask-WTF for production)
+                    'X-CSRF-Token': '{{ session.get("csrf_token", "") }}'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                loadingDiv.style.display = 'none';
+                if (data.success) {
+                    messageDiv.style.color = '#155724';
+                    messageDiv.textContent = data.message;
+                } else {
+                    messageDiv.style.color = '#721c24';
+                    messageDiv.textContent = data.message;
+                }
+            })
+            .catch(error => {
+                loadingDiv.style.display = 'none';
+                messageDiv.style.color = '#721c24';
+                messageDiv.textContent = 'Error fetching transactions: ' + error.message;
+            });
+        });
+    </script>
 {% endblock %}

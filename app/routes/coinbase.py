@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect, url_for, session, flash, request
+from flask import Blueprint, render_template, redirect, url_for, session, flash, request, jsonify
 from database.models import db, User, Transaction
 from coinbase.wallet.client import Client
 from coinbase.wallet.error import APIError
@@ -6,6 +6,7 @@ from datetime import datetime
 import pandas as pd
 import logging
 import os
+import requests
 
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)
@@ -23,26 +24,37 @@ def transactions():
         flash('User not found.', 'error')
         return redirect(url_for('auth.login'))
 
+    # Retrieve user's transactions (no API call)
+    user_transactions = Transaction.query.filter_by(user_id=user.id).all()
+
+    return render_template('transactions.html', transactions=user_transactions)
+
+@coinbase_bp.route('/fetch_transactions', methods=['POST'])
+def fetch_transactions():
+    if 'username' not in session:
+        return jsonify({'success': False, 'message': 'Please log in.'}), 401
+
+    user = User.query.filter_by(username=session['username']).first()
+    if not user:
+        return jsonify({'success': False, 'message': 'User not found.'}), 404
+
     # Check for Coinbase API credentials
     try:
         api_key = user.get_coinbase_api_key()
         api_secret = user.get_coinbase_api_secret()
     except Exception as e:
         logger.error(f"Error decrypting Coinbase credentials: {str(e)}")
-        flash('Failed to decrypt Coinbase API credentials. Please update in Settings.', 'error')
-        return redirect(url_for('settings.settings'))
+        return jsonify({'success': False, 'message': 'Failed to decrypt Coinbase API credentials.'}), 500
 
     if not api_key or not api_secret:
-        flash('Please add Coinbase API credentials in Settings or import transactions from a CSV.', 'error')
-        return redirect(url_for('settings.settings'))
+        return jsonify({'success': False, 'message': 'Please add Coinbase API credentials in Settings.'}), 400
 
     # Initialize Coinbase client
     try:
         client = Client(api_key=api_key, api_secret=api_secret)
     except Exception as e:
         logger.error(f"Failed to initialize Coinbase client: {str(e)}")
-        flash(f'Failed to initialize Coinbase client: {str(e)}', 'error')
-        return redirect(url_for('main.home'))
+        return jsonify({'success': False, 'message': f'Failed to initialize Coinbase client: {str(e)}'}), 500
 
     # Fetch accounts
     try:
@@ -50,14 +62,16 @@ def transactions():
         logger.debug(f"Fetched accounts: {accounts}")
     except APIError as e:
         logger.error(f"Coinbase APIError fetching accounts: {str(e)}")
-        flash(f'Failed to fetch Coinbase accounts: {str(e)}', 'error')
-        return redirect(url_for('main.home'))
+        return jsonify({'success': False, 'message': f'Failed to fetch Coinbase accounts: {str(e)}'}), 500
+    except requests.exceptions.JSONDecodeError as e:
+        logger.error(f"JSONDecodeError fetching accounts: {str(e)}")
+        return jsonify({'success': False, 'message': 'Invalid response from Coinbase API. Please check your API credentials.'}), 500
     except Exception as e:
         logger.error(f"Unexpected error fetching accounts: {str(e)}")
-        flash(f'Unexpected error fetching accounts: {str(e)}', 'error')
-        return redirect(url_for('main.home'))
+        return jsonify({'success': False, 'message': f'Unexpected error fetching accounts: {str(e)}'}), 500
 
-    # Fetch and store transactions for each account
+    # Fetch and store transactions
+    imported_count = 0
     for account in accounts.data:
         try:
             txs = client.get_transactions(account.id)
@@ -80,20 +94,23 @@ def transactions():
                         status=status
                     )
                     db.session.add(new_tx)
+                    imported_count += 1
             db.session.commit()
         except APIError as e:
             logger.error(f"Coinbase APIError fetching transactions for account {account.id}: {str(e)}")
-            flash(f'Failed to fetch transactions for account {account.id}: {str(e)}', 'error')
+            continue
+        except requests.exceptions.JSONDecodeError as e:
+            logger.error(f"JSONDecodeError fetching transactions for account {account.id}: {str(e)}")
             continue
         except Exception as e:
             logger.error(f"Unexpected error fetching transactions for account {account.id}: {str(e)}")
-            flash(f'Unexpected error fetching transactions for account {account.id}: {str(e)}', 'error')
             continue
 
-    # Retrieve user's transactions
-    user_transactions = Transaction.query.filter_by(user_id=user.id).all()
-
-    return render_template('transactions.html', transactions=user_transactions)
+    if imported_count > 0:
+        message = f'Successfully imported {imported_count} transactions.'
+        return jsonify({'success': True, 'message': message})
+    else:
+        return jsonify({'success': False, 'message': 'No new transactions imported.'})
 
 @coinbase_bp.route('/import_transactions', methods=['GET', 'POST'])
 def import_transactions():
@@ -121,17 +138,17 @@ def import_transactions():
             df = pd.read_csv(file)
             logger.debug(f"CSV columns: {df.columns.tolist()}")
 
-            # Expected Coinbase CSV columns (adjust based on actual CSV)
-            required_columns = ['ID','Timestamp', 'Transaction Type', 'Asset', 'Quantity Transacted']
+            # Required Coinbase CSV columns
+            required_columns = ['ID', 'Timestamp', 'Transaction Type', 'Asset', 'Quantity Transacted']
             if not all(col in df.columns for col in required_columns):
-                flash('Invalid CSV format. Ensure it includes ID, Timestamp, Transaction Type, Asset, Quantity Transacted.', 'error')
+                flash('Invalid CSV format. Ensure it includes ID, Timestamp, Transaction Type, Asset, and Quantity Transacted.', 'error')
                 return redirect(url_for('coinbase.import_transactions'))
 
             # Process each row
             imported_count = 0
             for index, row in df.iterrows():
-                # Generate a unique transaction ID (since CSV may not provide one)
-                tx_id = row["ID"]
+                # Use the ID column for coinbase_tx_id
+                tx_id = row['ID']
                 if Transaction.query.filter_by(coinbase_tx_id=tx_id).first():
                     continue  # Skip duplicates
 
@@ -146,6 +163,7 @@ def import_transactions():
                         amount=float(row['Quantity Transacted']),
                         currency=row['Asset'],
                         timestamp=timestamp,
+                        status='completed'  # Default status since column is missing
                     )
                     db.session.add(new_tx)
                     imported_count += 1
